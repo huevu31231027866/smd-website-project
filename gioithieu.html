@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --smd-purple: #8e44ad;
+            --smd-purple-light: #a569bd;
+            --text-dark: #212529;
+            --bg-light: #f8f9fa;
+            --smd-red: #8e44ad;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #fff;
+        }
+
+        /* --- 1. NAVBAR --- */
+        .navbar {
+            min-height: 80px;
+            background: #ffffff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); 
+            z-index: 1000;
+        }
+        .logo { height: 50px; }
+        .nav-link {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-dark) !important;
+            text-transform: uppercase;
+            padding: 0.5rem 10px !important;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .nav-link.active { color: var(--smd-purple) !important; }
+
+        .nav-tools {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-left: 15px;
+            border-left: 1px solid #eee;
+        }
+        
+        .lang-switch { color: var(--text-dark); font-weight: 700; font-size: 13px; }
+        .lang-switch.lang-active { color: var(--smd-red) !important; }
+
+        .search-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .search-box input {
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 5px 15px 5px 35px;
+            font-size: 13px;
+            width: 130px;
+            transition: width 0.3s;
+        }
+        .search-box input:focus { width: 180px; outline: none; border-color: var(--smd-purple); }
+        .search-box i { position: absolute; left: 12px; color: #888; font-size: 14px; }
+
+        /* --- 2. HERO BANNER --- */
+        .hero-banner {
+            width: 100%;
+            line-height: 0;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03); 
+            position: relative;
+            z-index: 5;
+        }
+        .hero-banner img { width: 100%; height: auto; display: block; }
+
+        /* --- 3. FEATURE SECTION --- */
+        .feature-section { padding: 40px 0 20px 0; margin-top: -15px; position: relative; z-index: 10; }
+        
+        .feature-card {
+            border: 1.5px solid #f0f0f0;
+            border-radius: 15px;
+            padding: 25px;
+            height: 100%;
+            display: flex;
+            gap: 15px;
+            transition: all 0.3s ease-in-out;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Hiệu ứng viền tím khi di chuột và click */
+        .feature-card:hover, .feature-card:active, .feature-card:focus {
+            border-color: var(--smd-purple);
+            box-shadow: 0 0 15px rgba(142, 68, 173, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .icon-box { font-size: 2rem; color: var(--smd-purple); flex-shrink: 0; }
+        .content-box h3 { font-size: 1rem; font-weight: 700; color: var(--smd-purple); text-transform: uppercase; margin-bottom: 10px; }
+        .content-box p { font-size: 0.85rem; text-align: justify; color: #555; margin: 0; line-height: 1.6; }
+
+        /* --- 4. INFO SECTION --- */
+        .info-section { padding: 10px 0 10px 0; background-color: #fff; }
+        .badge-since {
+            background-color: var(--smd-purple);
+            color: white;
+            padding: 8px 25px;
+            display: inline-block;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .info-title {
+            color: var(--smd-purple);
+            font-weight: 800;
+            font-size: 1.8rem;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+        .info-text { color: #444; font-size: 0.95rem; line-height: 1.8; margin-bottom: 30px; text-align: justify;}
+        .img-rounded { border-radius: 20px; width: 100%; object-fit: cover; }
+        
+        .stat-box { text-align: center; margin-top: 30px; }
+        .stat-number { font-size: 3rem; font-weight: 800; color: var(--smd-purple); margin-bottom: 0; display: block; }
+        .stat-label { font-size: 1.1rem; font-weight: 700; color: var(--smd-purple); margin-top: 10px; }
+        .stat-divider { width: 50px; height: 3px; background-color: var(--smd-purple); margin: 10px auto; }
+
+        /* --- 5. NEWS SLIDESHOW SECTION --- */
+        .news-section { background-color: #ffffff; }
+        
+        .news-header-box {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--smd-purple);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
+        }
+
+        .object-fit-cover { object-fit: cover; }
+
+        /* Tinh chỉnh Caption */
+        .carousel-caption {
+            bottom: 8%; /* Dịch lên một chút */
+            padding: 0;
+            left: 10%;
+            right: 10%;
+            z-index: 10;
+        }
+
+        .btn-news-link {
+            display: inline-block;
+            background-color: var(--smd-purple);
+            color: white !important;
+            padding: 0.8vw 2vw; 
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            /* Tự động thu nhỏ font chữ */
+            font-size: clamp(12px, 1.2vw, 16px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+            max-width: 90%;
+            line-height: 1.4;
+        }
+
+        .btn-news-link:hover {
+            background-color: #732d91;
+            transform: scale(1.05);
+        }
+
+        .carousel-indicators [data-bs-target] {
+            background-color: var(--smd-purple);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 991px) {
+            .nav-tools { border-left: none; padding: 15px 0; border-top: 1px solid #eee; margin-top: 10px; }
+            .info-title { font-size: 1.5rem; }
+        }
+
+        @media (max-width: 576px) {
+            .carousel-caption { bottom: 10%; }
+            .btn-news-link { padding: 5px 12px; font-size: 11px; }
+        }
+        /* --- SUPER COMPACT FOOTER (230px) --- */
+.footer-smd {
+    background-color: var(--smd-purple);
+    color: white;
+    padding: 25px 0 15px 0; /* Giảm padding tối đa */
+    min-height: 200px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer-content-wrapper {
+    display: grid;
+    grid-template-columns: 1.8fr 2fr 1.2fr;
+    gap: 20px;
+    align-items: start;
+}
+
+/* Tinh chỉnh size chữ Tiêu đề */
+.footer-tagline { 
+    font-size: 1.5rem; /* Giảm từ 1.8rem */
+    font-weight: 800; 
+    margin: 0; 
+    line-height: 1.1;
+}
+.footer-subtitle { 
+    font-size: 0.75rem; /* Giảm size font */
+    
+    margin-bottom: 10px; 
+}
+
+.footer-logos { display: flex; gap: 12px; margin-bottom: 10px; }
+.footer-logos img { height: 35px; width: auto; }
+
+.contact-details { 
+    font-size: 12px; /* Font cực nhỏ để tiết kiệm diện tích */
+    
+    line-height: 1.4; 
+}
+.contact-details p { margin-bottom: 2px; }
+
+/* Tinh chỉnh Links */
+.link-group {
+    padding-left: 50px;
+}
+.link-group h5 { 
+    font-size: 0.9rem; 
+    font-weight: 700; 
+    margin-bottom: 10px; 
+    text-transform: uppercase;
+}
+.links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.link-group ul { list-style: none; padding: 0; margin: 0; }
+.link-group ul li { margin-bottom: 5px; }
+.link-group ul li a { 
+    color: white; 
+    text-decoration: none; 
+    font-size: 12px; /* Giảm size font */
+    
+}
+
+/* Cột Action & Social */
+.action-social { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+
+.btn-reg {
+    background: white;
+    color: var(--smd-purple) !important;
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 12px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.social-box p { font-size: 12px; margin-bottom: 5px; }
+.social-icons { display: flex; gap: 12px; font-size: 1.2rem; }
+.social-icons a { color: white; }
+
+.footer-bottom {
+    margin-top: 5px;
+    padding-top: 5px;
+    font-size: 12px;
+}
+
+/* --- RESPONSIVE OPTIMIZATION --- */
+@media (max-width: 992px) {
+    .footer-smd { min-height: auto; padding: 30px 0; }
+    .footer-content-wrapper { grid-template-columns: 1fr 1fr; }
+    .action-social { grid-column: span 2; align-items: center; margin-top: 10px; }
+}
+
+@media (max-width: 576px) {
+    .footer-content-wrapper { grid-template-columns: 1fr; text-align: center; }
+    .footer-logos, .social-icons { justify-content: center; }
+    .links-grid { display: none; } /* Ẩn bớt link phụ trên mobile cực nhỏ để tránh rối */
+    .action-social { grid-column: span 1; }
+}
+/* --- TEAM SECTION --- */
+.team-section {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.team-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.team-title span {
+    color: var(--smd-purple);
+}
+
+.team-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 30px;
+}
+
+.team-dots span {
+    width: 10px;
+    height: 10px;
+    background-color: var(--smd-purple);
+    border-radius: 50%;
+}
+
+.team-description {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+.team-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px; /* Bo góc nhẹ theo hình */
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.team-card img {
+    width: 100%;
+    height: 400px; /* Độ cao cố định để các ảnh bằng nhau */
+    object-fit: cover;
+    display: block;
+}
+
+.team-info-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+}
+
+.team-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+}
+
+.team-role {
+    font-size: 0.85rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img class="logo" src="logosmd.png" alt="SMD Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link active" href="gioithieu.html">Giới thiệu <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Đào tạo <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Nghiên cứu <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Media <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Gallery <i class="fas fa-chevron-down"></i></a></li>
+                    </ul>
+
+                    <div class="nav-tools">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Tìm kiếm...">
+                        </div>
+                        <div class="lang-selector">
+                            <a href="#" class="lang-switch lang-active text-decoration-none">VN</a>
+                            <span class="mx-1 text-muted">|</span>
+                            <a href="#" class="lang-switch text-decoration-none">EN</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-banner">
+            <img src="bannergioithieu.jpg" alt="bannergioithieu">
+        </section>
+        <section class="team-section container">
+        <h2 class="team-title">Meet <span>Our Team</span></h2>
+        <div class="team-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <p class="team-description">
+            <strong>Pacon Time</strong> là nhóm phát triển dự án gồm 4 thành viên nữ. Chúng tôi tập trung vào việc kết hợp giữa tư duy thiết kế giao diện và kỹ thuật lập trình web để xây dựng một nền tảng hoàn chỉnh. Dưới đây là vai trò và nhiệm vụ chuyên môn của từng thành viên trong dự án:
+        </p>
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="team-card">
+                    <img src="hue.jpg" alt="Vũ Thị Huệ">
+                    <div class="team-info-overlay">
+                        <div class="team-name">Vũ Thị Huệ</div>
+                        <div class="team-role">Leader</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="team-card">
+                    <img src="yen.jpg" alt="Lê Thị Kim Yến">
+                    <div class="team-info-overlay">
+                        <div class="team-name">Lê Thị Kim Yến</div>
+                        <div class="team-role">Member</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="team-card">
+                    <img src="trang.jpg" alt="Dương Thị Quỳnh Trang">
+                    <div class="team-info-overlay">
+                        <div class="team-name">Dương Thị Quỳnh Trang</div>
+                        <div class="team-role">Member</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="team-card">
+                    <img src="chi.jpg" alt="Nguyễn Ngọc Linh Chi">
+                    <div class="team-info-overlay">
+                        <div class="team-name">Nguyễn Ngọc Linh Chi</div>
+                        <div class="team-role">Member</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+    </main>
+    <footer class="footer-smd">
+    <div class="container">
+        <div class="footer-content-wrapper">
+            <div class="footer-col brand-info">
+                <h2 class="footer-tagline">BẮT ĐẦU TƯƠNG LAI</h2>
+                <p class="footer-subtitle">Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông</p>
+                <div class="footer-logos">
+                    <img src="smdwhite.png" alt="SMD Logo white">
+                    <img src="uehwhite.png" alt="UEH Logo white">
+                </div>
+                <div class="contact-details">
+                    <p>279 Nguyễn Tri Phương, P. Diên Hồng, Q.10, TP.HCM</p>
+                    <p>ĐT: +84 283 8295 299 | Email: smd@ueh.edu.vn</p>
+                </div>
+            </div>
+
+            <div class="footer-col links-grid">
+                <div class="link-group">
+                    <h5>Useful Link</h5>
+                    <ul>
+                        <li><a href="#">Tuyển sinh UEH</a></li>
+                        <li><a href="#">UEH Future</a></li>
+                        <li><a href="#">Quy chế công khai</a></li>
+                        <li><a href="#">UEH Virtual Tour</a></li>
+                    </ul>
+                </div>
+                <div class="link-group extra-links">
+                    <ul>
+                        <li><a href="#">UEH Global</a></li>
+                        <li><a href="#">UEH E-learning</a></li>
+                        <li><a href="#">Cơ hội nghề nghiệp</a></li>
+                        <li><a href="#">Hệ thống nhận diện</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-col action-social">
+                <a href="#" class="btn-reg">
+                    ĐĂNG KÝ NGAY <i class="fas fa-graduation-cap"></i>
+                </a>
+                <div class="social-box">
+                    <p>Our social</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
