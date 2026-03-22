@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UEH - Detail 1</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+        /* --- Root & General --- */
+        :root {
+            --smd-purple: #8e44ad;
+            --text-dark: #212529;
+        }
+
+        body {
+            font-family: "Montserrat", sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #fff;
+        }
+
+        /* --- Navbar & Tools --- */
+        .navbar {
+            min-height: 80px;
+            background: #ffffff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+        .logo { height: 50px; }
+        .nav-link {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-dark) !important;
+            text-transform: uppercase;
+            padding: 0.5rem 10px !important;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .nav-link.active { color: var(--smd-purple) !important; }
+
+        .nav-tools {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-left: 15px;
+            border-left: 1px solid #eee;
+        }
+        .lang-switch { color: var(--text-dark); font-weight: 700; font-size: 13px; }
+        .lang-switch.lang-active { color: var(--smd-purple) !important; }
+        .search-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .search-box input {
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 5px 15px 5px 35px;
+            font-size: 13px;
+            width: 130px;
+            transition: width 0.3s;
+        }
+        .search-box input:focus { width: 180px; outline: none; border-color: var(--smd-purple); }
+        .search-box i { position: absolute; left: 12px; color: #888; font-size: 14px; }
+
+        /* --- Article Detail Content --- */
+        .article-section { padding: 50px 0; background: #fff; }
+        .article-inner-container { max-width: 800px; margin: 0 auto; }
+        
+        .article-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .article-tag {
+            background: #e8d8ea;
+            color: var(--smd-purple);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .article-date { font-size: 13px; color: #888; }
+
+        .article-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--smd-purple);
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+        .article-subtitle { font-size: 18px; font-weight: 600; color: #333; margin-bottom: 15px; }
+
+        .article-content p { font-size: 15px; color: #555; line-height: 1.7; text-align: justify; }
+        .article-content h2 {
+            color: var(--smd-purple);
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        .article-content a:not(.nav-circle) {
+            color: #f26f33; 
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .article-content a:hover { color: #d1561f; text-decoration: underline; }
+
+        .article-image { margin-top: 25px; display: flex; flex-direction: column; align-items: center; }
+        .article-image img { width: 70%; height: auto; max-width: 800px; border-radius: 0 0 15px 15px; }
+        .article-caption { font-size: 13px; color: #777; text-align: center; margin-top: 8px; font-style: italic; }
+
+        /* --- Comment Section --- */
+        .comment-section { margin-top: 40px; }
+        .comment-title { font-size: 20px; font-weight: 700; color: var(--smd-purple); margin-bottom: 10px; }
+        
+        .comment-form > * { margin-bottom: 16px !important; display: block; }
+        .comment-box-wrapper { position: relative; margin-bottom: 16px !important; }
+        .comment-box {
+            display: block;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 45px 15px 20px;
+            min-height: 120px;
+            width: 100%;
+            resize: none;
+            outline: none;
+            background-color: #e9e9e9;
+            border-left: 4px solid var(--smd-purple);
+        }
+        .comment-emoji { position: absolute; right: 15px; top: 15px; color: #666; font-size: 20px; cursor: pointer; }
+        .comment-input {
+            width: 100%; border: 1px solid #ddd; border-radius: 8px;
+            padding: 12px 15px; margin-top: 0 !important; outline: none;
+        }
+        .comment-input:focus { border-color: var(--smd-purple); }
+
+        #save-info { width: 18px; height: 18px; accent-color: var(--smd-purple); cursor: pointer; }
+
+        .btn-comment {
+            background: #8e44ad; color: white; border: none; border-radius: 25px;
+            padding: 10px 15px; font-weight: 600; font-size: 13px;
+            transition: 0.3s; cursor: pointer; display: inline-block; width: auto;
+        }
+        .btn-comment:hover { background: #732d91; }
+
+        /* --- Comment Tabs & List --- */
+        .comment-tabs { display: flex; gap: 40px; border-bottom: 1px solid #e0e0e0; margin-bottom: 25px; padding-left: 5px; }
+        .tab-item {
+            padding-bottom: 8px; font-size: 16px; font-weight: 700;
+            color: #b0b0b0 !important; cursor: pointer; position: relative;
+            text-decoration: none; transition: all 0.3s ease;
+        }
+        .tab-item.active { color: var(--smd-purple) !important; }
+        .tab-item.active::after {
+            content: ""; position: absolute; bottom: -1px; left: 0;
+            width: 100%; height: 3px; background-color: var(--smd-purple); border-radius: 10px;
+        }
+
+        .comment-list { margin-top: 30px; }
+        .comment-item { padding: 15px 0; border-bottom: 1px solid #eee; }
+        .comment-name { font-weight: 600; font-size: 14px; color: #444; }
+        .comment-text { font-size: 14px; color: #555; margin: 5px 0; }
+        
+        .comment-meta { display: flex; align-items: center; width: 100%; gap: 20px; }
+        .meta-item { cursor: pointer; display: flex; align-items: center; gap: 5px; font-size: 13px; color: #666; }
+        .meta-item.liked { color: var(--smd-purple); }
+        .comment-meta .reply-btn { cursor: pointer; font-size: 13px; color: #666; font-weight: 400; }
+        .comment-meta .reply-btn:hover { color: var(--smd-purple); text-decoration: underline; }
+        .comment-time { margin-left: auto; color: #a1a1a1; font-size: 12px; }
+
+        /* --- Related Posts --- */
+        .related-posts { margin-top: 40px; padding-bottom: 60px; }
+        .purple-divider { width: 100%; height: 1px; background-color: #b0b0b0; border-radius: 10px; margin-bottom: 40px; }
+        .related-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .related-title { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 700; color: var(--smd-purple); font-style: italic; margin: 0; }
+        .related-nav { display: flex; gap: 12px; }
+        
+        .nav-circle {
+            width: 32px; height: 32px; border: 1.5px solid var(--smd-purple);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: var(--smd-purple); cursor: pointer; transition: all 0.3s ease; text-decoration: none;
+        }
+        .nav-circle:hover { background-color: var(--smd-purple); color: #ffffff !important; border-color: var(--smd-purple); }
+
+        .news-card {
+            background: #fff; border-radius: 20px; overflow: hidden; transition: 0.3s;
+            height: 100%; display: flex; flex-direction: column; border: 1px solid #eee;
+        }
+        .news-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .news-img { width: 100%; height: 150px; object-fit: cover; }
+        .news-content { padding: 15px; }
+        .news-tag { background: var(--smd-purple); color: white; font-size: 10px; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
+        .news-date { font-size: 10px; color: #888; float: right; }
+        .news-title { font-weight: 700; font-size: 13px; margin-bottom: 8px; line-height: 1.3; }
+        .news-desc {
+            font-size: 11px; color: #666; line-height: 1.5; text-align: justify;
+            -webkit-line-clamp: 2;line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;
+        }
+
+        /* --- Footer --- */
+        .footer-smd {
+            background-color: var(--smd-purple);
+            color: white;
+            padding: 25px 0 15px 0;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .footer-content-wrapper {
+            display: grid;
+            grid-template-columns: 1.8fr 2fr 1.2fr;
+            gap: 20px;
+            align-items: start;
+        }
+        .footer-tagline { font-size: 1.5rem; font-weight: 800; margin: 0; line-height: 1.1; }
+        .footer-subtitle { font-size: 0.75rem; margin-bottom: 10px; }
+        .footer-logos { display: flex; gap: 12px; margin-bottom: 10px; }
+        .footer-logos img { height: 35px; }
+        .contact-details { font-size: 12px; line-height: 1.4; }
+        .contact-details p { margin-bottom: 2px; }
+        .link-group { padding-left: 50px; }
+        .link-group h5 { font-size: 0.9rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; }
+        .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+        .link-group ul { list-style: none; padding: 0; }
+        .link-group ul li a { color: white; text-decoration: none; font-size: 12px; }
+        .action-social { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+        .social-box p { font-size: 12px; margin-bottom: 5px; }
+        .btn-reg {
+            background: white;
+            color: var(--smd-purple) !important;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 12px;
+            text-decoration: none;
+        }
+        .social-icons { display: flex; gap: 12px; font-size: 1.2rem; }
+        .social-icons a { color: white; }
+        .footer-bottom { margin-top: 5px; padding-top: 5px; font-size: 12px; }
+
+        /* --- Responsive --- */
+        @media (max-width: 991px) {
+            .nav-tools { border-left: none; padding: 15px 0; border-top: 1px solid #eee; margin-top: 10px; }
+            .footer-content-wrapper { grid-template-columns: 1fr; gap: 30px; }
+            .link-group { padding-left: 0; }
+            .action-social { align-items: flex-start; text-align: left; }
+        }
+        @media (max-width: 576px) {
+            .article-title { font-size: 24px; }
+            .related-header { flex-direction: column; align-items: flex-start; gap: 15px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img class="logo" src="logosmd.png" alt="SMD Logo" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">Trang chủ <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Giới thiệu <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Đào tạo <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Nghiên cứu <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#">Media <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Gallery <i class="fas fa-chevron-down"></i></a></li>
+                    </ul>
+
+                    <div class="nav-tools">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Tìm kiếm..." />
+                        </div>
+                        <div class="lang-selector">
+                            <a href="#" class="lang-switch lang-active text-decoration-none">VN</a>
+                            <span class="mx-1 text-muted">|</span>
+                            <a href="#" class="lang-switch text-decoration-none">EN</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="article-section">
+            <div class="container">
+                <div class="article-inner-container">
+                    <div class="article-meta">
+                        <span class="article-tag">Dự án sinh viên</span>
+                        <span class="article-date ms-auto">16/3/2026, 15:21</span>
+                    </div>
+
+                    <h1 class="article-title">
+                        Design Futures 2025: Sinh viên UEH – SMD tỏa sáng tại Đại học Thanh Hoa với các dự án AI sáng tạo vì cộng đồng
+                    </h1>
+
+                    <div class="article-content mt-4">
+                        <h2>Mở rộng kết nối – Học hỏi toàn cầu – Sáng tạo bền vững</h2>
+                        <p>
+                            Tiếp nối hành trình học tập quốc tế tại 
+                            <a href="https://www.tsinghua.edu.cn/en/">Đại học Thanh Hoa – Bắc Kinh</a>, 
+                            hai đội sinh viên đến từ 
+                            <a href="https://smd.ueh.edu.vn/trang-chu/">Khoa Thiết kế Truyền thông (SMD)</a> 
+                            đã có những trải nghiệm học thuật sâu sắc và đầy cảm hứng tại một trong những trường đại học danh giá hàng đầu thế giới.
+                            <p>Chương trình hè quốc tế “Design Futures: Shared Vision” 2025 là nơi quy tụ các sinh viên tài năng đến từ 7 quốc gia như Việt Nam, Singapore, Anh, Phần Lan, Ý… tạo nên một không gian học thuật đa văn hóa, thúc đẩy mạnh mẽ sự kết nối toàn cầu, tư duy sáng tạo và cách tiếp cận đổi mới trong thiết kế.</p>
+                        </p>
+                    </div>
+
+                    <div class="article-image">
+                        <img src="Thanh Hoa 1.jpg" alt="Design Futures">
+                        <div class="article-caption">
+                            Hình 1. Sinh viên quốc tế và giảng viên chụp hình lưu niệm tại chương trình "Design Futures: Shared Vision" 2025 tại Đại học Thanh Hoa – Bắc Kinh.
+                        </div>
+                    </div>
+
+                    <div class="article-content mt-4">
+                        <h2>Hành trình trang bị những nền tảng vững chắc</h2>
+                        <p>Trong suốt quá trình học, sinh viên được "ngâm mình" trong môi trường học thuật sôi nổi với các chuyên đề:</p>
+                        <ul class="ms-4 mb-4" style="font-size: 15px; color: #555; line-height: 1.8;">
+                            <li><strong>Tư duy thiết kế (Design Thinking):</strong> Phương pháp cốt lõi để thấu cảm và giải quyết vấn đề.</li>
+                            <li><strong>Công nghệ Robot:</strong> Tiếp cận những kỹ thuật điều khiển và tự động hóa hiện đại.</li>
+                            <li><strong>Hệ thống hàng không vũ trụ (Aerospace):</strong> Mở rộng tầm nhìn về công nghệ kỹ thuật cao.</li>
+                        </ul>
+                        <p>Các phiên học không chỉ giúp tiếp cận kiến thức tiên tiến, mà còn hướng đến việc ứng dụng thiết kế vào giải quyết các vấn đề thực tiễn, phát triển sản phẩm hướng đến con người.</p>
+                        <p>Đặc biệt, các bạn còn được làm việc trực tiếp tại các phòng lab hiện đại của Thanh Hoa – nơi các ý tưởng được chuyển hóa thành sản phẩm mẫu (prototype), nhờ sự hỗ trợ của đội ngũ mentor quốc tế và chuyên gia đầu ngành.</p>
+
+                        <h2>Vinh danh quốc tế – Tự hào SMD tại Đại học Thanh Hoa</h2>
+                        <p>Hai đội sinh viên SMD – <strong>Đội Bánh Mì</strong> và <strong>Đội Yilu Shunfeng</strong> – đã xuất sắc nhận giải thưởng <strong>"Social Impact"</strong> danh hiệu dành cho những dự án sáng tạo có ảnh hưởng xã hội sâu rộng và hướng đến phát triển bền vững, trong hạng mục <strong>Smart Creation – Đổi mới sáng tạo nghệ thuật với trí tuệ nhân tạo.</strong></p>
+
+                        <h2>Dự án của Đội Bánh Mì</h2>
+                        <p>Phát triển một <strong>thiết bị vẽ thông minh tích hợp AI dành cho trẻ em</strong>, nhằm thay thế thời gian sử dụng màn hình thụ động bằng các hoạt động sáng tạo chủ động. Dự án không chỉ là sản phẩm công nghệ, mà còn là công cụ giáo dục mang tính nhân văn, hỗ trợ trẻ phát triển tư duy, cảm xúc và khả năng khám phá thế giới thực – góp phần hình thành một thế hệ sáng tạo và giàu cảm xúc trong tương lai.</p>
+                        
+                        <div class="article-image">
+                            <img src="Thanh Hoa 2.jpg" alt="Dự án Đội Bánh Mì">
+                            <div class="article-caption">Hình 2. Đội Bánh Mì với dự án "Máy vẽ sáng tạo cho trẻ em tích hợp công nghệ AI".</div>
+                        </div>
+
+                        <h2>Dự án của Đội Yilu Shunfeng</h2>
+                        <p>Với <strong>DreamLink</strong>, nhóm đã kết hợp<strong> AI và công nghệ sóng não (brainwave)</strong> để tạo nên trải nghiệm lịch sử sống động – nơi người dùng có thể “nhìn thấy” và cảm nhận lịch sử bằng trí tưởng tượng của chính mình. Dự án mang lại một phương pháp giáo dục mới: trực quan, cảm xúc, nhân văn, hứa hẹn làm mới cách tiếp cận giáo dục và truyền thông văn hóa trong kỷ nguyên công nghệ.</p>
+ 
+                        <div class="article-image">
+                            <img src="Thanh Hoa 3.jpg" alt="Lễ trao giải">
+                            <div class="article-caption">Hình 3. Đội Yilu Shunfeng với dự án “DreamLink”.</div>
+                        </div>
+
+                        <h2>Từ UEH đến thế giới – Kiến tạo tương lai bền vững</h2>
+                        <p>Cả hai dự án đều được đánh giá cao về tính ứng dụng thực tiễn, giá trị xã hội và tiềm năng triển khai thực tế trong tương lai gần. Đây là minh chứng rõ ràng cho:</p>
+                        <ul class="ms-4 mb-4" style="font-size: 15px; color: #555; line-height: 1.8;">
+                            <li><strong>Năng lực học thuật và sáng tạo của sinh viên SMD.</strong></li>
+                            <li><strong>Tư duy đổi mới gắn với trách nhiệm cộng đồng.</strong></li>
+                            <li><strong>Khát vọng đóng góp vào sự phát triển nhân văn và bền vững.</strong> </li>
+                        </ul>                       
+                        <p>Được vinh danh tại một chương trình học thuật quốc tế danh giá như <strong>Tsinghua Summer Program</strong> là cột mốc quan trọng, đánh dấu sự hiện diện mạnh mẽ của UEH – SMD trên bản đồ giáo dục toàn cầu – nơi đào tạo ra những công dân toàn cầu biết sáng tạo, biết kết nối và sẵn sàng cống hiến.</p>
+                        <p>Một lần nữa, Khoa Thiết kế Truyền thông (SMD) chúc mừng <strong>Đội Bánh Mì</strong> và <strong>Đội Yilu Shunfeng</strong>. Chúc các bạn tiếp tục nuôi dưỡng tinh thần học hỏi, khám phá và lan tỏa những giá trị tốt đẹp mà các bạn đã góp phần kiến tạo trong hành trình này – vì một tương lai phát triển bền vững và đầy nhân văn! </p>
+                        <div class="article-footer mt-3 pt-3" style="border-top: 1px solid #eee; text-align: right; font-style: italic; color: #666; font-size: 14px;">
+                            Tác giả: Nguyễn Trần Vân Anh, Khoa Thiết kế Truyền thông, UEH
+                        </div>
+                    </div>
+
+                    <div class="comment-section">
+                        <div class="comment-title">Ý kiến (4)</div>
+                        <p style="font-size:12px; color:#a1a1a1;">*Địa chỉ email của bạn sẽ không được công bố. Các trường bắt buộc được đánh dấu *</p>
+                        
+                        <div class="comment-form">
+                            <div class="comment-box-wrapper">
+                                <textarea class="comment-box" placeholder="Chia sẻ ý kiến của bạn"></textarea>
+                                <i class="far fa-smile comment-emoji"></i>
+                            </div>
+                            <input type="text" class="comment-input" placeholder="Họ và tên *">
+                            <input type="email" class="comment-input" placeholder="Email *">
+                            <div class="d-flex align-items-center gap-2">
+                                <input type="checkbox" id="save-info">
+                                <label for="save-info" style="font-size:12px; color:#888; cursor: pointer;">
+                                    Lưu tên, email và trang web của tôi trong trình duyệt này cho lần bình luận tiếp theo.
+                                </label>
+                            </div>
+                            <button class="btn-comment">Đăng comment</button>
+                        </div>
+
+                        <div class="comment-list">
+                            <div class="comment-tabs">
+                                <a href="#" class="tab-item active">Tất cả</a>
+                                <a href="#" class="tab-item">Quan tâm nhất</a>
+                                <a href="#" class="tab-item">Mới nhất</a>
+                            </div>
+
+                            <div class="comment-item">
+                                <div class="comment-name">Vũ Thị Huệ</div>
+                                <div class="comment-text">Bài viết rất truyền cảm hứng! Thật tự hào khi sinh viên UEH – SMD có cơ hội học tập và tỏa sáng tại một chương trình quốc tế uy tín như vậy. Chúc các bạn tiếp tục phát triển những dự án sáng tạo vì cộng đồng.</div>
+                                <div class="comment-meta">
+                                    <div class="meta-item liked"><i class="fas fa-thumbs-up"></i> <span>7</span></div>
+                                    <div class="meta-item"><i class="fas fa-thumbs-down"></i> <span>0</span></div>
+                                    <span class="reply-btn">Trả lời</span>
+                                    <span class="comment-time">2h trước</span> 
+                                </div>
+                            </div>
+
+                            <div class="comment-item">
+                                <div class="comment-name">Nguyễn Ngọc Linh Chi</div>
+                                <div class="comment-text">Rất vui khi thấy sinh viên Việt Nam nói chung và UEH – SMD nói riêng được vinh danh tại một môi trường học thuật hàng đầu thế giới. Mong rằng sẽ có thêm nhiều hoạt động hợp tác quốc tế như thế này trong thời gian tới.</div>
+                                <div class="comment-meta">
+                                    <div class="meta-item liked"><i class="fas fa-thumbs-up"></i> <span>1</span></div>
+                                    <div class="meta-item"><i class="fas fa-thumbs-down"></i> <span>0</span></div>
+                                    <span class="reply-btn">Trả lời</span>
+                                    <span class="comment-time">1h trước</span> 
+                                </div>
+                            </div>
+
+                            <div class="comment-item">
+                                <div class="comment-name">Lê Thị Kim Yến</div>
+                                <div class="comment-text">DreamLink nghe rất thú vị, kiểu kết hợp công nghệ với trải nghiệm lịch sử theo cách mới. Hy vọng sau này có cơ hội được trải nghiệm thử.</div>
+                                <div class="comment-meta">
+                                    <div class="meta-item liked"><i class="fas fa-thumbs-up"></i> <span>2</span></div>
+                                    <div class="meta-item"><i class="fas fa-thumbs-down"></i> <span>0</span></div>
+                                    <span class="reply-btn">Trả lời</span>
+                                    <span class="comment-time">38' trước</span> 
+                                </div>
+                            </div>
+
+                            <div class="comment-item">
+                                <div class="comment-name">Dương Thị Quỳnh Trang</div>
+                                <div class="comment-text">Ý tưởng máy vẽ tích hợp AI cho trẻ em của đội Bánh Mì nghe rất hay. Nếu phát triển thành sản phẩm thật chắc sẽ giúp trẻ em vừa sáng tạo vừa giảm thời gian dùng màn hình.</div>
+                                <div class="comment-meta">
+                                    <div class="meta-item liked"><i class="fas fa-thumbs-up"></i> <span>1</span></div>
+                                    <div class="meta-item"><i class="fas fa-thumbs-down"></i> <span>0</span></div>
+                                    <span class="reply-btn">Trả lời</span>
+                                    <span class="comment-time">2' trước</span> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <section class="related-posts">
+                        <div class="purple-divider"></div> 
+                        <div class="related-header">
+                            <h3 class="related-title">Đọc bài viết tiếp theo</h3>
+                            <div class="related-nav">
+                                <a href="#" class="nav-circle"><i class="fas fa-chevron-left"></i></a>
+                                <a href="#" class="nav-circle"><i class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="news-card">
+                                    <img src="4.png" class="news-img">
+                                    <div class="news-content">
+                                        <span class="news-tag">Sự kiện</span>
+                                        <span class="news-date">25/01/2026</span>
+                                        <div class="news-title">HÀNH TRÌNH XÂY DỰNG NGHỆ THUẬT VÌ TƯƠNG LAI BỀN VỮNG</div>
+                                        <div class="news-desc">Nằm trong hoạt động chia sẻ và lan tỏa kiến thức học thuật thuộc chuỗi sự kiện ArtTech Fusion của Đại học Kinh tế TP. Hồ Chí Minh (UEH) ...</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="news-card">
+                                    <img src="1.jpg" class="news-img">
+                                    <div class="news-content">
+                                        <span class="news-tag">Giải thưởng</span>
+                                        <span class="news-date">11/03/2026</span>
+                                        <div class="news-title">Sinh viên Khoa Thiết kế Truyền thông – UEH vinh dự đạt Giải TVC Ấn tượng tại Green Marketing Challenge 2025</div>
+                                        <div class="news-desc">Với mục tiêu lan tỏa tinh thần sống xanh và thúc đẩy tư duy sáng tạo trong thế hệ trẻ, Green Marketing Challenge 2025 (GMC 2025) ...</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="news-card">
+                                    <img src="3.jpeg" class="news-img">
+                                    <div class="news-content">
+                                        <span class="news-tag">Sự kiện</span>
+                                        <span class="news-date">27/01/2026</span>
+                                        <div class="news-title">Arttech Fusion 2025 (ATF25): Đồng sáng tạo vì tương lai bền vững</div>
+                                        <div class="news-desc">Đại học Kinh tế TP. Hồ Chí Minh (UEH) đã tổ chức thành công chuỗi hoạt động quốc tế ArtTech Fusion 2025 (ATF25) với chủ đề “Co-creation for a Wondrous Future” ...</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div> 
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-smd">
+        <div class="container">
+            <div class="footer-content-wrapper">
+                <div class="footer-col brand-info">
+                    <h2 class="footer-tagline">BẮT ĐẦU TƯƠNG LAI</h2>
+                    <p class="footer-subtitle">Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông</p>
+                    <div class="footer-logos">
+                        <img src="smdwhite.png" alt="SMD Logo white" />
+                        <img src="uehwhite.png" alt="UEH Logo white" />
+                    </div>
+                    <div class="contact-details">
+                        <p>279 Nguyễn Tri Phương, P. Diên Hồng, Q.10, TP.HCM</p>
+                        <p>ĐT: +84 283 8295 299 | Email: smd@ueh.edu.vn</p>
+                    </div>
+                </div>
+
+                <div class="footer-col links-grid">
+                    <div class="link-group">
+                        <h5>Useful Link</h5>
+                        <ul>
+                            <li><a href="#">Tuyển sinh UEH</a></li>
+                            <li><a href="#">UEH Future</a></li>
+                            <li><a href="#">Quy chế công khai</a></li>
+                            <li><a href="#">UEH Virtual Tour</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group extra-links">
+                        <ul>
+                            <li><a href="#">UEH Global</a></li>
+                            <li><a href="#">UEH E-learning</a></li>
+                            <li><a href="#">Cơ hội nghề nghiệp</a></li>
+                            <li><a href="#">Hệ thống nhận diện</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-col action-social">
+                    <a href="#" class="btn-reg"> ĐĂNG KÝ NGAY <i class="fas fa-graduation-cap"></i> </a>
+                    <div class="social-box">
+                        <p>Our social</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

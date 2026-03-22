@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UEH - Detail 2</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+        /* --- Root & General --- */
+        :root {
+            --smd-purple: #8e44ad;
+            --text-dark: #212529;
+        }
+
+        body {
+            font-family: "Montserrat", sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #fff;
+        }
+
+        /* --- Navbar & Tools --- */
+        .navbar {
+            min-height: 80px;
+            background: #ffffff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+        .logo { height: 50px; }
+        .nav-link {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-dark) !important;
+            text-transform: uppercase;
+            padding: 0.5rem 10px !important;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .nav-link.active { color: var(--smd-purple) !important; }
+
+        .nav-tools {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-left: 15px;
+            border-left: 1px solid #eee;
+        }
+        .lang-switch { color: var(--text-dark); font-weight: 700; font-size: 13px; }
+        .lang-switch.lang-active { color: var(--smd-purple) !important; }
+        .search-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .search-box input {
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 5px 15px 5px 35px;
+            font-size: 13px;
+            width: 130px;
+            transition: width 0.3s;
+        }
+        .search-box input:focus { width: 180px; outline: none; border-color: var(--smd-purple); }
+        .search-box i { position: absolute; left: 12px; color: #888; font-size: 14px; }
+
+        /* --- Article Detail Content --- */
+        .article-section { padding: 50px 0; background: #fff; }
+        .article-inner-container { max-width: 800px; margin: 0 auto; }
+        
+        .article-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .article-tag {
+            background: #e8d8ea;
+            color: var(--smd-purple);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .article-date { font-size: 13px; color: #888; }
+
+        .article-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--smd-purple);
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+        .article-subtitle { font-size: 18px; font-weight: 600; color: #333; margin-bottom: 15px; }
+
+        .article-content p { font-size: 15px; color: #555; line-height: 1.7; text-align: justify; }
+        .article-content h2 {
+            color: var(--smd-purple);
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        .article-content a:not(.nav-circle) {
+            color: #f26f33; 
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .article-content a:hover { color: #d1561f; text-decoration: underline; }
+
+        .article-image { margin-top: 25px; display: flex; flex-direction: column; align-items: center; }
+        .article-image img { width: 70%; height: auto; max-width: 800px; border-radius: 0 0 15px 15px; }
+        .article-caption { font-size: 13px; color: #777; text-align: center; margin-top: 8px; font-style: italic; }
+
+        /* --- Comment Section --- */
+        .comment-section { margin-top: 40px; }
+        .comment-title { font-size: 20px; font-weight: 700; color: var(--smd-purple); margin-bottom: 10px; }
+        
+        .comment-form > * { margin-bottom: 16px !important; display: block; }
+        .comment-box-wrapper { position: relative; margin-bottom: 16px !important; }
+        .comment-box {
+            display: block;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 45px 15px 20px;
+            min-height: 120px;
+            width: 100%;
+            resize: none;
+            outline: none;
+            background-color: #e9e9e9;
+            border-left: 4px solid var(--smd-purple);
+        }
+        .comment-emoji { position: absolute; right: 15px; top: 15px; color: #666; font-size: 20px; cursor: pointer; }
+        .comment-input {
+            width: 100%; border: 1px solid #ddd; border-radius: 8px;
+            padding: 12px 15px; margin-top: 0 !important; outline: none;
+        }
+        .comment-input:focus { border-color: var(--smd-purple); }
+
+        #save-info { width: 18px; height: 18px; accent-color: var(--smd-purple); cursor: pointer; }
+
+        .btn-comment {
+            background: #8e44ad; color: white; border: none; border-radius: 25px;
+            padding: 10px 15px; font-weight: 600; font-size: 13px;
+            transition: 0.3s; cursor: pointer; display: inline-block; width: auto;
+        }
+        .btn-comment:hover { background: #732d91; }
+
+        /* --- Comment Tabs & List --- */
+        .comment-tabs { display: flex; gap: 40px; border-bottom: 1px solid #e0e0e0; margin-bottom: 25px; padding-left: 5px; }
+        .tab-item {
+            padding-bottom: 8px; font-size: 16px; font-weight: 700;
+            color: #b0b0b0 !important; cursor: pointer; position: relative;
+            text-decoration: none; transition: all 0.3s ease;
+        }
+        .tab-item.active { color: var(--smd-purple) !important; }
+        .tab-item.active::after {
+            content: ""; position: absolute; bottom: -1px; left: 0;
+            width: 100%; height: 3px; background-color: var(--smd-purple); border-radius: 10px;
+        }
+
+        .comment-list { margin-top: 30px; }
+        .comment-item { padding: 15px 0; border-bottom: 1px solid #eee; }
+        .comment-name { font-weight: 600; font-size: 14px; color: #444; }
+        .comment-text { font-size: 14px; color: #555; margin: 5px 0; }
+        
+        .comment-meta { display: flex; align-items: center; width: 100%; gap: 20px; }
+        .meta-item { cursor: pointer; display: flex; align-items: center; gap: 5px; font-size: 13px; color: #666; }
+        .meta-item.liked { color: var(--smd-purple); }
+        .comment-meta .reply-btn { cursor: pointer; font-size: 13px; color: #666; font-weight: 400; }
+        .comment-meta .reply-btn:hover { color: var(--smd-purple); text-decoration: underline; }
+        .comment-time { margin-left: auto; color: #a1a1a1; font-size: 12px; }
+
+        /* --- Related Posts --- */
+        .related-posts { margin-top: 40px; padding-bottom: 60px; }
+        .purple-divider { width: 100%; height: 1px; background-color: #b0b0b0; border-radius: 10px; margin-bottom: 40px; }
+        .related-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .related-title { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 700; color: var(--smd-purple); font-style: italic; margin: 0; }
+        .related-nav { display: flex; gap: 12px; }
+        
+        .nav-circle {
+            width: 32px; height: 32px; border: 1.5px solid var(--smd-purple);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: var(--smd-purple); cursor: pointer; transition: all 0.3s ease; text-decoration: none;
+        }
+        .nav-circle:hover { background-color: var(--smd-purple); color: #ffffff !important; border-color: var(--smd-purple); }
+
+        .news-card {
+            background: #fff; border-radius: 20px; overflow: hidden; transition: 0.3s;
+            height: 100%; display: flex; flex-direction: column; border: 1px solid #eee;
+        }
+        .news-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .news-img { width: 100%; height: 150px; object-fit: cover; }
+        .news-content { padding: 15px; }
+        .news-tag { background: var(--smd-purple); color: white; font-size: 10px; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
+        .news-date { font-size: 10px; color: #888; float: right; }
+        .news-title { font-weight: 700; font-size: 13px; margin-bottom: 8px; line-height: 1.3; }
+        .news-desc {
+            font-size: 11px; color: #666; line-height: 1.5; text-align: justify;
+            -webkit-line-clamp: 2;line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;
+        }
+
+        /* --- Footer --- */
+        .footer-smd {
+            background-color: var(--smd-purple);
+            color: white;
+            padding: 25px 0 15px 0;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .footer-content-wrapper {
+            display: grid;
+            grid-template-columns: 1.8fr 2fr 1.2fr;
+            gap: 20px;
+            align-items: start;
+        }
+        .footer-tagline { font-size: 1.5rem; font-weight: 800; margin: 0; line-height: 1.1; }
+        .footer-subtitle { font-size: 0.75rem; margin-bottom: 10px; }
+        .footer-logos { display: flex; gap: 12px; margin-bottom: 10px; }
+        .footer-logos img { height: 35px; }
+        .contact-details { font-size: 12px; line-height: 1.4; }
+        .contact-details p { margin-bottom: 2px; }
+        .link-group { padding-left: 50px; }
+        .link-group h5 { font-size: 0.9rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; }
+        .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+        .link-group ul { list-style: none; padding: 0; }
+        .link-group ul li a { color: white; text-decoration: none; font-size: 12px; }
+        .action-social { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+        .social-box p { font-size: 12px; margin-bottom: 5px; }
+        .btn-reg {
+            background: white;
+            color: var(--smd-purple) !important;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 12px;
+            text-decoration: none;
+        }
+        .social-icons { display: flex; gap: 12px; font-size: 1.2rem; }
+        .social-icons a { color: white; }
+        .footer-bottom { margin-top: 5px; padding-top: 5px; font-size: 12px; }
+
+        /* --- Responsive --- */
+        @media (max-width: 991px) {
+            .nav-tools { border-left: none; padding: 15px 0; border-top: 1px solid #eee; margin-top: 10px; }
+            .footer-content-wrapper { grid-template-columns: 1fr; gap: 30px; }
+            .link-group { padding-left: 0; }
+            .action-social { align-items: flex-start; text-align: left; }
+        }
+        @media (max-width: 576px) {
+            .article-title { font-size: 24px; }
+            .related-header { flex-direction: column; align-items: flex-start; gap: 15px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img class="logo" src="logosmd.png" alt="SMD Logo" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">Trang chủ <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Giới thiệu <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Đào tạo <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Nghiên cứu <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#">Media <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Gallery <i class="fas fa-chevron-down"></i></a></li>
+                    </ul>
+
+                    <div class="nav-tools">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Tìm kiếm..." />
+                        </div>
+                        <div class="lang-selector">
+                            <a href="#" class="lang-switch lang-active text-decoration-none">VN</a>
+                            <span class="mx-1 text-muted">|</span>
+                            <a href="#" class="lang-switch text-decoration-none">EN</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="article-section">
+            <div class="container">
+                <div class="article-inner-container">
+                    <div class="article-meta">
+                        <span class="article-tag">Dự án sinh viên</span>
+                        <span class="article-date ms-auto">11/03/2026, 11:24</span>
+                    </div>
+
+                    <h1 class="article-title">
+                        Sinh viên Khoa Thiết kế Truyền thông – UEH vinh dự đạt Giải TVC Ấn tượng tại Green Marketing Challenge 2025
+                    </h1>
+
+                    <div class="article-content mt-4">
+                        <p>
+                            Tiếp nối hành trình học tập quốc tế tại 
+                            Với mục tiêu lan tỏa tinh thần sống xanh và thúc đẩy tư duy sáng tạo trong thế hệ trẻ, 
+                            <a href="https://apsaigonpetro.com/vi/le-phat-dong-va-hoi-thao-cuoc-thi-green-marketing-challenge-2025-khoi-dau-cho-hanh-trinh-sang-tao-xanh">Green Marketing Challenge 2025 (GMC 2025)</a> 
+                            là cuộc thi dành cho sinh viên các trường Đại học tại TP. Hồ Chí Minh, do <strong>AP Saigon Petro</strong> phối hợp cùng <strong>InnoEx</strong> và <strong>BSSC</strong> tổ chức. Cuộc thi mang chủ đề “Cùng 3R thay nhớt giảm nhựa – Vun trồng sống xanh”, kêu gọi các giải pháp truyền thông nhằm quảng bá sản phẩm <strong>Máy thay nhớt tự động 3R</strong> – thiết bị tiên phong trong việc giảm thiểu rác thải nhựa và dầu nhớt, hướng đến một tương lai bền vững.</p>
+                        </p>
+                        <p>Trải qua hơn hai tháng tranh tài, <strong>10 đội thi xuất sắc nhất</strong> đã bước vào vòng <strong>Chung kết & Lễ trao giải</strong>, diễn ra vào ngày 27/5/2025 tại sảnh Panorama – Eden Star Hotel, TP.HCM. Tại đây, các đội đã trình bày chiến lược marketing và sản phẩm TVC trước hội đồng giám khảo gồm các chuyên gia uy tín trong lĩnh vực marketing, truyền thông và phát triển bền vững.</p>
+                        <p>Trong số đó, <strong>đội thi WORKAHOLLY</strong>, đại diện cho Khoa Thiết kế Truyền thông – Đại học Kinh tế TP.HCM (UEH), đã ghi dấu ấn nổi bật khi lọt <strong>Top 10 chung cuộc và là 1 trong 6 đội sở hữu TVC Viral ấn tượng nhất cuộc thi.</strong></p>
+                    </div>
+
+                    <div class="article-image">
+                        <img src="Worka 1.jpg" alt="Worka 1">
+                        <div class="article-caption">
+                            Hình 1. Các đội thắng cuộc chụp ảnh cùng Ban giám khảo và Ban tổ chức cuộc thi
+                        </div>
+                    </div>
+
+                    <div class="article-content mt-4">
+                        <h2>Danh sách thành viên đội WORKAHOLLY – Lớp DD0001, Khoá 49 – Ngành Truyền thông số và Thiết kế đa phương tiện:</h2>
+                        <ul class="ms-4 mb-4" style="font-size: 15px; color: #555; line-height: 1.8;">
+                            <li>Trương Đức Thọ – Nhóm trưởng</li>
+                            <li>Nguyễn Ngọc Linh Chi</li>
+                            <li>Nguyễn Minh Thư</li>
+                            <li>Dương Thị Quỳnh Trang</li>
+                        </ul>
+                    </div>
+
+                     <div class="article-image">
+                        <img src="Worka 2.jpg" alt="Worka 2">
+                        <div class="article-caption">
+                            Hình 2: Các thành viên nhóm WORKAHOLLY
+                        </div>
+                    </div>                   
+
+                    <div class="article-content mt-4">
+                        <p>Chia sẻ về hành trình tham gia, bạn <strong>Nguyễn Ngọc Linh Chi</strong> cho biết:</p>
+                        <p><i>“Tụi em tham gia với tinh thần học hỏi và mong muốn được trải nghiệm thực tế. Từ việc xây dựng chiến lược marketing cho đến quá trình quay dựng TVC, tụi em đã thực sự được làm – được học – và được trưởng thành. Dù giải thưởng không phải là mục tiêu duy nhất, nhưng đây là động lực quý giá để tụi em tiếp tục theo đuổi đam mê.”</i></p>
+                        <p>Bạn <strong>Nguyễn Minh Thư</strong> chia sẻ thêm:</p>
+                        <p><i>“Máy thay nhớt 3R là một sản phẩm mới mẻ và mang tính kỹ thuật cao, nên tụi em đã rất cố gắng để tìm ra những hướng tiếp cận sáng tạo mà vẫn gần gũi với người tiêu dùng. Chính sự mới mẻ ấy lại mang đến nhiều cảm hứng cho nhóm.”</i></p>
+                        <p>Bạn <strong>Dương Thị Quỳnh Trang</strong> xúc động nói:</p>
+                        <p><i>“Chúng em có nhiều khoảnh khắc vất vả – chạy deadline, bí ý tưởng, thiếu thời gian gặp mặt – nhưng vượt lên tất cả là tinh thần đồng đội và sự nỗ lực không ngừng. Kết quả đạt được ngày hôm nay là điều mà tụi em rất tự hào.”</i></p>
+                    </div>
+
+                    <div class="article-image">
+                        <img src="Worka 3.jpg" alt="Worka 3">
+                        <div class="article-caption">
+                            Hình 3: Các nhóm đạt giải TVC Ấn tượng
+                        </div>
+                    </div>
+
+                    <div class="article-content mt-4">
+                        <h2>GMC 2025 không chỉ là một cuộc thi – đó là hành trình trưởng thành</h2>
+                        <p>Cuộc thi không chỉ khơi dậy tinh thần sáng tạo và khả năng làm việc nhóm, mà còn là cơ hội để các bạn sinh viên:</p>
+                        <ul class="ms-4 mb-4" style="font-size: 15px; color: #555; line-height: 1.8;">
+                            <li><strong>Nâng cao nhận thức xã hội</strong> thông qua các hoạt động gắn liền với trách nhiệm bảo vệ môi trường.</li>
+                            <li><strong>Phát triển tư duy chiến lược và kỹ năng thực tiễn</strong> trong lĩnh vực marketing, truyền thông đa nền tảng.</li>
+                            <li><strong>Kết nối với doanh nghiệp và chuyên gia đầu ngành</strong>, mở rộng góc nhìn và cơ hội nghề nghiệp tương lai.</li>
+                        </ul>  
+                        <p><strong>Khoa Thiết kế Truyền thông – UEH xin gửi lời chúc mừng nồng nhiệt đến đội WORKAHOLLY</strong> cùng các bạn sinh viên khoá K49 đã mang đến niềm tự hào cho nhà trường. Chúng tôi tin rằng, những trải nghiệm này sẽ là bước đệm vững chắc giúp các bạn tiếp tục vươn xa trên con đường học tập và sự nghiệp phía trước.</p>                     
+                    </div>
+
+                    <div class="comment-section">
+                        <div class="comment-title">Ý kiến</div>
+                        <p style="font-size:12px; color:#a1a1a1;">*Địa chỉ email của bạn sẽ không được công bố. Các trường bắt buộc được đánh dấu *</p>
+                        
+                        <div class="comment-form">
+                            <div class="comment-box-wrapper">
+                                <textarea class="comment-box" placeholder="Chia sẻ ý kiến của bạn"></textarea>
+                                <i class="far fa-smile comment-emoji"></i>
+                            </div>
+                            <input type="text" class="comment-input" placeholder="Họ và tên *">
+                            <input type="email" class="comment-input" placeholder="Email *">
+                            <div class="d-flex align-items-center gap-2">
+                                <input type="checkbox" id="save-info">
+                                <label for="save-info" style="font-size:12px; color:#888; cursor: pointer;">
+                                    Lưu tên, email và trang web của tôi trong trình duyệt này cho lần bình luận tiếp theo.
+                                </label>
+                            </div>
+                            <button class="btn-comment">Đăng comment</button>
+                        </div>
+
+                    <section class="related-posts">
+                        <div class="purple-divider"></div> 
+                        <div class="related-header">
+                            <h3 class="related-title">Đọc bài viết tiếp theo</h3>
+                            <div class="related-nav">
+                                <a href="#" class="nav-circle"><i class="fas fa-chevron-left"></i></a>
+                                <a href="#" class="nav-circle"><i class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="news-card">
+                                    <img src="4.png" class="news-img">
+                                    <div class="news-content">
+                                        <span class="news-tag">Sự kiện</span>
+                                        <span class="news-date">25/01/2026</span>
+                                        <div class="news-title">HÀNH TRÌNH XÂY DỰNG NGHỆ THUẬT VÌ TƯƠNG LAI BỀN VỮNG</div>
+                                        <div class="news-desc">Nằm trong hoạt động chia sẻ và lan tỏa kiến thức học thuật thuộc chuỗi sự kiện ArtTech Fusion của Đại học Kinh tế TP. Hồ Chí Minh (UEH) ...</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="news-card">
+                                    <img src="6.jpg" class="news-img">
+                                    <div class="news-content">
+                                        <span class="news-tag">Giải thưởng</span>
+                                        <span class="news-date">07/08/2025</span>
+                                        <div class="news-title">Từ giảng đường đến đời thực: khi văn hóa truyền thống gặp gỡ thế hệ Gen Z</div>
+                                        <div class="news-desc">Trong nhịp sống hiện đại, văn hóa truyền thống đang đối mặt với nhiều thách thức. Làm thế nào để những giá trị văn hóa ấy không bị mai một mà vẫn giữ được sức sống?...</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="news-card">
+                                    <img src="3.jpeg" class="news-img">
+                                    <div class="news-content">
+                                        <span class="news-tag">Sự kiện</span>
+                                        <span class="news-date">27/01/2026</span>
+                                        <div class="news-title">Arttech Fusion 2025 (ATF25): Đồng sáng tạo vì tương lai bền vững</div>
+                                        <div class="news-desc">Đại học Kinh tế TP. Hồ Chí Minh (UEH) đã tổ chức thành công chuỗi hoạt động quốc tế ArtTech Fusion 2025 (ATF25) với chủ đề “Co-creation for a Wondrous Future” ...</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div> 
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-smd">
+        <div class="container">
+            <div class="footer-content-wrapper">
+                <div class="footer-col brand-info">
+                    <h2 class="footer-tagline">BẮT ĐẦU TƯƠNG LAI</h2>
+                    <p class="footer-subtitle">Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông</p>
+                    <div class="footer-logos">
+                        <img src="smdwhite.png" alt="SMD Logo white" />
+                        <img src="uehwhite.png" alt="UEH Logo white" />
+                    </div>
+                    <div class="contact-details">
+                        <p>279 Nguyễn Tri Phương, P. Diên Hồng, Q.10, TP.HCM</p>
+                        <p>ĐT: +84 283 8295 299 | Email: smd@ueh.edu.vn</p>
+                    </div>
+                </div>
+
+                <div class="footer-col links-grid">
+                    <div class="link-group">
+                        <h5>Useful Link</h5>
+                        <ul>
+                            <li><a href="#">Tuyển sinh UEH</a></li>
+                            <li><a href="#">UEH Future</a></li>
+                            <li><a href="#">Quy chế công khai</a></li>
+                            <li><a href="#">UEH Virtual Tour</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group extra-links">
+                        <ul>
+                            <li><a href="#">UEH Global</a></li>
+                            <li><a href="#">UEH E-learning</a></li>
+                            <li><a href="#">Cơ hội nghề nghiệp</a></li>
+                            <li><a href="#">Hệ thống nhận diện</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-col action-social">
+                    <a href="#" class="btn-reg"> ĐĂNG KÝ NGAY <i class="fas fa-graduation-cap"></i> </a>
+                    <div class="social-box">
+                        <p>Our social</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
