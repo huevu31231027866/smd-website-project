@@ -26,16 +26,12 @@
             background-color: #fff;
         }
 
-        /* --- 1. NAVBAR --- */
+        /* --- Navbar & Tools --- */
         .navbar {
             min-height: 80px;
             background: #ffffff;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); 
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
             z-index: 1000;
-            position: fixed;   
-            top: 0;            
-            left: 0;
-            width: 100%;
         }
         .logo { height: 50px; }
         .nav-link {
@@ -60,33 +56,56 @@
         
         .lang-switch { color: var(--text-dark); font-weight: 700; font-size: 13px; }
         .lang-switch.lang-active { color: var(--smd-red) !important; }
+      /* Ô nhập liệu */
+/* Thẻ bao ngoài để định vị */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 
-        .search-box {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-        .search-box input {
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            padding: 5px 15px 5px 35px;
-            font-size: 13px;
-            width: 130px;
-            transition: width 0.3s;
-        }
-        .search-box input:focus { width: 180px; outline: none; border-color: var(--smd-purple); }
-        .search-box i { position: absolute; left: 12px; color: #888; font-size: 14px; }
+/* Icon kính lúp - Đặt nằm ĐÈ lên trên input */
+.search-box i {
+    position: absolute;
+    left: 12px;           /* Cách mép trái ô input 12px */
+    top: 50%;
+    transform: translateY(-50%); /* Căn giữa theo chiều dọc */
+    color: #888;
+    font-size: 13px;
+    pointer-events: none; /* Để khi click vào icon vẫn ăn vào ô input */
+    z-index: 5;
+}
 
+/* Ô nhập liệu (Input) */
+.search-box input {
+    border: 1px solid #ddd !important;
+    border-radius: 20px !important;    /* Bo tròn hoàn toàn */
+    padding: 6px 15px 6px 35px !important; /* Padding-left là 35px để nhường chỗ cho icon */
+    font-size: 13px;
+    width: 150px;           /* Độ rộng mặc định */
+    height: 34px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+/* Hiệu ứng khi bấm vào ô tìm kiếm */
+.search-box input:focus {
+    width: 200px;           /* Dài ra một chút khi gõ */
+    background-color: #fff;
+    border-color: var(--smd-purple) !important;
+    box-shadow: 0 0 5px rgba(142, 68, 173, 0.2);
+}
         /* --- 2. HERO BANNER --- */
         .hero-banner {
             width: 100%;
-            line-height: 0;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03); 
             position: relative;
             z-index: 5;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03); 
+            z-index: 5;
         }
-        .hero-banner img { width: 100%; height: auto; display: block; }
+        .hero-banner img { width: 100%; height: auto; display: block; object-fit: cover;}
+        
 
         /* --- 3. FEATURE SECTION --- */
         .feature-section { padding: 40px 0 20px 0; margin-top: -15px; position: relative; z-index: 10; }
@@ -207,11 +226,11 @@
             .carousel-caption { bottom: 10%; }
             .btn-news-link { padding: 5px 12px; font-size: 11px; }
         }
-        /* --- SUPER COMPACT FOOTER (230px) --- */
+
 .footer-smd {
     background-color: var(--smd-purple);
     color: white;
-    padding: 25px 0 15px 0; /* Giảm padding tối đa */
+    padding: 25px 0 15px 0; 
     min-height: 200px; 
     display: flex;
     flex-direction: column;
@@ -225,15 +244,15 @@
     align-items: start;
 }
 
-/* Tinh chỉnh size chữ Tiêu đề */
+
 .footer-tagline { 
-    font-size: 1.5rem; /* Giảm từ 1.8rem */
+    font-size: 1.5rem; 
     font-weight: 800; 
     margin: 0; 
     line-height: 1.1;
 }
 .footer-subtitle { 
-    font-size: 0.75rem; /* Giảm size font */
+    font-size: 0.75rem; 
     
     margin-bottom: 10px; 
 }
@@ -242,13 +261,13 @@
 .footer-logos img { height: 35px; width: auto; }
 
 .contact-details { 
-    font-size: 12px; /* Font cực nhỏ để tiết kiệm diện tích */
+    font-size: 12px; 
     
     line-height: 1.4; 
 }
 .contact-details p { margin-bottom: 2px; }
 
-/* Tinh chỉnh Links */
+
 .link-group {
     padding-left: 50px;
 }
@@ -268,7 +287,7 @@
     
 }
 
-/* Cột Action & Social */
+
 .action-social { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
 
 .btn-reg {
@@ -302,12 +321,13 @@
 @media (max-width: 576px) {
     .footer-content-wrapper { grid-template-columns: 1fr; text-align: center; }
     .footer-logos, .social-icons { justify-content: center; }
-    .links-grid { display: none; } /* Ẩn bớt link phụ trên mobile cực nhỏ để tránh rối */
+    .links-grid { display: none; } 
     .action-social { grid-column: span 1; }
 }
 /* --- TEAM SECTION --- */
+/* --- TEAM SECTION FIXED --- */
 .team-section {
-    padding: 20px 0;
+    padding: 60px 0;
     text-align: center;
 }
 
@@ -315,6 +335,7 @@
     font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
 .team-title span {
@@ -343,71 +364,164 @@
     line-height: 1.6;
 }
 
+/* Card Wrapper */
 .team-card {
     position: relative;
+    background: #fff;
+    border-radius: 12px;
     overflow: hidden;
-    border-radius: 4px; /* Bo góc nhẹ theo hình */
     margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
 }
 
-.team-card img {
+.team-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Image Handling */
+.card-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 350px; 
+}
+
+.card-image-wrapper img {
     width: 100%;
-    height: 400px; /* Độ cao cố định để các ảnh bằng nhau */
+    height: 100%;
     object-fit: cover;
-    display: block;
+    transition: transform 0.5s ease;
 }
 
+.team-card:hover .card-image-wrapper img {
+    transform: scale(1.1);
+}
+
+/* Overlay hiệu ứng khi di chuột vào */
 .team-info-overlay {
     position: absolute;
-    bottom: 0;
+    bottom: 0; 
     left: 0;
-    right: 0;
-    padding: 20px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    width: 100%;
+    height: 0; 
+    background: rgba(142, 68, 173, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px; 
     color: white;
+    text-align: center;
+    overflow: hidden; 
+    transition: height 0.5s ease; 
 }
 
-.team-name {
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: 2px;
+.team-card:hover .team-info-overlay {
+   height: 100%;
+    padding: 20px;
 }
 
-.team-role {
+.overlay-name {
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.overlay-role {
     font-size: 0.85rem;
-    font-weight: 400;
-    opacity: 0.9;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: block;
+    letter-spacing: 1px;
+}
+
+.overlay-desc {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+
+.bottom-static-info {
+    padding: 15px;
+    background: #fff;
+    border-top: 1px solid #f0f0f0;
+}
+
+.static-name {
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0;
+    font-size: 1rem;
+}
+
+.static-role {
+    font-size: 0.8rem;
+    color: var(--smd-purple);
+    margin: 0;
+    font-weight: 600;
+}
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background-color: var(--smd-purple);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none; 
+    z-index: 1001;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+#backToTop:hover {
+    transform: translateY(-5px);
+    background-color: #732d91;
+}
+
+/* Thêm hiệu ứng mượt khi cuộn */
+html {
+    scroll-behavior: smooth;
 }
     </style>
 </head>
 <body>
 
+<body>
     <header>
         <nav class="navbar navbar-expand-lg sticky-top">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img class="logo" src="logosmd.png" alt="SMD Logo">
+                    <img class="logo" src="logosmd.png" alt="SMD Logo" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="mainNav">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link active" href="gioithieu.html">Giới thiệu <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Đào tạo <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Nghiên cứu <i class="fas fa-chevron-down"></i></a></li>
+                      <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html" data-vi="Trang chủ" data-en="Home" >Trang chủ <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link active" href="gioithieu.html" data-vi="Giới thiệu" data-en="About">Giới thiệu <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" data-vi="Đào tạo" data-en="Education">Đào tạo <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"data-vi="Nghiên cứu" data-en="Research">Nghiên cứu <i class="fas fa-chevron-down"></i></a></li>
                         <li class="nav-item"><a class="nav-link" href="media.html">Media <i class="fas fa-chevron-down"></i></a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Gallery <i class="fas fa-chevron-down"></i></a></li>
                     </ul>
 
-                    <div class="nav-tools">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" placeholder="Tìm kiếm...">
+                      <div class="nav-tools">
+                      <div class="search-box">
+                        <i class="fas fa-search"></i>
+                           <input type="text" 
+                            data-vi="Tìm kiếm..." 
+                            data-en="Search..." 
+                            placeholder="Tìm kiếm..." />
                         </div>
+                      </div>
                         <div class="lang-selector">
                             <a href="#" class="lang-switch lang-active text-decoration-none">VN</a>
                             <span class="mx-1 text-muted">|</span>
@@ -430,47 +544,117 @@
             <span></span>
             <span></span>
         </div>
-        <p class="team-description">
+        <p class="team-description"
+        data-en="Pacon Time is a project development team consisting of 4 female members. We focus on integrating UI/UX design thinking with web programming techniques to build a complete platform. Below are the professional roles and responsibilities of each member:"
+        data-vi="Pacon Time là nhóm phát triển dự án gồm 4 thành viên nữ. Chúng tôi tập trung vào việc kết hợp giữa tư duy thiết kế giao diện và kỹ thuật lập trình web để xây dựng một nền tảng hoàn chỉnh. Dưới đây là vai trò và nhiệm vụ chuyên môn của từng thành viên trong dự án:">
             <strong>Pacon Time</strong> là nhóm phát triển dự án gồm 4 thành viên nữ. Chúng tôi tập trung vào việc kết hợp giữa tư duy thiết kế giao diện và kỹ thuật lập trình web để xây dựng một nền tảng hoàn chỉnh. Dưới đây là vai trò và nhiệm vụ chuyên môn của từng thành viên trong dự án:
         </p>
 
         <div class="row">
             <div class="col-md-3 col-sm-6">
                 <div class="team-card">
-                    <img src="hue.jpg" alt="Vũ Thị Huệ">
-                    <div class="team-info-overlay">
-                        <div class="team-name">Vũ Thị Huệ</div>
-                        <div class="team-role">Leader</div>
+                    <div class="card-image-wrapper">
+                        <img src="hue.jpg" alt="Vũ Thị Huệ">
+                        <div class="team-info-overlay">
+                            <span class="overlay-name"
+                            data-vi="Vũ Thị Huệ"
+                            data-en="Vu Thi Hue">
+                            Vũ Thị Huệ
+                            </span>
+                            <span class="overlay-role">Leader - Frontend Dev 1</span>
+                            <p class="overlay-desc"
+                            data-vi="Lập kế hoạch, quản lý tiến độ, điều phối nội dung. Xây dựng khung HTML/CSS cho Trang chủ và Giới thiệu."
+                            data-en="Planning, progress management, and content coordination. Building the HTML/CSS framework for the Homepage and About Us pages.">
+                            Lập kế hoạch, quản lý tiến độ, điều phối nội dung. Xây dựng khung HTML/CSS cho Trang chủ và Giới thiệu.</p>
+                        </div>
+                    </div>
+                    <div class="bottom-static-info">
+                        <p class="static-name"
+                        data-vi="Vũ Thị Huệ"
+                        data-en="Vu Thi Hue">
+                        Vũ Thị Huệ</p>
+                        <p class="static-role">Leader</p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-3 col-sm-6">
                 <div class="team-card">
-                    <img src="yen.jpg" alt="Lê Thị Kim Yến">
-                    <div class="team-info-overlay">
-                        <div class="team-name">Lê Thị Kim Yến</div>
-                        <div class="team-role">Member</div>
+                    <div class="card-image-wrapper">
+                        <img src="yen.jpg" alt="Lê Thị Kim Yến">
+                        <div class="team-info-overlay">
+                            <span class="overlay-name"
+                            data-vi="Lê Thị Kim Yến"
+                            data-en="Le Thi Kim Yen">
+                            Lê Thị Kim Yến
+                            </span>
+                            <span class="overlay-role">UI/UX Designer</span>
+                            <p class="overlay-desc"
+                            data-vi="Nghiên cứu sitemap, vẽ Wireframe và Prototype cho 05 trang trên Figma để tối ưu trải nghiệm người dùng."
+                            data-en="Sitemap research, Wireframing, and Prototyping for 05 pages on Figma to optimize user experience.">
+                            Nghiên cứu sitemap, vẽ Wireframe và Prototype cho 05 trang trên Figma để tối ưu trải nghiệm người dùng.</p>
+                        </div>
+                    </div>
+                    <div class="bottom-static-info">
+                        <p class="static-name"
+                        data-vi="Lê Thị Kim Yến"
+                        data-en="Le Thi Kim Yen"
+                        >Lê Thị Kim Yến</p>
+                        <p class="static-role">Member</p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-3 col-sm-6">
                 <div class="team-card">
-                    <img src="trang.jpg" alt="Dương Thị Quỳnh Trang">
-                    <div class="team-info-overlay">
-                        <div class="team-name">Dương Thị Quỳnh Trang</div>
-                        <div class="team-role">Member</div>
+                    <div class="card-image-wrapper">
+                        <img src="trang.jpg" alt="Dương Thị Quỳnh Trang">
+                        <div class="team-info-overlay">
+                            <span class="overlay-name"
+                            data-vi="Dương Thị Quỳnh Trang"
+                            data-en="Duong Thi Quynh Trang">
+                            Dương Thị Quỳnh Trang
+                            </span>
+                            <span class="overlay-role">Frontend Dev 2</span>
+                            <p class="overlay-desc"
+                            data-en="Building HTML/CSS frameworks for Category and Product Detail pages, ensuring full responsiveness."
+                            data-vi="Xây dựng khung HTML/CSS cho các trang Danh mục và Chi tiết sản phẩm, đảm bảo tính responsive."
+                            >Xây dựng khung HTML/CSS cho các trang Danh mục và Chi tiết sản phẩm, đảm bảo tính responsive.</p>
+                        </div>
+                    </div>
+                    <div class="bottom-static-info">
+                        <p class="static-name"
+                        data-vi="Dương Thị Quỳnh Trang"
+                        data-en="Duong Thi Quynh Trang"
+                            >Dương Thị Quỳnh Trang</p>
+                        <p class="static-role">Member</p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-3 col-sm-6">
                 <div class="team-card">
-                    <img src="chi.jpg" alt="Nguyễn Ngọc Linh Chi">
-                    <div class="team-info-overlay">
-                        <div class="team-name">Nguyễn Ngọc Linh Chi</div>
-                        <div class="team-role">Member</div>
+                    <div class="card-image-wrapper">
+                        <img src="chi.jpg" alt="Nguyễn Ngọc Linh Chi">
+                        <div class="team-info-overlay">
+                            <span class="overlay-name"
+                            data-vi="Nguyễn Ngọc Linh Chi"
+                            data-en="Nguyen Ngoc Linh Chi">
+                            Nguyễn Ngọc Linh Chi
+                        </span>
+                            <span class="overlay-role">JS Developer</span>
+                            <p class="overlay-desc"
+                            data-vi="Viết mã JavaScript cho toàn bộ các tương tác, xử lý logic dữ liệu và hiệu ứng động cho website."
+                            data-en="Developing JavaScript code for all interactions, data logic processing, and dynamic website effects.">
+                            Viết mã JavaScript cho toàn bộ các tương tác, xử lý logic dữ liệu và hiệu ứng động cho website.</p>
+                        </div>
+                    </div>
+                    <div class="bottom-static-info">
+                        <p class="static-name"
+                        data-vi="Nguyễn Ngọc Linh Chi"
+                        data-en="Nguyen Ngoc Linh Chi">
+                            Nguyễn Ngọc Linh Chi</p>
+                        <p class="static-role">Member</p>
                     </div>
                 </div>
             </div>
@@ -482,8 +666,14 @@
     <div class="container">
         <div class="footer-content-wrapper">
             <div class="footer-col brand-info">
-                <h2 class="footer-tagline">BẮT ĐẦU TƯƠNG LAI</h2>
-                <p class="footer-subtitle">Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông</p>
+                <h2 class="footer-tagline"
+                data-vi="BẮT ĐẦU TƯƠNG LAI"
+                data-en="START THE FUTURE">
+                BẮT ĐẦU TƯƠNG LAI</h2>
+                <p class="footer-subtitle"
+                data-en="University of Economics Ho Chi Minh City - School of Media Design"
+                data-vi="Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông">
+                Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông</p>
                 <div class="footer-logos">
                     <img src="smdwhite.png" alt="SMD Logo white">
                     <img src="uehwhite.png" alt="UEH Logo white">
@@ -498,9 +688,15 @@
                 <div class="link-group">
                     <h5>Useful Link</h5>
                     <ul>
-                        <li><a href="#">Tuyển sinh UEH</a></li>
+                        <li><a href="#"
+                            data-en="UEH Admissions"
+                            data-vi="Tuyển sinh UEH">
+                            Tuyển sinh UEH</a></li>
                         <li><a href="#">UEH Future</a></li>
-                        <li><a href="#">Quy chế công khai</a></li>
+                        <li><a href="#"
+                            data-vi="Quy chế công khai"
+                            data-en="Public Regulations">
+                        Quy chế công khai</a></li>
                         <li><a href="#">UEH Virtual Tour</a></li>
                     </ul>
                 </div>
@@ -508,14 +704,22 @@
                     <ul>
                         <li><a href="#">UEH Global</a></li>
                         <li><a href="#">UEH E-learning</a></li>
-                        <li><a href="#">Cơ hội nghề nghiệp</a></li>
-                        <li><a href="#">Hệ thống nhận diện</a></li>
+                        <li><a href="#"
+                            data-en="Career Opportunities"
+                            data-vi="Cơ hội nghề nghiệp">
+                        Cơ hội nghề nghiệp</a></li>
+                        <li><a href="#"
+                            data-en="Identity System"
+                            data-vi=" Hệ thống nhận diện">
+                        Hệ thống nhận diện</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-col action-social">
-                <a href="#" class="btn-reg">
+                <a href="#" class="btn-reg"
+                data-vi="ĐĂNG KÝ NGAY"
+                data-en="REGISTER NOW">
                     ĐĂNG KÝ NGAY <i class="fas fa-graduation-cap"></i>
                 </a>
                 <div class="social-box">
@@ -531,11 +735,85 @@
         </div>
         
         <div class="footer-bottom">
-            <p>Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.</p>
+            <p
+            data-en="Copyright © 2022. University of Economics Ho Chi Minh City. Developed by SMD."
+            data-vi="Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.">
+            Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.</p>
         </div>
     </div>
 </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <button id="backToTop" title="Lên đầu trang">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+
+    AOS.init({
+        duration: 800,
+        once: true
+    });
+
+
+    const backToTopBtn = document.getElementById("backToTop");
+    window.onscroll = function() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            backToTopBtn.style.display = "block";
+        } else {
+            backToTopBtn.style.display = "none";
+        }
+    };
+    backToTopBtn.onclick = function() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+
+
+   const langSwitches = document.querySelectorAll('.lang-switch');
+
+langSwitches.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // 1. Đổi màu nút (VN/EN)
+        langSwitches.forEach(s => s.classList.remove('lang-active'));
+        this.classList.add('lang-active');
+        
+        const lang = this.innerText.trim().toLowerCase(); // 'vn' hoặc 'en'
+        const attr = (lang === 'en') ? 'data-en' : 'data-vi';
+
+        // 2. Tìm tất cả các thẻ có chứa thuộc tính chuyển ngữ tương ứng
+        const elements = document.querySelectorAll(`[data-vi], [data-en]`);
+        
+        elements.forEach(el => {
+            const translation = (lang === 'en') ? el.getAttribute('data-en') : el.getAttribute('data-vi');
+            
+            if (translation) {
+                
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.setAttribute('placeholder', translation);
+                } else {
+                    el.innerHTML = translation;
+                }
+            }
+        });
+    });
+});
+
+// 3. Tự động load ngôn ngữ đã chọn khi mở web
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('preferredLang');
+    if (savedLang) {
+        const targetBtn = Array.from(langSwitches).find(b => b.innerText.trim().toLowerCase() === savedLang);
+        if (targetBtn) {
+            targetBtn.click();
+        }
+    }
+});
+</script>
+    
 </body>
 </html>
