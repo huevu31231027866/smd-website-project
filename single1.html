@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
     <style>
-        /* --- Root & General --- */
         :root {
             --smd-purple: #8e44ad;
             --text-dark: #212529;
@@ -24,7 +23,6 @@
             background-color: #fff;
         }
 
-        /* --- Navbar & Tools --- */
         .navbar {
             min-height: 80px;
             background: #ffffff;
@@ -57,22 +55,46 @@
         }
         .lang-switch { color: var(--text-dark); font-weight: 700; font-size: 13px; }
         .lang-switch.lang-active { color: var(--smd-purple) !important; }
-        .search-box {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-        .search-box input {
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            padding: 5px 15px 5px 35px;
-            font-size: 13px;
-            width: 130px;
-            transition: width 0.3s;
-        }
-        .search-box input:focus { width: 180px; outline: none; border-color: var(--smd-purple); }
-        .search-box i { position: absolute; left: 12px; color: #888; font-size: 14px; }
+            /* Ô nhập liệu */
+/* Thẻ bao ngoài để định vị */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 
+/* Icon kính lúp - Đặt nằm ĐÈ lên trên input */
+.search-box i {
+    position: absolute;
+    left: 12px;           /* Cách mép trái ô input 12px */
+    top: 50%;
+    transform: translateY(-50%); /* Căn giữa theo chiều dọc */
+    color: #888;
+    font-size: 13px;
+    pointer-events: none; /* Để khi click vào icon vẫn ăn vào ô input */
+    z-index: 5;
+}
+
+/* Ô nhập liệu (Input) */
+.search-box input {
+    border: 1px solid #ddd !important;
+    border-radius: 20px !important;    /* Bo tròn hoàn toàn */
+    padding: 6px 15px 6px 35px !important; /* Padding-left là 35px để nhường chỗ cho icon */
+    font-size: 13px;
+    width: 150px;           /* Độ rộng mặc định */
+    height: 34px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+/* Hiệu ứng khi bấm vào ô tìm kiếm */
+.search-box input:focus {
+    width: 200px;           /* Dài ra một chút khi gõ */
+    background-color: #fff;
+    border-color: var(--smd-purple) !important;
+    box-shadow: 0 0 5px rgba(142, 68, 173, 0.2);
+}
         /* --- Article Detail Content --- */
         .article-section { padding: 50px 0; background: #fff; }
         .article-inner-container { max-width: 800px; margin: 0 auto; }
@@ -264,6 +286,33 @@
             .article-title { font-size: 24px; }
             .related-header { flex-direction: column; align-items: flex-start; gap: 15px; }
         }
+        /* --- BACK TO TOP BUTTON --- */
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background-color: var(--smd-purple);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none; /* Ẩn mặc định */
+    z-index: 1001;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+#backToTop:hover {
+    transform: translateY(-5px);
+    background-color: #732d91;
+}
+
+/* Thêm hiệu ứng mượt khi cuộn */
+html {
+    scroll-behavior: smooth;
+}
     </style>
 </head>
 
@@ -279,20 +328,24 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="mainNav">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="gioithieu.html">Giới thiệu <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Đào tạo <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Nghiên cứu <i class="fas fa-chevron-down"></i></a></li>
+                      <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html" data-vi="Trang chủ" data-en="Home" >Trang chủ <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="gioithieu.html" data-vi="Giới thiệu" data-en="About">Giới thiệu <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" data-vi="Đào tạo" data-en="Education">Đào tạo <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"data-vi="Nghiên cứu" data-en="Research">Nghiên cứu <i class="fas fa-chevron-down"></i></a></li>
                         <li class="nav-item"><a class="nav-link active" href="media.html">Media <i class="fas fa-chevron-down"></i></a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Gallery <i class="fas fa-chevron-down"></i></a></li>
                     </ul>
 
-                    <div class="nav-tools">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" placeholder="Tìm kiếm..." />
+                        <div class="nav-tools">
+                      <div class="search-box">
+                        <i class="fas fa-search"></i>
+                           <input type="text" 
+                            data-vi="Tìm kiếm..." 
+                            data-en="Search..." 
+                            placeholder="Tìm kiếm..." />
                         </div>
+                      </div>
                         <div class="lang-selector">
                             <a href="#" class="lang-switch lang-active text-decoration-none">VN</a>
                             <span class="mx-1 text-muted">|</span>
@@ -309,73 +362,157 @@
             <div class="container">
                 <div class="article-inner-container">
                     <div class="article-meta">
-                        <span class="article-tag">Dự án sinh viên</span>
+                        <span class="article-tag"
+                        data-vi="Dự án sinh viên"
+                        data-en="Students project">Dự án sinh viên</span>
                         <span class="article-date ms-auto">16/3/2026, 15:21</span>
                     </div>
 
-                    <h1 class="article-title">
+                    <h1 class="article-title"
+                    data-en="Design Futures 2025: UEH – SMD students shine at Tsinghua University with creative AI projects for the community"
+                    data-vi="Design Futures 2025: Sinh viên UEH – SMD tỏa sáng tại Đại học Thanh Hoa với các dự án AI sáng tạo vì cộng đồng">
                         Design Futures 2025: Sinh viên UEH – SMD tỏa sáng tại Đại học Thanh Hoa với các dự án AI sáng tạo vì cộng đồng
                     </h1>
 
                     <div class="article-content mt-4">
-                        <h2>Mở rộng kết nối – Học hỏi toàn cầu – Sáng tạo bền vững</h2>
-                        <p>
-                            Tiếp nối hành trình học tập quốc tế tại 
-                            <a href="https://www.tsinghua.edu.cn/en/">Đại học Thanh Hoa – Bắc Kinh</a>, 
-                            hai đội sinh viên đến từ 
-                            <a href="https://smd.ueh.edu.vn/trang-chu/">Khoa Thiết kế Truyền thông (SMD)</a> 
-                            đã có những trải nghiệm học thuật sâu sắc và đầy cảm hứng tại một trong những trường đại học danh giá hàng đầu thế giới.
-                            <p>Chương trình hè quốc tế “Design Futures: Shared Vision” 2025 là nơi quy tụ các sinh viên tài năng đến từ 7 quốc gia như Việt Nam, Singapore, Anh, Phần Lan, Ý… tạo nên một không gian học thuật đa văn hóa, thúc đẩy mạnh mẽ sự kết nối toàn cầu, tư duy sáng tạo và cách tiếp cận đổi mới trong thiết kế.</p>
-                        </p>
+                        <h2
+                        data-vi="Mở rộng kết nối – Học hỏi toàn cầu – Sáng tạo bền vững"
+                        data-en="Expanding connections – Global learning – Sustainable creativity"
+                        >Mở rộng kết nối – Học hỏi toàn cầu – Sáng tạo bền vững</h2>
+                        <div class="international-journey-content">
+    <p data-vi="Tiếp nối hành trình học tập quốc tế tại <a href='https://www.tsinghua.edu.cn/en/'>Đại học Thanh Hoa – Bắc Kinh</a>, hai đội sinh viên đến từ <a href='https://smd.ueh.edu.vn/trang-chu/'>Khoa Thiết kế Truyền thông (SMD)</a> đã có những trải nghiệm học thuật sâu sắc và đầy cảm hứng tại một trong những trường đại học danh giá hàng đầu thế giới."
+       data-en="Following the international learning journey at <a href='https://www.tsinghua.edu.cn/en/'>Tsinghua University – Beijing</a>, two student teams from the <a href='https://smd.ueh.edu.vn/trang-chu/'>School of Media Design (SMD)</a> had profound and inspiring academic experiences at one of the world's leading prestigious universities.">
+        Tiếp nối hành trình học tập quốc tế tại 
+        <a href="https://www.tsinghua.edu.cn/en/">Đại học Thanh Hoa – Bắc Kinh</a>, 
+        hai đội sinh viên đến từ 
+        <a href="https://smd.ueh.edu.vn/trang-chu/">Khoa Thiết kế Truyền thông (SMD)</a> 
+        đã có những trải nghiệm học thuật sâu sắc và đầy cảm hứng tại một trong những trường đại học danh giá hàng đầu thế giới.
+    </p>
+
+    <p data-vi="Chương trình hè quốc tế “Design Futures: Shared Vision” 2025 là nơi quy tụ các sinh viên tài năng đến từ 7 quốc gia như Việt Nam, Singapore, Anh, Phần Lan, Ý… tạo nên một không gian học thuật đa văn hóa, thúc đẩy mạnh mẽ sự kết nối toàn cầu, tư duy sáng tạo và cách tiếp cận đổi mới trong thiết kế."
+       data-en="The 2025 International Summer Program 'Design Futures: Shared Vision' gathered talented students from 7 countries including Vietnam, Singapore, UK, Finland, Italy... creating a multicultural academic space that strongly promoted global connectivity, creative thinking, and innovative approaches in design.">
+        Chương trình hè quốc tế “Design Futures: Shared Vision” 2025 là nơi quy tụ các sinh viên tài năng đến từ 7 quốc gia như Việt Nam, Singapore, Anh, Phần Lan, Ý… tạo nên một không gian học thuật đa văn hóa, thúc đẩy mạnh mẽ sự kết nối toàn cầu, tư duy sáng tạo và cách tiếp cận đổi mới trong thiết kế.
+    </p>
+</div>
                     </div>
 
                     <div class="article-image">
                         <img src="Thanh Hoa 1.jpg" alt="Design Futures">
-                        <div class="article-caption">
+                        <div class="article-caption"
+                        data-vi='Hình 1. Sinh viên quốc tế và giảng viên chụp hình lưu niệm tại chương trình "Design Futures: Shared Vision" 2025 tại Đại học Thanh Hoa – Bắc Kinh.'
+                        data-en='Image 1. International students and lecturers taking a commemorative photo at the "Design Futures: Shared Vision" 2025 program at Tsinghua University – Beijing.'>
                             Hình 1. Sinh viên quốc tế và giảng viên chụp hình lưu niệm tại chương trình "Design Futures: Shared Vision" 2025 tại Đại học Thanh Hoa – Bắc Kinh.
                         </div>
                     </div>
 
                     <div class="article-content mt-4">
-                        <h2>Hành trình trang bị những nền tảng vững chắc</h2>
-                        <p>Trong suốt quá trình học, sinh viên được "ngâm mình" trong môi trường học thuật sôi nổi với các chuyên đề:</p>
+                        <h2
+                        data-vi="Hành trình trang bị những nền tảng vững chắc" 
+                     data-en="A Journey to Build Solid Foundations">
+                    Hành trình trang bị những nền tảng vững chắc</h2>
+                        <p
+                        data-vi="Trong suốt quá trình học, sinh viên được 'ngâm mình' trong môi trường học thuật sôi nổi với các chuyên đề:" 
+       data-en="Throughout the course, students were immersed in a vibrant academic environment with specialized topics:">
+                   Trong suốt quá trình học, sinh viên được "ngâm mình" trong môi trường học thuật sôi nổi với các chuyên đề:</p>
                         <ul class="ms-4 mb-4" style="font-size: 15px; color: #555; line-height: 1.8;">
-                            <li><strong>Tư duy thiết kế (Design Thinking):</strong> Phương pháp cốt lõi để thấu cảm và giải quyết vấn đề.</li>
-                            <li><strong>Công nghệ Robot:</strong> Tiếp cận những kỹ thuật điều khiển và tự động hóa hiện đại.</li>
-                            <li><strong>Hệ thống hàng không vũ trụ (Aerospace):</strong> Mở rộng tầm nhìn về công nghệ kỹ thuật cao.</li>
-                        </ul>
-                        <p>Các phiên học không chỉ giúp tiếp cận kiến thức tiên tiến, mà còn hướng đến việc ứng dụng thiết kế vào giải quyết các vấn đề thực tiễn, phát triển sản phẩm hướng đến con người.</p>
-                        <p>Đặc biệt, các bạn còn được làm việc trực tiếp tại các phòng lab hiện đại của Thanh Hoa – nơi các ý tưởng được chuyển hóa thành sản phẩm mẫu (prototype), nhờ sự hỗ trợ của đội ngũ mentor quốc tế và chuyên gia đầu ngành.</p>
+        <li data-vi="<strong>Tư duy thiết kế (Design Thinking):</strong> Phương pháp cốt lõi để thấu cảm và giải quyết vấn đề." 
+            data-en="<strong>Design Thinking:</strong> The core method for empathy and problem-solving.">
+            <strong>Tư duy thiết kế (Design Thinking):</strong> Phương pháp cốt lõi để thấu cảm và giải quyết vấn đề.
+        </li>
+        <li data-vi="<strong>Công nghệ Robot:</strong> Tiếp cận những kỹ thuật điều khiển và tự động hóa hiện đại." 
+            data-en="<strong>Robotics Technology:</strong> Access to modern control and automation techniques.">
+            <strong>Công nghệ Robot:</strong> Tiếp cận những kỹ thuật điều khiển và tự động hóa hiện đại.
+        </li>
+        <li data-vi="<strong>Hệ thống hàng không vũ trụ (Aerospace):</strong> Mở rộng tầm nhìn về công nghệ kỹ thuật cao." 
+            data-en="<strong>Aerospace Systems:</strong> Expanding horizons in high-tech engineering.">
+            <strong>Hệ thống hàng không vũ trụ (Aerospace):</strong> Mở rộng tầm nhìn về công nghệ kỹ thuật cao.
+        </li>
+    </ul>
 
-                        <h2>Vinh danh quốc tế – Tự hào SMD tại Đại học Thanh Hoa</h2>
-                        <p>Hai đội sinh viên SMD – <strong>Đội Bánh Mì</strong> và <strong>Đội Yilu Shunfeng</strong> – đã xuất sắc nhận giải thưởng <strong>"Social Impact"</strong> danh hiệu dành cho những dự án sáng tạo có ảnh hưởng xã hội sâu rộng và hướng đến phát triển bền vững, trong hạng mục <strong>Smart Creation – Đổi mới sáng tạo nghệ thuật với trí tuệ nhân tạo.</strong></p>
+<p data-vi="Các phiên học không chỉ giúp tiếp cận kiến thức tiên tiến, mà còn hướng đến việc ứng dụng thiết kế vào giải quyết các vấn đề thực tiễn, phát triển sản phẩm hướng đến con người." 
+       data-en="The sessions not only provided access to advanced knowledge but also aimed at applying design to solve practical problems and develop human-centered products.">
+        Các phiên học không chỉ giúp tiếp cận kiến thức tiên tiến, mà còn hướng đến việc ứng dụng thiết kế vào giải quyết các vấn đề thực tiễn, phát triển sản phẩm hướng đến con người.
+    </p>
+                       <p data-vi="Đặc biệt, các bạn còn được làm việc trực tiếp tại các phòng lab hiện đại của Thanh Hoa – nơi các ý tưởng được chuyển hóa thành sản phẩm mẫu (prototype), nhờ sự hỗ trợ của đội ngũ mentor quốc tế và chuyên gia đầu ngành." 
+       data-en="Notably, students worked directly in Tsinghua's modern labs – where ideas are transformed into prototypes with the support of international mentors and leading experts.">
+        Đặc biệt, các bạn còn được làm việc trực tiếp tại các phòng lab hiện đại của Thanh Hoa – nơi các ý tưởng được chuyển hóa thành sản phẩm mẫu (prototype), nhờ sự hỗ trợ của đội ngũ mentor quốc tế và chuyên gia đầu ngành.
+    </p>
+                        <h2 data-vi="Vinh danh quốc tế – Tự hào SMD tại Đại học Thanh Hoa" 
+        data-en="International Recognition – SMD Pride at Tsinghua University">
+        Vinh danh quốc tế – Tự hào SMD tại Đại học Thanh Hoa
+    </h2>
+                      <p data-vi="Hai đội sinh viên SMD – <strong>Đội Bánh Mì</strong> và <strong>Đội Yilu Shunfeng</strong> – đã xuất sắc nhận giải thưởng <strong>'Social Impact'</strong> danh hiệu dành cho những dự án sáng tạo có ảnh hưởng xã hội sâu rộng và hướng đến phát triển bền vững, trong hạng mục <strong>Smart Creation – Đổi mới sáng tạo nghệ thuật với trí tuệ nhân tạo.</strong>" 
+       data-en="Two SMD student teams – <strong>Team Banh Mi</strong> and <strong>Team Yilu Shunfeng</strong> – excellently received the <strong>'Social Impact'</strong> award, a title for creative projects with profound social influence and a focus on sustainable development, in the <strong>Smart Creation – Artistic Innovation with AI category.</strong>">
+        Hai đội sinh viên SMD – <strong>Đội Bánh Mì</strong> và <strong>Đội Yilu Shunfeng</strong> – đã xuất sắc nhận giải thưởng <strong>"Social Impact"</strong> danh hiệu dành cho những dự án sáng tạo có ảnh hưởng xã hội sâu rộng và hướng đến phát triển bền vững, trong hạng mục <strong>Smart Creation – Đổi mới sáng tạo nghệ thuật với trí tuệ nhân tạo.</strong>
+    </p>
 
-                        <h2>Dự án của Đội Bánh Mì</h2>
-                        <p>Phát triển một <strong>thiết bị vẽ thông minh tích hợp AI dành cho trẻ em</strong>, nhằm thay thế thời gian sử dụng màn hình thụ động bằng các hoạt động sáng tạo chủ động. Dự án không chỉ là sản phẩm công nghệ, mà còn là công cụ giáo dục mang tính nhân văn, hỗ trợ trẻ phát triển tư duy, cảm xúc và khả năng khám phá thế giới thực – góp phần hình thành một thế hệ sáng tạo và giàu cảm xúc trong tương lai.</p>
+                        <h2
+                        data-vi="Dự án của Đội Bánh Mì"
+                        data-en="Team Banh Mi's project">
+                        Dự án của Đội Bánh Mì</h2>
+                        <p
+                        data-vi="Phát triển một <strong>thiết bị vẽ thông minh tích hợp AI dành cho trẻ em</strong>, nhằm thay thế thời gian sử dụng màn hình thụ động bằng các hoạt động sáng tạo chủ động. Dự án không chỉ là sản phẩm công nghệ, mà còn là công cụ giáo dục mang tính nhân văn, hỗ trợ trẻ phát triển tư duy, cảm xúc và khả năng khám phá thế giới thực – góp phần hình thành một thế hệ sáng tạo và giàu cảm xúc trong tương lai." 
+                        data-en="Developed an <strong>AI-integrated smart drawing device for children</strong>, aiming to replace passive screen time with active creative activities. The project is not just a tech product but also a humane educational tool, supporting children in developing thinking, emotions, and real-world exploration – contributing to a future generation of creative and emotional individuals.">
+                        >Phát triển một <strong>thiết bị vẽ thông minh tích hợp AI dành cho trẻ em</strong>, nhằm thay thế thời gian sử dụng màn hình thụ động bằng các hoạt động sáng tạo chủ động. Dự án không chỉ là sản phẩm công nghệ, mà còn là công cụ giáo dục mang tính nhân văn, hỗ trợ trẻ phát triển tư duy, cảm xúc và khả năng khám phá thế giới thực – góp phần hình thành một thế hệ sáng tạo và giàu cảm xúc trong tương lai.</p>
                         
                         <div class="article-image">
                             <img src="Thanh Hoa 2.jpg" alt="Dự án Đội Bánh Mì">
-                            <div class="article-caption">Hình 2. Đội Bánh Mì với dự án "Máy vẽ sáng tạo cho trẻ em tích hợp công nghệ AI".</div>
+                            <div class="article-caption"
+                            data-vi='Hình 2. Đội Bánh Mì với dự án "Máy vẽ sáng tạo cho trẻ em tích hợp công nghệ AI".'
+                            data-en='Image 2. Team Banh Mi with project "AI-integrated Creative Drawing Machine for Children" project."'>
+                            Hình 2. Đội Bánh Mì với dự án "Máy vẽ sáng tạo cho trẻ em tích hợp công nghệ AI".</div>
                         </div>
 
-                        <h2>Dự án của Đội Yilu Shunfeng</h2>
-                        <p>Với <strong>DreamLink</strong>, nhóm đã kết hợp<strong> AI và công nghệ sóng não (brainwave)</strong> để tạo nên trải nghiệm lịch sử sống động – nơi người dùng có thể “nhìn thấy” và cảm nhận lịch sử bằng trí tưởng tượng của chính mình. Dự án mang lại một phương pháp giáo dục mới: trực quan, cảm xúc, nhân văn, hứa hẹn làm mới cách tiếp cận giáo dục và truyền thông văn hóa trong kỷ nguyên công nghệ.</p>
+                        <h2
+                        data-vi="Dự án của Đội Yilu Shunfeng"
+                        data-en="Team Yilu Shunfeng's project">
+                        Dự án của Đội Yilu Shunfeng</h2>
+                        <p
+                        data-vi="Với <strong>DreamLink</strong>, nhóm đã kết hợp<strong> AI và công nghệ sóng não (brainwave)</strong> để tạo nên trải nghiệm lịch sử sống động – nơi người dùng có thể 'nhìn thấy' và cảm nhận lịch sử bằng trí tưởng tượng của chính mình. Dự án mang lại một phương pháp giáo dục mới: trực quan, cảm xúc, nhân văn, hứa hẹn làm mới cách tiếp cận giáo dục và truyền thông văn hóa trong kỷ nguyên công nghệ." 
+                     data-en="With <strong>DreamLink</strong>, the group combined <strong>AI and brainwave technology</strong> to create an immersive historical experience – where users can 'see' and feel history through their own imagination. The project offers a new educational method: visual, emotional, and humane, promising to refresh educational approaches and cultural communication in the tech era.">
+                        Với <strong>DreamLink</strong>, nhóm đã kết hợp<strong> AI và công nghệ sóng não (brainwave)</strong> để tạo nên trải nghiệm lịch sử sống động – nơi người dùng có thể “nhìn thấy” và cảm nhận lịch sử bằng trí tưởng tượng của chính mình. Dự án mang lại một phương pháp giáo dục mới: trực quan, cảm xúc, nhân văn, hứa hẹn làm mới cách tiếp cận giáo dục và truyền thông văn hóa trong kỷ nguyên công nghệ.</p>
  
                         <div class="article-image">
                             <img src="Thanh Hoa 3.jpg" alt="Lễ trao giải">
-                            <div class="article-caption">Hình 3. Đội Yilu Shunfeng với dự án “DreamLink”.</div>
+                            <div class="article-caption"
+                            data-vi=" Hình 3. Đội Yilu Shunfeng với dự án “DreamLink”."
+                            data-en='Team yilu Shunfeng with the"DreamLink" project'>
+                            Hình 3. Đội Yilu Shunfeng với dự án “DreamLink”.</div>
                         </div>
 
-                        <h2>Từ UEH đến thế giới – Kiến tạo tương lai bền vững</h2>
-                        <p>Cả hai dự án đều được đánh giá cao về tính ứng dụng thực tiễn, giá trị xã hội và tiềm năng triển khai thực tế trong tương lai gần. Đây là minh chứng rõ ràng cho:</p>
+                        <h2
+                        data-vi="Từ UEH đến thế giới – Kiến tạo tương lai bền vững" 
+                        data-en="From UEH to the World – Creating a Sustainable Future">
+                        Từ UEH đến thế giới – Kiến tạo tương lai bền vững</h2>
+                        <p
+                        data-vi="Cả hai dự án đều được đánh giá cao về tính ứng dụng thực tiễn, giá trị xã hội và tiềm năng triển khai thực tế trong tương lai gần. Đây là minh chứng rõ ràng cho:" 
+                        data-en="Both projects were highly rated for their practical application, social value, and potential for real-world implementation in the near future. This is a clear testament to:">
+                        Cả hai dự án đều được đánh giá cao về tính ứng dụng thực tiễn, giá trị xã hội và tiềm năng triển khai thực tế trong tương lai gần. Đây là minh chứng rõ ràng cho:</p>
                         <ul class="ms-4 mb-4" style="font-size: 15px; color: #555; line-height: 1.8;">
-                            <li><strong>Năng lực học thuật và sáng tạo của sinh viên SMD.</strong></li>
-                            <li><strong>Tư duy đổi mới gắn với trách nhiệm cộng đồng.</strong></li>
-                            <li><strong>Khát vọng đóng góp vào sự phát triển nhân văn và bền vững.</strong> </li>
-                        </ul>                       
-                        <p>Được vinh danh tại một chương trình học thuật quốc tế danh giá như <strong>Tsinghua Summer Program</strong> là cột mốc quan trọng, đánh dấu sự hiện diện mạnh mẽ của UEH – SMD trên bản đồ giáo dục toàn cầu – nơi đào tạo ra những công dân toàn cầu biết sáng tạo, biết kết nối và sẵn sàng cống hiến.</p>
-                        <p>Một lần nữa, Khoa Thiết kế Truyền thông (SMD) chúc mừng <strong>Đội Bánh Mì</strong> và <strong>Đội Yilu Shunfeng</strong>. Chúc các bạn tiếp tục nuôi dưỡng tinh thần học hỏi, khám phá và lan tỏa những giá trị tốt đẹp mà các bạn đã góp phần kiến tạo trong hành trình này – vì một tương lai phát triển bền vững và đầy nhân văn! </p>
-                        <div class="article-footer mt-3 pt-3" style="border-top: 1px solid #eee; text-align: right; font-style: italic; color: #666; font-size: 14px;">
+        <li data-vi="<strong>Năng lực học thuật và sáng tạo của sinh viên SMD.</strong>" 
+            data-en="<strong>Academic and creative capacity of SMD students.</strong>">
+            <strong>Năng lực học thuật và sáng tạo của sinh viên SMD.</strong>
+        </li>
+        <li data-vi="<strong>Tư duy đổi mới gắn với trách nhiệm cộng đồng.</strong>" 
+            data-en="<strong>Innovative thinking linked to community responsibility.</strong>">
+            <strong>Tư duy đổi mới gắn với trách nhiệm cộng đồng.</strong>
+        </li>
+        <li data-vi="<strong>Khát vọng đóng góp vào sự phát triển nhân văn và bền vững.</strong>" 
+            data-en="<strong>The aspiration to contribute to humane and sustainable development.</strong>">
+            <strong>Khát vọng đóng góp vào sự phát triển nhân văn và bền vững.</strong>
+        </li>
+    </ul>                       
+                        <p
+                        data-vi="Được vinh danh tại một chương trình học thuật quốc tế danh giá như <strong>Tsinghua Summer Program</strong> là cột mốc quan trọng, đánh dấu sự hiện diện mạnh mẽ của UEH – SMD trên bản đồ giáo dục toàn cầu – nơi đào tạo ra những công dân toàn cầu biết sáng tạo, biết kết nối và sẵn sàng cống hiến." 
+                        data-en="Being honored at a prestigious international academic program like the <strong>Tsinghua Summer Program</strong> is a significant milestone, marking the strong presence of UEH – SMD on the global education map – a place that trains creative, connected, and dedicated global citizens.">
+                        Được vinh danh tại một chương trình học thuật quốc tế danh giá như <strong>Tsinghua Summer Program</strong> là cột mốc quan trọng, đánh dấu sự hiện diện mạnh mẽ của UEH – SMD trên bản đồ giáo dục toàn cầu – nơi đào tạo ra những công dân toàn cầu biết sáng tạo, biết kết nối và sẵn sàng cống hiến.</p>
+                        <p
+                        data-vi="Một lần nữa, Khoa Thiết kế Truyền thông (SMD) chúc mừng <strong>Đội Bánh Mì</strong> và <strong>Đội Yilu Shunfeng</strong>. Chúc các bạn tiếp tục nuôi dưỡng tinh thần học hỏi, khám phá và lan tỏa những giá trị tốt đẹp mà các bạn đã góp phần kiến tạo trong hành trình này – vì một tương lai phát triển bền vững và đầy nhân văn!" 
+                        data-en="Once again, the School of Media Design (SMD) congratulates <strong>Team Banh Mi</strong> and <strong>Team Yilu Shunfeng</strong>. May you continue to nurture the spirit of learning and discovery, and spread the beautiful values you have helped create – for a sustainable and humane future!">
+                        Một lần nữa, Khoa Thiết kế Truyền thông (SMD) chúc mừng <strong>Đội Bánh Mì</strong> và <strong>Đội Yilu Shunfeng</strong>. Chúc các bạn tiếp tục nuôi dưỡng tinh thần học hỏi, khám phá và lan tỏa những giá trị tốt đẹp mà các bạn đã góp phần kiến tạo trong hành trình này – vì một tương lai phát triển bền vững và đầy nhân văn! </p>
+                        <div class="article-footer mt-3 pt-3" style="border-top: 1px solid #eee; text-align: right; font-style: italic; color: #666; font-size: 14px;"
+                        data-vi="Tác giả: Nguyễn Trần Vân Anh, Khoa Thiết kế Truyền thông, UEH" 
+                         data-en="Author: Nguyen Tran Van Anh, School of Media Design, UEH">
                             Tác giả: Nguyễn Trần Vân Anh, Khoa Thiết kế Truyền thông, UEH
                         </div>
                     </div>
@@ -384,79 +521,113 @@
                         <div class="comment-title">Ý kiến (4)</div>
                         <p style="font-size:12px; color:#a1a1a1;">*Địa chỉ email của bạn sẽ không được công bố. Các trường bắt buộc được đánh dấu *</p>
                         
-                        <div class="comment-form">
-                            <div class="comment-box-wrapper">
-                                <textarea class="comment-box" placeholder="Chia sẻ ý kiến của bạn"></textarea>
-                                <i class="far fa-smile comment-emoji"></i>
-                            </div>
-                            <input type="text" class="comment-input" placeholder="Họ và tên *">
-                            <input type="email" class="comment-input" placeholder="Email *">
-                            <div class="d-flex align-items-center gap-2">
-                                <input type="checkbox" id="save-info">
-                                <label for="save-info" style="font-size:12px; color:#888; cursor: pointer;">
-                                    Lưu tên, email và trang web của tôi trong trình duyệt này cho lần bình luận tiếp theo.
-                                </label>
-                            </div>
-                            <button class="btn-comment">Đăng comment</button>
-                        </div>
-
-                        <div class="comment-list">
-                            <div class="comment-tabs">
-                                <a href="#" class="tab-item active">Tất cả</a>
-                                <a href="#" class="tab-item">Quan tâm nhất</a>
-                                <a href="#" class="tab-item">Mới nhất</a>
-                            </div>
-
-                            <div class="comment-item">
-                                <div class="comment-name">Vũ Thị Huệ</div>
-                                <div class="comment-text">Bài viết rất truyền cảm hứng! Thật tự hào khi sinh viên UEH – SMD có cơ hội học tập và tỏa sáng tại một chương trình quốc tế uy tín như vậy. Chúc các bạn tiếp tục phát triển những dự án sáng tạo vì cộng đồng.</div>
-                                <div class="comment-meta">
-                                    <div class="meta-item liked"><i class="fas fa-thumbs-up"></i> <span>7</span></div>
-                                    <div class="meta-item"><i class="fas fa-thumbs-down"></i> <span>0</span></div>
-                                    <span class="reply-btn">Trả lời</span>
-                                    <span class="comment-time">2h trước</span> 
-                                </div>
-                            </div>
-
-                            <div class="comment-item">
-                                <div class="comment-name">Nguyễn Ngọc Linh Chi</div>
-                                <div class="comment-text">Rất vui khi thấy sinh viên Việt Nam nói chung và UEH – SMD nói riêng được vinh danh tại một môi trường học thuật hàng đầu thế giới. Mong rằng sẽ có thêm nhiều hoạt động hợp tác quốc tế như thế này trong thời gian tới.</div>
-                                <div class="comment-meta">
-                                    <div class="meta-item liked"><i class="fas fa-thumbs-up"></i> <span>1</span></div>
-                                    <div class="meta-item"><i class="fas fa-thumbs-down"></i> <span>0</span></div>
-                                    <span class="reply-btn">Trả lời</span>
-                                    <span class="comment-time">1h trước</span> 
-                                </div>
-                            </div>
-
-                            <div class="comment-item">
-                                <div class="comment-name">Lê Thị Kim Yến</div>
-                                <div class="comment-text">DreamLink nghe rất thú vị, kiểu kết hợp công nghệ với trải nghiệm lịch sử theo cách mới. Hy vọng sau này có cơ hội được trải nghiệm thử.</div>
-                                <div class="comment-meta">
-                                    <div class="meta-item liked"><i class="fas fa-thumbs-up"></i> <span>2</span></div>
-                                    <div class="meta-item"><i class="fas fa-thumbs-down"></i> <span>0</span></div>
-                                    <span class="reply-btn">Trả lời</span>
-                                    <span class="comment-time">38' trước</span> 
-                                </div>
-                            </div>
-
-                            <div class="comment-item">
-                                <div class="comment-name">Dương Thị Quỳnh Trang</div>
-                                <div class="comment-text">Ý tưởng máy vẽ tích hợp AI cho trẻ em của đội Bánh Mì nghe rất hay. Nếu phát triển thành sản phẩm thật chắc sẽ giúp trẻ em vừa sáng tạo vừa giảm thời gian dùng màn hình.</div>
-                                <div class="comment-meta">
-                                    <div class="meta-item liked"><i class="fas fa-thumbs-up"></i> <span>1</span></div>
-                                    <div class="meta-item"><i class="fas fa-thumbs-down"></i> <span>0</span></div>
-                                    <span class="reply-btn">Trả lời</span>
-                                    <span class="comment-time">2' trước</span> 
-                                </div>
-                            </div>
-                        </div>
+                         <div class="comment-form">
+                   <div class="comment-box-wrapper">
+                        <textarea class="comment-box" 
+                        data-vi="Chia sẻ ý kiến của bạn" 
+                        data-en="Share your thoughts" 
+                        placeholder="Chia sẻ ý kiến của bạn"></textarea>
+                    <i class="far fa-smile comment-emoji"></i>
                     </div>
+    
+                 <input type="text" class="comment-input input-name"
+                     data-vi="Họ và tên *" 
+                    data-en="Full Name *" 
+                    placeholder="Họ và tên *">
+        
+                 <input type="email" class="comment-input input-email"
+                     data-vi="Email *" 
+                     data-en="Email *" 
+                     placeholder="Email *">
+        
+            <div class="d-flex align-items-center gap-2">
+                 <input type="checkbox" id="save-info">
+                 <label for="save-info" 
+                  data-vi="Lưu tên, email và trang web của tôi trong trình duyệt này cho lần bình luận tiếp theo." 
+                 data-en="Save my name, email, and website in this browser for the next time I comment."
+                 style="font-size:12px; color:#888; cursor: pointer;">
+                 Lưu tên, email và trang web của tôi trong trình duyệt này cho lần bình luận tiếp theo.
+                 </label>
+             </div>
+             <button class="btn-comment" 
+                 data-vi="Đăng comment" 
+                  data-en="Post Comment">Đăng comment</button>
+</div>
+                        <div class="comment-list">
+    <div class="comment-tabs">
+        <a href="#" class="tab-item active" data-vi="Tất cả" data-en="All">Tất cả</a>
+        <a href="#" class="tab-item" data-vi="Quan tâm nhất" data-en="Most Relevant">Quan tâm nhất</a>
+        <a href="#" class="tab-item" data-vi="Mới nhất" data-en="Newest">Mới nhất</a>
+    </div>
+
+    <div class="comment-item">
+        <div class="comment-name">Vũ Thị Huệ</div>
+        <div class="comment-text" 
+             data-vi="Bài viết rất truyền cảm hứng! Thật tự hào khi sinh viên UEH – SMD có cơ hội học tập và tỏa sáng tại một chương trình quốc tế uy tín như vậy. Chúc các bạn tiếp tục phát triển những dự án sáng tạo vì cộng đồng."
+             data-en="Such an inspiring article! So proud that UEH – SMD students have the opportunity to learn and shine in such a prestigious international program. Wishing you all continued success in developing creative projects for the community.">
+            Bài viết rất truyền cảm hứng! Thật tự hào khi sinh viên UEH – SMD có cơ hội học tập và tỏa sáng tại một chương trình quốc tế uy tín như vậy. Chúc các bạn tiếp tục phát triển những dự án sáng tạo vì cộng đồng.
+        </div>
+        <div class="comment-meta">
+            <div class="meta-item liked"><i class="fas fa-thumbs-up"></i> <span>7</span></div>
+            <div class="meta-item"><i class="fas fa-thumbs-down"></i> <span>0</span></div>
+            <span class="reply-btn" data-vi="Trả lời" data-en="Reply">Trả lời</span>
+            <span class="comment-time" data-vi="2h trước" data-en="2h ago">2h trước</span> 
+        </div>
+    </div>
+
+    <div class="comment-item">
+        <div class="comment-name">Nguyễn Ngọc Linh Chi</div>
+        <div class="comment-text"
+             data-vi="Rất vui khi thấy sinh viên Việt Nam nói chung và UEH – SMD nói riêng được vinh danh tại một môi trường học thuật hàng đầu thế giới. Mong rằng sẽ có thêm nhiều hoạt động hợp tác quốc tế như thế này trong thời gian tới."
+             data-en="So glad to see Vietnamese students in general and UEH – SMD in particular being honored in a world-leading academic environment. Hope to see more international cooperation activities like this in the future.">
+            Rất vui khi thấy sinh viên Việt Nam nói chung và UEH – SMD nói riêng được vinh danh tại một môi trường học thuật hàng đầu thế giới. Mong rằng sẽ có thêm nhiều hoạt động hợp tác quốc tế như thế này trong thời gian tới.
+        </div>
+        <div class="comment-meta">
+            <div class="meta-item liked"><i class="fas fa-thumbs-up"></i> <span>1</span></div>
+            <div class="meta-item"><i class="fas fa-thumbs-down"></i> <span>0</span></div>
+            <span class="reply-btn" data-vi="Trả lời" data-en="Reply">Trả lời</span>
+            <span class="comment-time" data-vi="1h trước" data-en="1h ago">1h trước</span> 
+        </div>
+    </div>
+
+    <div class="comment-item">
+        <div class="comment-name">Lê Thị Kim Yến</div>
+        <div class="comment-text"
+             data-vi="DreamLink nghe rất thú vị, kiểu kết hợp công nghệ với trải nghiệm lịch sử theo cách mới. Hy vọng sau này có cơ hội được trải nghiệm thử."
+             data-en="DreamLink sounds very interesting, a new way to combine technology with historical experiences. Hope to have a chance to try it out in the future.">
+            DreamLink nghe rất thú vị, kiểu kết hợp công nghệ với trải nghiệm lịch sử theo cách mới. Hy vọng sau này có cơ hội được trải nghiệm thử.
+        </div>
+        <div class="comment-meta">
+            <div class="meta-item liked"><i class="fas fa-thumbs-up"></i> <span>2</span></div>
+            <div class="meta-item"><i class="fas fa-thumbs-down"></i> <span>0</span></div>
+            <span class="reply-btn" data-vi="Trả lời" data-en="Reply">Trả lời</span>
+            <span class="comment-time" data-vi="38' trước" data-en="38m ago">38' trước</span> 
+        </div>
+    </div>
+
+    <div class="comment-item">
+        <div class="comment-name">Dương Thị Quỳnh Trang</div>
+        <div class="comment-text"
+             data-vi="Ý tưởng máy vẽ tích hợp AI cho trẻ em của đội Bánh Mì nghe rất hay. Nếu phát triển thành sản phẩm thật chắc sẽ giúp trẻ em vừa sáng tạo vừa giảm thời gian dùng màn hình."
+             data-en="Team Banh Mi's AI-integrated drawing machine idea sounds great. If developed into a real product, it will surely help children be creative while reducing screen time.">
+            Ý tưởng máy vẽ tích hợp AI cho trẻ em của đội Bánh Mì nghe rất hay. Nếu phát triển thành sản phẩm thật chắc sẽ giúp trẻ em vừa sáng tạo vừa giảm thời gian dùng màn hình.
+        </div>
+        <div class="comment-meta">
+            <div class="meta-item liked"><i class="fas fa-thumbs-up"></i> <span>1</span></div>
+            <div class="meta-item"><i class="fas fa-thumbs-down"></i> <span>0</span></div>
+            <span class="reply-btn" data-vi="Trả lời" data-en="Reply">Trả lời</span>
+            <span class="comment-time" data-vi="2' trước" data-en="2m ago">2' trước</span> 
+        </div>
+    </div>
+</div>
 
                     <section class="related-posts">
                         <div class="purple-divider"></div> 
                         <div class="related-header">
-                            <h3 class="related-title">Đọc bài viết tiếp theo</h3>
+                            <h3 class="related-title"
+                            data-vi="Đọc bài viết tiếp theo"
+                            data-en="Read the next article">
+                            Đọc bài viết tiếp theo</h3>
                             <div class="related-nav">
                                 <a href="#" class="nav-circle"><i class="fas fa-chevron-left"></i></a>
                                 <a href="#" class="nav-circle"><i class="fas fa-chevron-right"></i></a>
@@ -464,41 +635,82 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-4">
+                             <div class="col-md-4">
                                 <div class="news-card">
                                     <img src="4.png" class="news-img">
                                     <div class="news-content">
-                                        <span class="news-tag">Sự kiện</span>
-                                        <span class="news-date">25/01/2026</span>
-                                        <div class="news-title">HÀNH TRÌNH XÂY DỰNG NGHỆ THUẬT VÌ TƯƠNG LAI BỀN VỮNG</div>
-                                        <div class="news-desc">Nằm trong hoạt động chia sẻ và lan tỏa kiến thức học thuật thuộc chuỗi sự kiện ArtTech Fusion của Đại học Kinh tế TP. Hồ Chí Minh (UEH) ...</div>
-                                    </div>
+                                    <span class="news-tag" 
+                                       data-vi="Sự kiện" 
+                                       data-en="Event">
+                                       Sự kiện
+                                    </span>
+    
+                                <span class="news-date">25/01/2026</span>
+    
+                         <div class="news-title" 
+                             data-vi="HÀNH TRÌNH XÂY DỰNG NGHỆ THUẬT VÌ TƯƠNG LAI BỀN VỮNG" 
+                              data-en="BUILDING AN ARTISTIC JOURNEY FOR A SUSTAINABLE FUTURE">
+                               HÀNH TRÌNH XÂY DỰNG NGHỆ THUẬT VÌ TƯƠNG LAI BỀN VỮNG
+                         </div>
+    
+                         <div class="news-desc" 
+                             data-vi="Nằm trong hoạt động chia sẻ và lan tỏa kiến thức học thuật thuộc chuỗi sự kiện ArtTech Fusion của Đại học Kinh tế TP. Hồ Chí Minh (UEH) ..." 
+                              data-en="As part of the academic knowledge sharing and dissemination activities within the ArtTech Fusion event series of University of Economics Ho Chi Minh City (UEH) ...">
+                              Nằm trong hoạt động chia sẻ và lan tỏa kiến thức học thuật thuộc chuỗi sự kiện ArtTech Fusion của Đại học Kinh tế TP. Hồ Chí Minh (UEH) ...
+                        </div>
+                        </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <a href="single2.html" class="news-link">
-                                <div class="news-card">
-                                    <img src="1.jpg" class="news-img">
-                                    <div class="news-content">
-                                        <span class="news-tag">Giải thưởng</span>
-                                        <span class="news-date">11/03/2026</span>
-                                        <div class="news-title">Sinh viên Khoa Thiết kế Truyền thông – UEH vinh dự đạt Giải TVC Ấn tượng tại Green Marketing Challenge 2025</div>
-                                        <div class="news-desc">Với mục tiêu lan tỏa tinh thần sống xanh và thúc đẩy tư duy sáng tạo trong thế hệ trẻ, Green Marketing Challenge 2025 (GMC 2025) ...</div>
-                                    </div>
-                                </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="news-card">
-                                    <img src="3.jpeg" class="news-img">
-                                    <div class="news-content">
-                                        <span class="news-tag">Sự kiện</span>
-                                        <span class="news-date">27/01/2026</span>
-                                        <div class="news-title">Arttech Fusion 2025 (ATF25): Đồng sáng tạo vì tương lai bền vững</div>
-                                        <div class="news-desc">Đại học Kinh tế TP. Hồ Chí Minh (UEH) đã tổ chức thành công chuỗi hoạt động quốc tế ArtTech Fusion 2025 (ATF25) với chủ đề “Co-creation for a Wondrous Future” ...</div>
-                                    </div>
-                                </div>
-                            </div>
+                         <div class="col-md-4">
+    <a href="single2.html" class="news-link">
+        <div class="news-card">
+            <img src="1.jpg" class="news-img">
+            <div class="news-content">
+                <span class="news-tag" 
+                      data-vi="Giải thưởng" 
+                      data-en="Awards">
+                      Giải thưởng
+                </span>
+                <span class="news-date">11/03/2026</span>
+                
+                <div class="news-title" 
+                     data-vi="Sinh viên Khoa Thiết kế Truyền thông – UEH vinh dự đạt Giải TVC Ấn tượng tại Green Marketing Challenge 2025" 
+                     data-en="UEH School of Media Design Students Honored with Impressive TVC Award at Green Marketing Challenge 2025">
+                     Sinh viên Khoa Thiết kế Truyền thông – UEH vinh dự đạt Giải TVC Ấn tượng tại Green Marketing Challenge 2025
+                </div>
+                
+                <div class="news-desc" 
+                     data-vi="Với mục tiêu lan tỏa tinh thần sống xanh và thúc đẩy tư duy sáng tạo trong thế hệ trẻ, Green Marketing Challenge 2025 (GMC 2025) ..." 
+                     data-en="With the goal of spreading a green lifestyle and promoting creative thinking among the younger generation, Green Marketing Challenge 2025 (GMC 2025) ...">
+                     Với mục tiêu lan tỏa tinh thần sống xanh và thúc đẩy tư duy sáng tạo trong thế hệ trẻ, Green Marketing Challenge 2025 (GMC 2025) ...
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+                             <div class="col-md-4">
+                 <div class="news-card">
+                 <img src="3.jpeg" class="news-img">
+                 <div class="news-content">
+                    <span class="news-tag" 
+                     data-vi="Sự kiện" 
+                     data-en="Events">
+                     Sự kiện
+                     </span>
+                    <span class="news-date">27/01/2026</span>
+              <div class="news-title" 
+                     data-vi="Arttech Fusion 2025 (ATF25): Đồng sáng tạo vì tương lai bền vững" 
+                     data-en="Arttech Fusion 2025 (ATF25): Co-creation for a Wondrous Future">
+                      Arttech Fusion 2025 (ATF25): Đồng sáng tạo vì tương lai bền vững
+              </div>
+                         <div class="news-desc" 
+                           data-vi="Đại học Kinh tế TP. Hồ Chí Minh (UEH) đã tổ chức thành công chuỗi hoạt động quốc tế ArtTech Fusion 2025 (ATF25) với chủ đề “Co-creation for a Wondrous Future” ..." 
+                           data-en="University of Economics Ho Chi Minh City (UEH) successfully organized the international event series ArtTech Fusion 2025 (ATF25) with the theme 'Co-creation for a Wondrous Future' ...">
+                           Đại học Kinh tế TP. Hồ Chí Minh (UEH) đã tổ chức thành công chuỗi hoạt động quốc tế ArtTech Fusion 2025 (ATF25) với chủ đề “Co-creation for a Wondrous Future” ...
+                          </div>
+                       </div>
+                    </div>
+                    </div>
                         </div>
                     </section>
                 </div> 
@@ -506,62 +718,233 @@
         </section>
     </main>
 
-    <footer class="footer-smd">
-        <div class="container">
-            <div class="footer-content-wrapper">
-                <div class="footer-col brand-info">
-                    <h2 class="footer-tagline">BẮT ĐẦU TƯƠNG LAI</h2>
-                    <p class="footer-subtitle">Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông</p>
-                    <div class="footer-logos">
-                        <img src="smdwhite.png" alt="SMD Logo white" />
-                        <img src="uehwhite.png" alt="UEH Logo white" />
-                    </div>
-                    <div class="contact-details">
-                        <p>279 Nguyễn Tri Phương, P. Diên Hồng, Q.10, TP.HCM</p>
-                        <p>ĐT: +84 283 8295 299 | Email: smd@ueh.edu.vn</p>
-                    </div>
+     
+      <footer class="footer-smd">
+    <div class="container">
+        <div class="footer-content-wrapper">
+            <div class="footer-col brand-info">
+                <h2 class="footer-tagline"
+                data-vi="BẮT ĐẦU TƯƠNG LAI"
+                data-en="START THE FUTURE">
+                BẮT ĐẦU TƯƠNG LAI</h2>
+                <p class="footer-subtitle"
+                data-en="University of Economics Ho Chi Minh City - School of Media Design"
+                data-vi="Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông">
+                Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông</p>
+                <div class="footer-logos">
+                    <img src="smdwhite.png" alt="SMD Logo white">
+                    <img src="uehwhite.png" alt="UEH Logo white">
                 </div>
-
-                <div class="footer-col links-grid">
-                    <div class="link-group">
-                        <h5>Useful Link</h5>
-                        <ul>
-                            <li><a href="#">Tuyển sinh UEH</a></li>
-                            <li><a href="#">UEH Future</a></li>
-                            <li><a href="#">Quy chế công khai</a></li>
-                            <li><a href="#">UEH Virtual Tour</a></li>
-                        </ul>
-                    </div>
-                    <div class="link-group extra-links">
-                        <ul>
-                            <li><a href="#">UEH Global</a></li>
-                            <li><a href="#">UEH E-learning</a></li>
-                            <li><a href="#">Cơ hội nghề nghiệp</a></li>
-                            <li><a href="#">Hệ thống nhận diện</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="footer-col action-social">
-                    <a href="#" class="btn-reg"> ĐĂNG KÝ NGAY <i class="fas fa-graduation-cap"></i> </a>
-                    <div class="social-box">
-                        <p>Our social</p>
-                        <div class="social-icons">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-facebook"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
+                <div class="contact-details">
+                    <p>279 Nguyễn Tri Phương, P. Diên Hồng, Q.10, TP.HCM</p>
+                    <p>ĐT: +84 283 8295 299 | Email: smd@ueh.edu.vn</p>
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <p>Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.</p>
+            <div class="footer-col links-grid">
+                <div class="link-group">
+                    <h5>Useful Link</h5>
+                    <ul>
+                        <li><a href="#"
+                            data-en="UEH Admissions"
+                            data-vi="Tuyển sinh UEH">
+                            Tuyển sinh UEH</a></li>
+                        <li><a href="#">UEH Future</a></li>
+                        <li><a href="#"
+                            data-vi="Quy chế công khai"
+                            data-en="Public Regulations">
+                        Quy chế công khai</a></li>
+                        <li><a href="#">UEH Virtual Tour</a></li>
+                    </ul>
+                </div>
+                <div class="link-group extra-links">
+                    <ul>
+                        <li><a href="#">UEH Global</a></li>
+                        <li><a href="#">UEH E-learning</a></li>
+                        <li><a href="#"
+                            data-en="Career Opportunities"
+                            data-vi="Cơ hội nghề nghiệp">
+                        Cơ hội nghề nghiệp</a></li>
+                        <li><a href="#"
+                            data-en="Identity System"
+                            data-vi=" Hệ thống nhận diện">
+                        Hệ thống nhận diện</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-col action-social">
+                <a href="#" class="btn-reg"
+                data-vi="ĐĂNG KÝ NGAY"
+                data-en="REGISTER NOW">
+                    ĐĂNG KÝ NGAY <i class="fas fa-graduation-cap"></i>
+                </a>
+                <div class="social-box">
+                    <p>Our social</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
-    </footer>
+        
+        <div class="footer-bottom">
+            <p
+            data-en="Copyright © 2022. University of Economics Ho Chi Minh City. Developed by SMD."
+            data-vi="Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.">
+            Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.</p>
+        </div>
+    </div>
+</footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+     <button id="backToTop" title="Lên đầu trang">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+    // 1. Khởi tạo hiệu ứng cuộn (AOS)
+    AOS.init({
+        duration: 800,
+        once: true
+    });
+
+    // 2. Xử lý nút Back to Top
+    const backToTopBtn = document.getElementById("backToTop");
+    window.onscroll = function() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            backToTopBtn.style.display = "block";
+        } else {
+            backToTopBtn.style.display = "none";
+        }
+    };
+    backToTopBtn.onclick = function() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+
+    // 3. LOGIC CHUYỂN NGÔN NGỮ (FIX Ở ĐÂY)
+  const langSwitches = document.querySelectorAll('.lang-switch');
+
+langSwitches.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // 1. Đổi màu nút (VN/EN)
+        langSwitches.forEach(s => s.classList.remove('lang-active'));
+        this.classList.add('lang-active');
+        
+        const lang = this.innerText.trim().toLowerCase(); // 'vn' hoặc 'en'
+        const attr = (lang === 'en') ? 'data-en' : 'data-vi';
+
+        // 2. Tìm tất cả các thẻ có chứa thuộc tính chuyển ngữ tương ứng
+        const elements = document.querySelectorAll(`[data-vi], [data-en]`);
+        
+        elements.forEach(el => {
+            const translation = (lang === 'en') ? el.getAttribute('data-en') : el.getAttribute('data-vi');
+            
+            if (translation) {
+                
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.setAttribute('placeholder', translation);
+                } else {
+                    el.innerHTML = translation;
+                }
+            }
+        });
+    });
+});
+
+// 3. Tự động load ngôn ngữ đã chọn khi mở web
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('preferredLang');
+    if (savedLang) {
+        const targetBtn = Array.from(langSwitches).find(b => b.innerText.trim().toLowerCase() === savedLang);
+        if (targetBtn) {
+            targetBtn.click();
+        }
+    }
+});
+   
+   document.addEventListener('DOMContentLoaded', function () {
+
+    const commentBtn = document.querySelector('.btn-comment');
+    const contentInput = document.querySelector('.comment-box');
+    const nameInput = document.querySelector('.input-name'); 
+    const emailInput = document.querySelector('.input-email'); 
+    
+    let resultDisplay = document.getElementById('result');
+    if (!resultDisplay && commentBtn) {
+        resultDisplay = document.createElement('div');
+        resultDisplay.id = 'result';
+        resultDisplay.style.margin = '10px 0';
+        resultDisplay.style.fontWeight = '600';
+        commentBtn.parentNode.insertBefore(resultDisplay, commentBtn);
+    }
+
+    const regexEmail = /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+    if (commentBtn) {
+        commentBtn.addEventListener('click', function (e) {
+            e.preventDefault(); 
+
+
+            if (!contentInput || !nameInput || !emailInput) {
+                console.error("Lỗi: Không tìm thấy ô nhập liệu! Hãy chắc chắn bạn đã thêm class 'input-name' và 'input-email' vào HTML.");
+                return;
+            }
+
+            const nameValue = nameInput.value.trim();
+            const emailValue = emailInput.value.trim();
+            const contentValue = contentInput.value.trim();
+
+            if (contentValue === "") {
+                resultDisplay.innerHTML = "⚠️ Vui lòng nhập nội dung ý kiến!";
+                resultDisplay.style.color = "red";
+            } 
+            else if (nameValue === "") {
+                resultDisplay.innerHTML = "⚠️ Họ tên không được để trống!";
+                resultDisplay.style.color = "red";
+            } 
+            else if (emailValue === "") {
+                resultDisplay.innerHTML = "⚠️ Email không được để trống!";
+                resultDisplay.style.color = "red";
+            } 
+            else if (!regexEmail.test(emailValue)) {
+                resultDisplay.innerHTML = "⚠️ Định dạng email không hợp lệ!";
+                resultDisplay.style.color = "red";
+            } 
+            else {
+                resultDisplay.innerHTML = "✅ Thành công! Cảm ơn bạn đã bình luận.";
+                resultDisplay.style.color = "green";
+
+                contentInput.value = "";
+                nameInput.value = "";
+                emailInput.value = "";
+                
+                setTimeout(() => { resultDisplay.innerHTML = ""; }, 5000);
+            }
+        });
+    }
+
+
+    const btnBack = document.getElementById("backToTop");
+    if (btnBack) {
+        window.addEventListener('scroll', () => {
+            btnBack.style.display = window.scrollY > 300 ? "block" : "none";
+        });
+        btnBack.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+});
+</script>
+
 </body>
+
 </html>
