@@ -57,46 +57,22 @@
         .lang-switch { color: var(--text-dark); font-weight: 700; font-size: 13px; }
         .lang-switch.lang-active { color: var(--smd-red) !important; }
 
-           /* Ô nhập liệu */
-/* Thẻ bao ngoài để định vị */
-.search-box {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
+        .search-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .search-box input {
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 5px 15px 5px 35px;
+            font-size: 13px;
+            width: 130px;
+            transition: width 0.3s;
+        }
+        .search-box input:focus { width: 180px; outline: none; border-color: var(--smd-purple); }
+        .search-box i { position: absolute; left: 12px; color: #888; font-size: 14px; }
 
-/* Icon kính lúp - Đặt nằm ĐÈ lên trên input */
-.search-box i {
-    position: absolute;
-    left: 12px;           /* Cách mép trái ô input 12px */
-    top: 50%;
-    transform: translateY(-50%); /* Căn giữa theo chiều dọc */
-    color: #888;
-    font-size: 13px;
-    pointer-events: none; /* Để khi click vào icon vẫn ăn vào ô input */
-    z-index: 5;
-}
-
-/* Ô nhập liệu (Input) */
-.search-box input {
-    border: 1px solid #ddd !important;
-    border-radius: 20px !important;    /* Bo tròn hoàn toàn */
-    padding: 6px 15px 6px 35px !important; /* Padding-left là 35px để nhường chỗ cho icon */
-    font-size: 13px;
-    width: 150px;           /* Độ rộng mặc định */
-    height: 34px;
-    outline: none;
-    transition: all 0.3s ease;
-    background-color: #f9f9f9;
-}
-
-/* Hiệu ứng khi bấm vào ô tìm kiếm */
-.search-box input:focus {
-    width: 200px;           /* Dài ra một chút khi gõ */
-    background-color: #fff;
-    border-color: var(--smd-purple) !important;
-    box-shadow: 0 0 5px rgba(142, 68, 173, 0.2);
-}
         /* --- 2. HERO BANNER --- */
         .hero-banner {
             width: 100%;
@@ -179,7 +155,6 @@
 
         .object-fit-cover { object-fit: cover; }
 
-        /* Tinh chỉnh Caption */
         .carousel-caption {
             bottom: 8%;
             padding: 0;
@@ -245,7 +220,6 @@
     align-items: start;
 }
 
-/* Tinh chỉnh size chữ Tiêu đề */
 .footer-tagline { 
     font-size: 1.5rem;
     font-weight: 800; 
@@ -268,7 +242,6 @@
 }
 .contact-details p { margin-bottom: 2px; }
 
-/* Tinh chỉnh Links */
 .link-group {
     padding-left: 50px;
 }
@@ -288,7 +261,6 @@
     
 }
 
-/* Cột Action & Social */
 .action-social { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
 
 .btn-reg {
@@ -359,7 +331,7 @@ html {
         <nav class="navbar navbar-expand-lg sticky-top">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img class="logo" src="logosmd.png" alt="SMD Logo" />
+                    <img class="logo" src="../image/logosmd.png" alt="SMD Logo" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
                     <span class="navbar-toggler-icon"></span>
@@ -374,15 +346,12 @@ html {
                         <li class="nav-item"><a class="nav-link" href="media.html">Media <i class="fas fa-chevron-down"></i></a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Gallery <i class="fas fa-chevron-down"></i></a></li>
                     </ul>
-                     <div class="nav-tools">
-                      <div class="search-box">
-                        <i class="fas fa-search"></i>
-                           <input type="text" 
-                            data-vi="Tìm kiếm..." 
-                            data-en="Search..." 
-                            placeholder="Tìm kiếm..." />
+
+                    <div class="nav-tools">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Tìm kiếm..." />
                         </div>
-                      </div>
                         <div class="lang-selector">
                             <a href="#" class="lang-switch lang-active text-decoration-none">VN</a>
                             <span class="mx-1 text-muted">|</span>
@@ -396,7 +365,7 @@ html {
 
     <main>
         <section class="hero-banner">
-            <img src="banner.jpg" alt="Banner">
+            <img src="../image/banner.jpg" alt="Banner">
         </section>
 
              <section class="feature-section">
@@ -457,10 +426,10 @@ html {
    data-en="SMD aims to be a leading training unit in design and creative communication.">
    SMD hướng đến đơn vị đào tạo hàng đầu...
 </p>
-                        <img src="students.jpg" alt="Students" class="img-rounded shadow-sm">
+                        <img src="../image/students.jpg" alt="Students" class="img-rounded shadow-sm">
                     </div>
                     <div class="col-lg-6">
-                        <img src="ceremony.jpg" alt="Ceremony" class="img-rounded shadow-sm mb-4">
+                        <img src="../image/ceremony.jpg" alt="Ceremony" class="img-rounded shadow-sm mb-4">
                         <div class="row">
                             <div class="col-6">
                                 <div class="stat-box">
@@ -510,7 +479,7 @@ html {
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="ratio ratio-16x9">
-                                <img src="mediaverse.jpg" class="d-block w-100 object-fit-cover" alt="Mediaverse">
+                                <img src="../image/mediaverse.jpg" class="d-block w-100 object-fit-cover" alt="Mediaverse">
                             </div>
                             <div class="carousel-caption">
                                 <a href="#" class="btn-news-link"
@@ -522,7 +491,7 @@ html {
                         </div>
                         <div class="carousel-item">
                             <div class="ratio ratio-16x9">
-                                <img src="artech.jpeg" class="d-block w-100 object-fit-cover" alt="ArtTech">
+                                <img src="../image/artech.jpeg" class="d-block w-100 object-fit-cover" alt="ArtTech">
                             </div>
                             <div class="carousel-caption">
                                 <a href="#" class="btn-news-link"
@@ -534,7 +503,7 @@ html {
                         </div>
                         <div class="carousel-item">
                             <div class="ratio ratio-16x9">
-                                <img src="lomar.jpg" class="d-block w-100 object-fit-cover" alt="Lomar">
+                                <img src="../image/lomar.jpg" class="d-block w-100 object-fit-cover" alt="Lomar">
                             </div>
                             <div class="carousel-caption">
                                 <a href="#" class="btn-news-link"
@@ -546,7 +515,7 @@ html {
                         </div>
                         <div class="carousel-item">
                             <div class="ratio ratio-16x9">
-                                <img src="chula.jpg" class="d-block w-100 object-fit-cover" alt="Workshop">
+                                <img src="../image/chula.jpg" class="d-block w-100 object-fit-cover" alt="Workshop">
                             </div>
                             <div class="carousel-caption">
                                 <a href="#" class="btn-news-link"
@@ -583,8 +552,8 @@ html {
                 Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông
             </p>
                 <div class="footer-logos">
-                    <img src="smdwhite.png" alt="SMD Logo white">
-                    <img src="uehwhite.png" alt="UEH Logo white">
+                    <img src="../image/smdwhite.png" alt="SMD Logo white">
+                    <img src="../image/uehwhite.png" alt="UEH Logo white">
                 </div>
                 <div class="contact-details">
                     <p>279 Nguyễn Tri Phương, P. Diên Hồng, Q.10, TP.HCM</p>
@@ -684,45 +653,40 @@ backToTopBtn.onclick = function() {
 };
 
 // 3. LOGIC CHUYỂN NGÔN NGỮ (FIX Ở ĐÂY)
- const langSwitches = document.querySelectorAll('.lang-switch');
+const langSwitches = document.querySelectorAll('.lang-switch');
 
 langSwitches.forEach(btn => {
     btn.addEventListener('click', function(e) {
         e.preventDefault();
         
-        // 1. Đổi màu nút (VN/EN)
+        // Đổi màu nút (VN/EN)
         langSwitches.forEach(s => s.classList.remove('lang-active'));
         this.classList.add('lang-active');
         
         const lang = this.innerText.trim().toLowerCase(); // 'vn' hoặc 'en'
-        const attr = (lang === 'en') ? 'data-en' : 'data-vi';
 
-        // 2. Tìm tất cả các thẻ có chứa thuộc tính chuyển ngữ tương ứng
-        const elements = document.querySelectorAll(`[data-vi], [data-en]`);
+        // Tìm tất cả các thẻ có chứa data-vi hoặc data-en
+        const elements = document.querySelectorAll('[data-vi]');
         
         elements.forEach(el => {
-            const translation = (lang === 'en') ? el.getAttribute('data-en') : el.getAttribute('data-vi');
+            // Lưu lại icon nếu có (để tránh bị mất icon sau khi đổi chữ)
+            const icon = el.querySelector('i');
+            const text = (lang === 'en') ? el.getAttribute('data-en') : el.getAttribute('data-vi');
             
-            if (translation) {
-                
-                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                    el.setAttribute('placeholder', translation);
-                } else {
-                    el.innerHTML = translation;
-                }
-            }
+            el.innerText = text;
+            if (icon) el.appendChild(icon); // Dán lại icon vào sau chữ
         });
+        
+        localStorage.setItem('preferredLang', lang);
     });
 });
 
-// 3. Tự động load ngôn ngữ đã chọn khi mở web
+// Tự động load ngôn ngữ đã chọn khi mở web
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLang');
     if (savedLang) {
         const targetBtn = Array.from(langSwitches).find(b => b.innerText.trim().toLowerCase() === savedLang);
-        if (targetBtn) {
-            targetBtn.click();
-        }
+        if (targetBtn) targetBtn.click();
     }
 });
 </script>
