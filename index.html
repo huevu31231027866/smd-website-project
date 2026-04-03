@@ -26,18 +26,12 @@
             background-color: #fff;
         }
 
-        /* --- 1. NAVBAR --- */
+        /* --- Navbar & Tools --- */
         .navbar {
             min-height: 80px;
             background: #ffffff;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); 
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
             z-index: 1000;
-            
-            position: fixed;   
-             top: 0;            
-             left: 0;
-             width: 100%;
-
         }
         .logo { height: 50px; }
         .nav-link {
@@ -63,22 +57,46 @@
         .lang-switch { color: var(--text-dark); font-weight: 700; font-size: 13px; }
         .lang-switch.lang-active { color: var(--smd-red) !important; }
 
-        .search-box {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-        .search-box input {
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            padding: 5px 15px 5px 35px;
-            font-size: 13px;
-            width: 130px;
-            transition: width 0.3s;
-        }
-        .search-box input:focus { width: 180px; outline: none; border-color: var(--smd-purple); }
-        .search-box i { position: absolute; left: 12px; color: #888; font-size: 14px; }
+           /* Ô nhập liệu */
+/* Thẻ bao ngoài để định vị */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 
+/* Icon kính lúp - Đặt nằm ĐÈ lên trên input */
+.search-box i {
+    position: absolute;
+    left: 12px;           /* Cách mép trái ô input 12px */
+    top: 50%;
+    transform: translateY(-50%); /* Căn giữa theo chiều dọc */
+    color: #888;
+    font-size: 13px;
+    pointer-events: none; /* Để khi click vào icon vẫn ăn vào ô input */
+    z-index: 5;
+}
+
+/* Ô nhập liệu (Input) */
+.search-box input {
+    border: 1px solid #ddd !important;
+    border-radius: 20px !important;    /* Bo tròn hoàn toàn */
+    padding: 6px 15px 6px 35px !important; /* Padding-left là 35px để nhường chỗ cho icon */
+    font-size: 13px;
+    width: 150px;           /* Độ rộng mặc định */
+    height: 34px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+/* Hiệu ứng khi bấm vào ô tìm kiếm */
+.search-box input:focus {
+    width: 200px;           /* Dài ra một chút khi gõ */
+    background-color: #fff;
+    border-color: var(--smd-purple) !important;
+    box-shadow: 0 0 5px rgba(142, 68, 173, 0.2);
+}
         /* --- 2. HERO BANNER --- */
         .hero-banner {
             width: 100%;
@@ -163,7 +181,7 @@
 
         /* Tinh chỉnh Caption */
         .carousel-caption {
-            bottom: 8%; /* Dịch lên một chút */
+            bottom: 8%;
             padding: 0;
             left: 10%;
             right: 10%;
@@ -178,7 +196,7 @@
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            /* Tự động thu nhỏ font chữ */
+
             font-size: clamp(12px, 1.2vw, 16px);
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -213,7 +231,7 @@
 .footer-smd {
     background-color: var(--smd-purple);
     color: white;
-    padding: 25px 0 15px 0; /* Giảm padding tối đa */
+    padding: 25px 0 15px 0; 
     min-height: 200px; 
     display: flex;
     flex-direction: column;
@@ -229,13 +247,13 @@
 
 /* Tinh chỉnh size chữ Tiêu đề */
 .footer-tagline { 
-    font-size: 1.5rem; /* Giảm từ 1.8rem */
+    font-size: 1.5rem;
     font-weight: 800; 
     margin: 0; 
     line-height: 1.1;
 }
 .footer-subtitle { 
-    font-size: 0.75rem; /* Giảm size font */
+    font-size: 0.75rem;
     
     margin-bottom: 10px; 
 }
@@ -244,7 +262,7 @@
 .footer-logos img { height: 35px; width: auto; }
 
 .contact-details { 
-    font-size: 12px; /* Font cực nhỏ để tiết kiệm diện tích */
+    font-size: 12px; 
     
     line-height: 1.4; 
 }
@@ -266,7 +284,7 @@
 .link-group ul li a { 
     color: white; 
     text-decoration: none; 
-    font-size: 12px; /* Giảm size font */
+    font-size: 12px; 
     
 }
 
@@ -304,38 +322,67 @@
 @media (max-width: 576px) {
     .footer-content-wrapper { grid-template-columns: 1fr; text-align: center; }
     .footer-logos, .social-icons { justify-content: center; }
-    .links-grid { display: none; } /* Ẩn bớt link phụ trên mobile cực nhỏ để tránh rối */
+    .links-grid { display: none; } 
     .action-social { grid-column: span 1; }
+}
+/* --- BACK TO TOP BUTTON --- */
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background-color: var(--smd-purple);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none; 
+    z-index: 1001;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+#backToTop:hover {
+    transform: translateY(-5px);
+    background-color: #732d91;
+}
+
+
+html {
+    scroll-behavior: smooth;
 }
     </style>
 </head>
 <body>
-
     <header>
         <nav class="navbar navbar-expand-lg sticky-top">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img class="logo" src="logosmd.png" alt="SMD Logo">
+                    <img class="logo" src="logosmd.png" alt="SMD Logo" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="mainNav">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item"><a class="nav-link active" href="index.html">Trang chủ <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="gioithieu.html">Giới thiệu <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Đào tạo <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Nghiên cứu <i class="fas fa-chevron-down"></i></a></li>
+                      <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link active" href="index.html" data-vi="Trang chủ" data-en="Home" >Trang chủ <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="gioithieu.html" data-vi="Giới thiệu" data-en="About">Giới thiệu <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" data-vi="Đào tạo" data-en="Education">Đào tạo <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"data-vi="Nghiên cứu" data-en="Research">Nghiên cứu <i class="fas fa-chevron-down"></i></a></li>
                         <li class="nav-item"><a class="nav-link" href="media.html">Media <i class="fas fa-chevron-down"></i></a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Gallery <i class="fas fa-chevron-down"></i></a></li>
                     </ul>
-
-                    <div class="nav-tools">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" placeholder="Tìm kiếm...">
+                     <div class="nav-tools">
+                      <div class="search-box">
+                        <i class="fas fa-search"></i>
+                           <input type="text" 
+                            data-vi="Tìm kiếm..." 
+                            data-en="Search..." 
+                            placeholder="Tìm kiếm..." />
                         </div>
+                      </div>
                         <div class="lang-selector">
                             <a href="#" class="lang-switch lang-active text-decoration-none">VN</a>
                             <span class="mx-1 text-muted">|</span>
@@ -352,15 +399,18 @@
             <img src="banner.jpg" alt="Banner">
         </section>
 
-        <section class="feature-section">
+             <section class="feature-section">
             <div class="container">
                 <div class="row g-4"> 
                     <div class="col-lg-4 col-md-6">
                         <div class="feature-card" tabindex="0">
                             <div class="icon-box"><i class="fa-solid fa-user-group"></i></div>
                             <div class="content-box">
-                                <h3>Chương trình đào tạo</h3>
-                                <p>Đào tạo sinh viên trở thành nhà quản lý thiết kế và sản xuất truyền thông số trong bối cảnh hội nhập toàn cầu.</p>
+                                <h3 data-vi="Chương trình đào tạo" data-en="Academic Programs">Chương trình đào tạo</h3>
+                                <p data-vi="Đào tạo sinh viên trở thành nhà quản lý thiết kế và sản xuất truyền thông số trong bối cảnh hội nhập toàn cầu." 
+                                   data-en="Training students to become design and media production managers in the context of global integration.">
+                                   Đào tạo sinh viên trở thành nhà quản lý thiết kế và sản xuất truyền thông số trong bối cảnh hội nhập toàn cầu.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -368,8 +418,11 @@
                         <div class="feature-card" tabindex="0">
                             <div class="icon-box"><i class="fa-solid fa-hotel"></i></div>
                             <div class="content-box">
-                                <h3>Không gian học tập</h3>
-                                <p>Môi trường hiện đại, đầy đủ tiện nghi, hỗ trợ sinh viên phát triển ý tưởng và thực hiện dự án thực tế.</p>
+                                <h3 data-vi="Không gian học tập" data-en="Learning space">Không gian học tập</h3>
+                                <p data-vi="Môi trường hiện đại, đầy đủ tiện nghi, hỗ trợ sinh viên phát triển ý tưởng và thực hiện dự án thực tế." 
+                                   data-en="Modern environment, fully equipped, supporting students to develop ideas and implement real projects.">
+                                    Môi trường hiện đại, đầy đủ tiện nghi, hỗ trợ sinh viên phát triển ý tưởng và thực hiện dự án thực tế.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -377,8 +430,11 @@
                         <div class="feature-card" tabindex="0">
                             <div class="icon-box"><i class="fa-solid fa-graduation-cap"></i></div>
                             <div class="content-box">
-                                <h3>Cơ hội việc làm</h3>
-                                <p>Làm việc tại các agency, doanh nghiệp truyền thông hoặc tự khởi nghiệp trong lĩnh vực nội dung số.</p>
+                                <h3 data-vi="Cơ hội việc làm" data-en="Career Opportunities">Cơ hội việc làm</h3>
+                                <p data-vi="Làm việc tại các agency, doanh nghiệp truyền thông hoặc tự khởi nghiệp trong lĩnh vực nội dung số." 
+                                   data-en="Working at agencies, media enterprises, or starting your own business in the digital content field.">
+                                    Làm việc tại các agency, doanh nghiệp truyền thông hoặc tự khởi nghiệp trong lĩnh vực nội dung số.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -391,8 +447,16 @@
                 <div class="row align-items-center g-5">
                     <div class="col-lg-6">
                         <div class="badge-since">Since 2022</div>
-                        <h2 class="info-title">Cơ hội đúng lúc có thể biến ước mơ thành tiềm năng vô hạn.</h2>
-                        <p class="info-text">SMD hướng đến đơn vị đào tạo hàng đầu về thiết kế và truyền thông sáng tạo.</p>
+                       <h2 class="info-title" 
+    data-vi="Cơ hội đúng lúc có thể biến ước mơ thành tiềm năng vô hạn." 
+    data-en="The right opportunity can turn dreams into infinite potential.">
+    Cơ hội đúng lúc có thể biến ước mơ thành tiềm năng vô hạn.
+</h2>
+<p class="info-text" 
+   data-vi="SMD hướng đến đơn vị đào tạo hàng đầu về thiết kế và truyền thông sáng tạo." 
+   data-en="SMD aims to be a leading training unit in design and creative communication.">
+   SMD hướng đến đơn vị đào tạo hàng đầu...
+</p>
                         <img src="students.jpg" alt="Students" class="img-rounded shadow-sm">
                     </div>
                     <div class="col-lg-6">
@@ -402,14 +466,22 @@
                                 <div class="stat-box">
                                     <span class="stat-number">21</span>
                                     <div class="stat-divider"></div>
-                                    <div class="stat-label">Đối tác quốc tế</div>
+                                    <div class="stat-label" 
+                                    data-vi="Đối tác quốc tế" 
+                                    data-en="International Partners">
+                                    Đối tác quốc tế
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="stat-box">
                                     <span class="stat-number">100%</span>
                                     <div class="stat-divider"></div>
-                                    <div class="stat-label">Giảng viên quốc tế</div>
+                                    <div class="stat-label"
+                                    data-vi="Giảng viên quốc tế"
+                                    data-en="International Lecturers">
+                                    Giảng viên quốc tế
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -421,9 +493,12 @@
         <section class="news-section py-5">
             <div class="container text-center">
                 <div class="news-header-box mb-5">
-                    <i class="fa-solid fa-newspaper me-2"></i> TIN TỨC MỚI NHẤT
+                <i class="fa-solid fa-newspaper me-2"></i> 
+                    <span data-vi="TIN TỨC MỚI NHẤT" 
+                    data-en="LATEST NEWS">
+                    TIN TỨC MỚI NHẤT
+                     </span>
                 </div>
-                
                 <div id="newsCarousel" class="carousel slide shadow-lg img-rounded overflow-hidden" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="0" class="active"></button>
@@ -438,7 +513,11 @@
                                 <img src="mediaverse.jpg" class="d-block w-100 object-fit-cover" alt="Mediaverse">
                             </div>
                             <div class="carousel-caption">
-                                <a href="#" class="btn-news-link">MEDIAVERSE 2025: KHÁM PHÁ KHÔNG GIAN ĐA CHIỀU</a>
+                                <a href="#" class="btn-news-link"
+                                data-vi="MEDIAVERSE 2025: KHÁM PHÁ KHÔNG GIAN ĐA CHIỀU"
+                                data-en="MEDIAVERSE 2025: Exploring Multi-dimensional Spaces">
+                                MEDIAVERSE 2025: KHÁM PHÁ KHÔNG GIAN ĐA CHIỀU
+                               </a>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -446,7 +525,11 @@
                                 <img src="artech.jpeg" class="d-block w-100 object-fit-cover" alt="ArtTech">
                             </div>
                             <div class="carousel-caption">
-                                <a href="#" class="btn-news-link">ARTTECH FUSION 2025: NGHỆ THUẬT & CÔNG NGHỆ</a>
+                                <a href="#" class="btn-news-link"
+                                data-vi="ARTTECH FUSION 2025: NGHỆ THUẬT & CÔNG NGHỆ"
+                                data-en="ARTTECH FUSION 2025: Art & Technology"
+                                >ARTTECH FUSION 2025: NGHỆ THUẬT & CÔNG NGHỆ
+                                </a>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -454,7 +537,11 @@
                                 <img src="lomar.jpg" class="d-block w-100 object-fit-cover" alt="Lomar">
                             </div>
                             <div class="carousel-caption">
-                                <a href="#" class="btn-news-link">DỰ ÁN LOMAR 2026: MARKETING ĐỊA PHƯƠNG</a>
+                                <a href="#" class="btn-news-link"
+                                data-vi="DỰ ÁN LOMAR 2026: MARKETING ĐỊA PHƯƠNG"
+                                data-en="LOMAR PROJECT 2026: Local Marketing">
+                                DỰ ÁN LOMAR 2026: MARKETING ĐỊA PHƯƠNG
+                                </a>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -462,7 +549,11 @@
                                 <img src="chula.jpg" class="d-block w-100 object-fit-cover" alt="Workshop">
                             </div>
                             <div class="carousel-caption">
-                                <a href="#" class="btn-news-link">WORKSHOP: KẾT NỐI CÙNG CHUYÊN GIA QUỐC TẾ</a>
+                                <a href="#" class="btn-news-link"
+                                data-vi="WORKSHOP: KẾT NỐI CÙNG CHUYÊN GIA QUỐC TẾ"
+                                data-en="WORKSHOP: Connecting with International Experts">
+                                WORKSHOP: KẾT NỐI CÙNG CHUYÊN GIA QUỐC TẾ
+                            </a>
                             </div>
                         </div>
                     </div>
@@ -481,8 +572,16 @@
     <div class="container">
         <div class="footer-content-wrapper">
             <div class="footer-col brand-info">
-                <h2 class="footer-tagline">BẮT ĐẦU TƯƠNG LAI</h2>
-                <p class="footer-subtitle">Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông</p>
+                <h2 class="footer-tagline"
+                data-vi="BẮT ĐẦU TƯƠNG LAI"
+                data-en="START THE FUTURE">
+                BẮT ĐẦU TƯƠNG LAI
+               </h2>
+                <p class="footer-subtitle"
+                data-en="University of Economics Ho Chi Minh City - School of Media Design"
+                data-vi="Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông">
+                Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông
+            </p>
                 <div class="footer-logos">
                     <img src="smdwhite.png" alt="SMD Logo white">
                     <img src="uehwhite.png" alt="UEH Logo white">
@@ -497,9 +596,17 @@
                 <div class="link-group">
                     <h5>Useful Link</h5>
                     <ul>
-                        <li><a href="#">Tuyển sinh UEH</a></li>
+                        <li><a href="#"
+                            data-en="UEH Admissions"
+                            data-vi="Tuyển sinh UEH">
+                            Tuyển sinh UEH
+                        </a></li>
                         <li><a href="#">UEH Future</a></li>
-                        <li><a href="#">Quy chế công khai</a></li>
+                        <li><a href="#"
+                            data-vi="Quy chế công khai"
+                            data-en="Public Regulations">
+                            Quy chế công khai
+                        </a></li>
                         <li><a href="#">UEH Virtual Tour</a></li>
                     </ul>
                 </div>
@@ -507,15 +614,25 @@
                     <ul>
                         <li><a href="#">UEH Global</a></li>
                         <li><a href="#">UEH E-learning</a></li>
-                        <li><a href="#">Cơ hội nghề nghiệp</a></li>
-                        <li><a href="#">Hệ thống nhận diện</a></li>
+                        <li><a href="#"
+                            data-en="Career Opportunities"
+                            data-vi="Cơ hội nghề nghiệp">
+                            Cơ hội nghề nghiệp
+                        </a></li>
+                        <li><a href="#"
+                            data-en="Identity System"
+                            data-vi=" Hệ thống nhận diện">
+                            Hệ thống nhận diện</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-col action-social">
-                <a href="#" class="btn-reg">
-                    ĐĂNG KÝ NGAY <i class="fas fa-graduation-cap"></i>
+                <a href="#" class="btn-reg"
+                data-vi="ĐĂNG KÝ NGAY"
+                data-en="REGISTER NOW">
+                    ĐĂNG KÝ NGAY 
+                <i class="fas fa-graduation-cap"></i>
                 </a>
                 <div class="social-box">
                     <p>Our social</p>
@@ -530,11 +647,86 @@
         </div>
         
         <div class="footer-bottom">
-            <p>Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.</p>
+            <p
+            data-en="Copyright © 2022. University of Economics Ho Chi Minh City. Developed by SMD."
+            data-vi="Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.">
+            Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.
+            </p>
         </div>
     </div>
 </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <button id="backToTop" title="Lên đầu trang">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+// 1. Khởi tạo hiệu ứng cuộn (AOS)
+AOS.init({
+    duration: 800,
+    once: true
+});
+
+// 2. Xử lý nút Back to Top
+const backToTopBtn = document.getElementById("backToTop");
+window.onscroll = function() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.style.display = "block";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+};
+backToTopBtn.onclick = function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+};
+
+// 3. LOGIC CHUYỂN NGÔN NGỮ (FIX Ở ĐÂY)
+ const langSwitches = document.querySelectorAll('.lang-switch');
+
+langSwitches.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // 1. Đổi màu nút (VN/EN)
+        langSwitches.forEach(s => s.classList.remove('lang-active'));
+        this.classList.add('lang-active');
+        
+        const lang = this.innerText.trim().toLowerCase(); // 'vn' hoặc 'en'
+        const attr = (lang === 'en') ? 'data-en' : 'data-vi';
+
+        // 2. Tìm tất cả các thẻ có chứa thuộc tính chuyển ngữ tương ứng
+        const elements = document.querySelectorAll(`[data-vi], [data-en]`);
+        
+        elements.forEach(el => {
+            const translation = (lang === 'en') ? el.getAttribute('data-en') : el.getAttribute('data-vi');
+            
+            if (translation) {
+                
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.setAttribute('placeholder', translation);
+                } else {
+                    el.innerHTML = translation;
+                }
+            }
+        });
+    });
+});
+
+// 3. Tự động load ngôn ngữ đã chọn khi mở web
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('preferredLang');
+    if (savedLang) {
+        const targetBtn = Array.from(langSwitches).find(b => b.innerText.trim().toLowerCase() === savedLang);
+        if (targetBtn) {
+            targetBtn.click();
+        }
+    }
+});
+</script>
+    
+</script>
 </body>
 </html>
