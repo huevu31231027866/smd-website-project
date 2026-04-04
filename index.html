@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UEH - School of Media Design (SMD)</title>
-    
+    <title>Home</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -26,14 +27,18 @@
             background-color: #fff;
         }
 
-        /* --- Navbar & Tools --- */
+        /* NAVBAR*/
         .navbar {
             min-height: 80px;
             background: #ffffff;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
             z-index: 1000;
         }
-        .logo { height: 50px; }
+
+        .logo {
+            height: 50px;
+        }
+
         .nav-link {
             font-size: 13px;
             font-weight: 700;
@@ -44,7 +49,10 @@
             align-items: center;
             gap: 4px;
         }
-        .nav-link.active { color: var(--smd-purple) !important; }
+
+        .nav-link.active {
+            color: var(--smd-purple) !important;
+        }
 
         .nav-tools {
             display: flex;
@@ -53,15 +61,23 @@
             padding-left: 15px;
             border-left: 1px solid #eee;
         }
-        
-        .lang-switch { color: var(--text-dark); font-weight: 700; font-size: 13px; }
-        .lang-switch.lang-active { color: var(--smd-red) !important; }
+
+        .lang-switch {
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .lang-switch.lang-active {
+            color: var(--smd-red) !important;
+        }
 
         .search-box {
             position: relative;
             display: flex;
             align-items: center;
         }
+
         .search-box input {
             border: 1px solid #ddd;
             border-radius: 20px;
@@ -70,23 +86,44 @@
             width: 130px;
             transition: width 0.3s;
         }
-        .search-box input:focus { width: 180px; outline: none; border-color: var(--smd-purple); }
-        .search-box i { position: absolute; left: 12px; color: #888; font-size: 14px; }
 
-        /* --- 2. HERO BANNER --- */
+        .search-box input:focus {
+            width: 180px;
+            outline: none;
+            border-color: var(--smd-purple);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 12px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        /*  HERO BANNER  */
         .hero-banner {
             width: 100%;
             line-height: 0;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03); 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
             position: relative;
             z-index: 5;
         }
-        .hero-banner img { width: 100%; height: auto; display: block; }
 
-        /* --- 3. FEATURE SECTION --- */
-        .feature-section { padding: 40px 0 20px 0; margin-top: -15px; position: relative; z-index: 10; }
-        
+        .hero-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /*FEATURE SECTION*/
+        .feature-section {
+            padding: 40px 0 20px 0;
+            margin-top: -15px;
+            position: relative;
+            z-index: 10;
+        }
+
         .feature-card {
             border: 1.5px solid #f0f0f0;
             border-radius: 15px;
@@ -96,24 +133,48 @@
             gap: 15px;
             transition: all 0.3s ease-in-out;
             background: #fff;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             cursor: pointer;
             outline: none;
         }
 
         /* Hiệu ứng viền tím khi di chuột và click */
-        .feature-card:hover, .feature-card:active, .feature-card:focus {
+        .feature-card:hover,
+        .feature-card:active,
+        .feature-card:focus {
             border-color: var(--smd-purple);
             box-shadow: 0 0 15px rgba(142, 68, 173, 0.4);
             transform: translateY(-5px);
         }
 
-        .icon-box { font-size: 2rem; color: var(--smd-purple); flex-shrink: 0; }
-        .content-box h3 { font-size: 1rem; font-weight: 700; color: var(--smd-purple); text-transform: uppercase; margin-bottom: 10px; }
-        .content-box p { font-size: 0.85rem; text-align: justify; color: #555; margin: 0; line-height: 1.6; }
+        .icon-box {
+            font-size: 2rem;
+            color: var(--smd-purple);
+            flex-shrink: 0;
+        }
 
-        /* --- 4. INFO SECTION --- */
-        .info-section { padding: 10px 0 10px 0; background-color: #fff; }
+        .content-box h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--smd-purple);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .content-box p {
+            font-size: 0.85rem;
+            text-align: justify;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /*  INFO SECTION */
+        .info-section {
+            padding: 10px 0 10px 0;
+            background-color: #fff;
+        }
+
         .badge-since {
             background-color: var(--smd-purple);
             color: white;
@@ -122,6 +183,7 @@
             font-weight: 600;
             margin-bottom: 20px;
         }
+
         .info-title {
             color: var(--smd-purple);
             font-weight: 800;
@@ -129,17 +191,53 @@
             line-height: 1.3;
             margin-bottom: 20px;
         }
-        .info-text { color: #444; font-size: 0.95rem; line-height: 1.8; margin-bottom: 30px; text-align: justify;}
-        .img-rounded { border-radius: 20px; width: 100%; object-fit: cover; }
-        
-        .stat-box { text-align: center; margin-top: 30px; }
-        .stat-number { font-size: 3rem; font-weight: 800; color: var(--smd-purple); margin-bottom: 0; display: block; }
-        .stat-label { font-size: 1.1rem; font-weight: 700; color: var(--smd-purple); margin-top: 10px; }
-        .stat-divider { width: 50px; height: 3px; background-color: var(--smd-purple); margin: 10px auto; }
 
-        /* --- 5. NEWS SLIDESHOW SECTION --- */
-        .news-section { background-color: #ffffff; }
-        
+        .info-text {
+            color: #444;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .img-rounded {
+            border-radius: 20px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .stat-box {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--smd-purple);
+            margin-bottom: 0;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--smd-purple);
+            margin-top: 10px;
+        }
+
+        .stat-divider {
+            width: 50px;
+            height: 3px;
+            background-color: var(--smd-purple);
+            margin: 10px auto;
+        }
+
+        /*NEWS SLIDESHOW SECTION */
+        .news-section {
+            background-color: #ffffff;
+        }
+
         .news-header-box {
             display: inline-flex;
             align-items: center;
@@ -153,7 +251,9 @@
             box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
         }
 
-        .object-fit-cover { object-fit: cover; }
+        .object-fit-cover {
+            object-fit: cover;
+        }
 
         .carousel-caption {
             bottom: 8%;
@@ -167,15 +267,15 @@
             display: inline-block;
             background-color: var(--smd-purple);
             color: white !important;
-            padding: 0.8vw 2vw; 
+            padding: 0.8vw 2vw;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
 
             font-size: clamp(12px, 1.2vw, 16px);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             max-width: 90%;
             line-height: 1.4;
         }
@@ -192,159 +292,243 @@
             border-radius: 50%;
         }
 
+        /* FOOTER */
+        .footer-smd {
+            background-color: var(--smd-purple);
+            color: white;
+            padding: 25px 0 15px 0;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .footer-content-wrapper {
+            display: grid;
+            grid-template-columns: 1.8fr 2fr 1.2fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+
+        .footer-tagline {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .footer-subtitle {
+            font-size: 0.75rem;
+
+            margin-bottom: 10px;
+        }
+
+        .footer-logos {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .footer-logos img {
+            height: 35px;
+            width: auto;
+        }
+
+        .contact-details {
+            font-size: 12px;
+
+            line-height: 1.4;
+        }
+
+        .contact-details p {
+            margin-bottom: 2px;
+        }
+
+
+        .link-group {
+            padding-left: 50px;
+        }
+
+        .link-group h5 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+        }
+
+        .link-group ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .link-group ul li {
+            margin-bottom: 5px;
+        }
+
+        .link-group ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+
+        }
+
+
+        .action-social {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+        }
+
+        .btn-reg {
+            background: white;
+            color: var(--smd-purple) !important;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 12px;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .social-box p {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            font-size: 1.2rem;
+        }
+
+        .social-icons a {
+            color: white;
+        }
+
+        .footer-bottom {
+            margin-top: 5px;
+            padding-top: 5px;
+            font-size: 12px;
+        }
+
         /* RESPONSIVE */
         @media (max-width: 991px) {
-            .nav-tools { border-left: none; padding: 15px 0; border-top: 1px solid #eee; margin-top: 10px; }
-            .info-title { font-size: 1.5rem; }
+            .nav-tools {
+                border-left: none;
+                padding: 15px 0;
+                border-top: 1px solid #eee;
+                margin-top: 10px;
+            }
+
+            .info-title {
+                font-size: 1.5rem;
+            }
         }
 
         @media (max-width: 576px) {
-            .carousel-caption { bottom: 10%; }
-            .btn-news-link { padding: 5px 12px; font-size: 11px; }
+            .carousel-caption {
+                bottom: 10%;
+            }
+
+            .btn-news-link {
+                padding: 5px 12px;
+                font-size: 11px;
+            }
         }
-        /* --- SUPER COMPACT FOOTER (230px) --- */
-.footer-smd {
-    background-color: var(--smd-purple);
-    color: white;
-    padding: 25px 0 15px 0; 
-    min-height: 200px; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
 
-.footer-content-wrapper {
-    display: grid;
-    grid-template-columns: 1.8fr 2fr 1.2fr;
-    gap: 20px;
-    align-items: start;
-}
+        @media (max-width: 768px) {
+            .footer-content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                text-align: left;
+            }
 
-.footer-tagline { 
-    font-size: 1.5rem;
-    font-weight: 800; 
-    margin: 0; 
-    line-height: 1.1;
-}
-.footer-subtitle { 
-    font-size: 0.75rem;
-    
-    margin-bottom: 10px; 
-}
+            .link-group,
+            .extra-links {
+                padding-left: 0;
+            }
 
-.footer-logos { display: flex; gap: 12px; margin-bottom: 10px; }
-.footer-logos img { height: 35px; width: auto; }
+            .action-social {
+                align-items: flex-start;
+                text-align: left;
+            }
 
-.contact-details { 
-    font-size: 12px; 
-    
-    line-height: 1.4; 
-}
-.contact-details p { margin-bottom: 2px; }
+            .footer-logos,
+            .social-icons {
+                justify-content: flex-start;
+            }
 
-.link-group {
-    padding-left: 50px;
-}
-.link-group h5 { 
-    font-size: 0.9rem; 
-    font-weight: 700; 
-    margin-bottom: 10px; 
-    text-transform: uppercase;
-}
-.links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
-.link-group ul { list-style: none; padding: 0; margin: 0; }
-.link-group ul li { margin-bottom: 5px; }
-.link-group ul li a { 
-    color: white; 
-    text-decoration: none; 
-    font-size: 12px; 
-    
-}
+            .footer-bottom {
+                text-align: left;
+                margin-top: 20px;
+            }
+        }
 
-.action-social { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+        /* --- BACK TO TOP BUTTON --- */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background-color: var(--smd-purple);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            z-index: 1001;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
 
-.btn-reg {
-    background: white;
-    color: var(--smd-purple) !important;
-    padding: 6px 15px;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 12px;
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-.social-box p { font-size: 12px; margin-bottom: 5px; }
-.social-icons { display: flex; gap: 12px; font-size: 1.2rem; }
-.social-icons a { color: white; }
-
-.footer-bottom {
-    margin-top: 5px;
-    padding-top: 5px;
-    font-size: 12px;
-}
-
-/* --- RESPONSIVE OPTIMIZATION --- */
-@media (max-width: 992px) {
-    .footer-smd { min-height: auto; padding: 30px 0; }
-    .footer-content-wrapper { grid-template-columns: 1fr 1fr; }
-    .action-social { grid-column: span 2; align-items: center; margin-top: 10px; }
-}
-
-@media (max-width: 576px) {
-    .footer-content-wrapper { grid-template-columns: 1fr; text-align: center; }
-    .footer-logos, .social-icons { justify-content: center; }
-    .links-grid { display: none; } 
-    .action-social { grid-column: span 1; }
-}
-/* --- BACK TO TOP BUTTON --- */
-#backToTop {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 45px;
-    height: 45px;
-    background-color: var(--smd-purple);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none; 
-    z-index: 1001;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-#backToTop:hover {
-    transform: translateY(-5px);
-    background-color: #732d91;
-}
+        #backToTop:hover {
+            transform: translateY(-5px);
+            background-color: #732d91;
+        }
 
 
-html {
-    scroll-behavior: smooth;
-}
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg sticky-top">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img class="logo" src="../image/logosmd.png" alt="SMD Logo" />
+                    <img class="logo" src="logosmd.png" alt="SMD Logo" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="mainNav">
-                      <ul class="navbar-nav mx-auto">
-                        <li class="nav-item"><a class="nav-link active" href="index.html" data-vi="Trang chủ" data-en="Home" >Trang chủ <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="gioithieu.html" data-vi="Giới thiệu" data-en="About">Giới thiệu <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" data-vi="Đào tạo" data-en="Education">Đào tạo <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#"data-vi="Nghiên cứu" data-en="Research">Nghiên cứu <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="media.html">Media <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Gallery <i class="fas fa-chevron-down"></i></a></li>
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link active" href="index.html" data-vi="Trang chủ"
+                                data-en="Home">Trang chủ <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="gioithieu.html" data-vi="Giới thiệu"
+                                data-en="About">Giới thiệu <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" data-vi="Đào tạo" data-en="Education">Đào tạo
+                                <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" data-vi="Nghiên cứu" data-en="Research">Nghiên
+                                cứu <i class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="media.html">Media <i
+                                    class="fas fa-chevron-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Gallery <i
+                                    class="fas fa-chevron-down"></i></a></li>
                     </ul>
 
                     <div class="nav-tools">
@@ -365,20 +549,21 @@ html {
 
     <main>
         <section class="hero-banner">
-            <img src="../image/banner.jpg" alt="Banner">
+            <img src="banner.jpg" alt="Banner">
         </section>
 
-             <section class="feature-section">
+        <section class="feature-section">
             <div class="container">
-                <div class="row g-4"> 
+                <div class="row g-4">
                     <div class="col-lg-4 col-md-6">
                         <div class="feature-card" tabindex="0">
                             <div class="icon-box"><i class="fa-solid fa-user-group"></i></div>
                             <div class="content-box">
                                 <h3 data-vi="Chương trình đào tạo" data-en="Academic Programs">Chương trình đào tạo</h3>
-                                <p data-vi="Đào tạo sinh viên trở thành nhà quản lý thiết kế và sản xuất truyền thông số trong bối cảnh hội nhập toàn cầu." 
-                                   data-en="Training students to become design and media production managers in the context of global integration.">
-                                   Đào tạo sinh viên trở thành nhà quản lý thiết kế và sản xuất truyền thông số trong bối cảnh hội nhập toàn cầu.
+                                <p data-vi="Đào tạo sinh viên trở thành nhà quản lý thiết kế và sản xuất truyền thông số trong bối cảnh hội nhập toàn cầu."
+                                    data-en="Training students to become design and media production managers in the context of global integration.">
+                                    Đào tạo sinh viên trở thành nhà quản lý thiết kế và sản xuất truyền thông số trong
+                                    bối cảnh hội nhập toàn cầu.
                                 </p>
                             </div>
                         </div>
@@ -388,9 +573,10 @@ html {
                             <div class="icon-box"><i class="fa-solid fa-hotel"></i></div>
                             <div class="content-box">
                                 <h3 data-vi="Không gian học tập" data-en="Learning space">Không gian học tập</h3>
-                                <p data-vi="Môi trường hiện đại, đầy đủ tiện nghi, hỗ trợ sinh viên phát triển ý tưởng và thực hiện dự án thực tế." 
-                                   data-en="Modern environment, fully equipped, supporting students to develop ideas and implement real projects.">
-                                    Môi trường hiện đại, đầy đủ tiện nghi, hỗ trợ sinh viên phát triển ý tưởng và thực hiện dự án thực tế.
+                                <p data-vi="Môi trường hiện đại, đầy đủ tiện nghi, hỗ trợ sinh viên phát triển ý tưởng và thực hiện dự án thực tế."
+                                    data-en="Modern environment, fully equipped, supporting students to develop ideas and implement real projects.">
+                                    Môi trường hiện đại, đầy đủ tiện nghi, hỗ trợ sinh viên phát triển ý tưởng và thực
+                                    hiện dự án thực tế.
                                 </p>
                             </div>
                         </div>
@@ -400,9 +586,10 @@ html {
                             <div class="icon-box"><i class="fa-solid fa-graduation-cap"></i></div>
                             <div class="content-box">
                                 <h3 data-vi="Cơ hội việc làm" data-en="Career Opportunities">Cơ hội việc làm</h3>
-                                <p data-vi="Làm việc tại các agency, doanh nghiệp truyền thông hoặc tự khởi nghiệp trong lĩnh vực nội dung số." 
-                                   data-en="Working at agencies, media enterprises, or starting your own business in the digital content field.">
-                                    Làm việc tại các agency, doanh nghiệp truyền thông hoặc tự khởi nghiệp trong lĩnh vực nội dung số.
+                                <p data-vi="Làm việc tại các agency, doanh nghiệp truyền thông hoặc tự khởi nghiệp trong lĩnh vực nội dung số."
+                                    data-en="Working at agencies, media enterprises, or starting your own business in the digital content field.">
+                                    Làm việc tại các agency, doanh nghiệp truyền thông hoặc tự khởi nghiệp trong lĩnh
+                                    vực nội dung số.
                                 </p>
                             </div>
                         </div>
@@ -416,29 +603,26 @@ html {
                 <div class="row align-items-center g-5">
                     <div class="col-lg-6">
                         <div class="badge-since">Since 2022</div>
-                       <h2 class="info-title" 
-    data-vi="Cơ hội đúng lúc có thể biến ước mơ thành tiềm năng vô hạn." 
-    data-en="The right opportunity can turn dreams into infinite potential.">
-    Cơ hội đúng lúc có thể biến ước mơ thành tiềm năng vô hạn.
-</h2>
-<p class="info-text" 
-   data-vi="SMD hướng đến đơn vị đào tạo hàng đầu về thiết kế và truyền thông sáng tạo." 
-   data-en="SMD aims to be a leading training unit in design and creative communication.">
-   SMD hướng đến đơn vị đào tạo hàng đầu...
-</p>
-                        <img src="../image/students.jpg" alt="Students" class="img-rounded shadow-sm">
+                        <h2 class="info-title" data-vi="Cơ hội đúng lúc có thể biến ước mơ thành tiềm năng vô hạn."
+                            data-en="The right opportunity can turn dreams into infinite potential.">
+                            Cơ hội đúng lúc có thể biến ước mơ thành tiềm năng vô hạn.
+                        </h2>
+                        <p class="info-text"
+                            data-vi="SMD hướng đến đơn vị đào tạo hàng đầu về thiết kế và truyền thông sáng tạo."
+                            data-en="SMD aims to be a leading training unit in design and creative communication.">
+                            SMD hướng đến đơn vị đào tạo hàng đầu...
+                        </p>
+                        <img src="students.jpg" alt="Students" class="img-rounded shadow-sm">
                     </div>
                     <div class="col-lg-6">
-                        <img src="../image/ceremony.jpg" alt="Ceremony" class="img-rounded shadow-sm mb-4">
+                        <img src="ceremony.jpg" alt="Ceremony" class="img-rounded shadow-sm mb-4">
                         <div class="row">
                             <div class="col-6">
                                 <div class="stat-box">
                                     <span class="stat-number">21</span>
                                     <div class="stat-divider"></div>
-                                    <div class="stat-label" 
-                                    data-vi="Đối tác quốc tế" 
-                                    data-en="International Partners">
-                                    Đối tác quốc tế
+                                    <div class="stat-label" data-vi="Đối tác quốc tế" data-en="International Partners">
+                                        Đối tác quốc tế
                                     </div>
                                 </div>
                             </div>
@@ -446,10 +630,9 @@ html {
                                 <div class="stat-box">
                                     <span class="stat-number">100%</span>
                                     <div class="stat-divider"></div>
-                                    <div class="stat-label"
-                                    data-vi="Giảng viên quốc tế"
-                                    data-en="International Lecturers">
-                                    Giảng viên quốc tế
+                                    <div class="stat-label" data-vi="Giảng viên quốc tế"
+                                        data-en="International Lecturers">
+                                        Giảng viên quốc tế
                                     </div>
                                 </div>
                             </div>
@@ -462,15 +645,16 @@ html {
         <section class="news-section py-5">
             <div class="container text-center">
                 <div class="news-header-box mb-5">
-                <i class="fa-solid fa-newspaper me-2"></i> 
-                    <span data-vi="TIN TỨC MỚI NHẤT" 
-                    data-en="LATEST NEWS">
-                    TIN TỨC MỚI NHẤT
-                     </span>
+                    <i class="fa-solid fa-newspaper me-2"></i>
+                    <span data-vi="TIN TỨC MỚI NHẤT" data-en="LATEST NEWS">
+                        TIN TỨC MỚI NHẤT
+                    </span>
                 </div>
-                <div id="newsCarousel" class="carousel slide shadow-lg img-rounded overflow-hidden" data-bs-ride="carousel">
+                <div id="newsCarousel" class="carousel slide shadow-lg img-rounded overflow-hidden"
+                    data-bs-ride="carousel">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="0"
+                            class="active"></button>
                         <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="1"></button>
                         <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="2"></button>
                         <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="3"></button>
@@ -479,58 +663,57 @@ html {
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="ratio ratio-16x9">
-                                <img src="../image/mediaverse.jpg" class="d-block w-100 object-fit-cover" alt="Mediaverse">
+                                <img src="mediaverse.jpg" class="d-block w-100 object-fit-cover" alt="Mediaverse">
                             </div>
                             <div class="carousel-caption">
                                 <a href="#" class="btn-news-link"
-                                data-vi="MEDIAVERSE 2025: KHÁM PHÁ KHÔNG GIAN ĐA CHIỀU"
-                                data-en="MEDIAVERSE 2025: Exploring Multi-dimensional Spaces">
-                                MEDIAVERSE 2025: KHÁM PHÁ KHÔNG GIAN ĐA CHIỀU
-                               </a>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="ratio ratio-16x9">
-                                <img src="../image/artech.jpeg" class="d-block w-100 object-fit-cover" alt="ArtTech">
-                            </div>
-                            <div class="carousel-caption">
-                                <a href="#" class="btn-news-link"
-                                data-vi="ARTTECH FUSION 2025: NGHỆ THUẬT & CÔNG NGHỆ"
-                                data-en="ARTTECH FUSION 2025: Art & Technology"
-                                >ARTTECH FUSION 2025: NGHỆ THUẬT & CÔNG NGHỆ
+                                    data-vi="MEDIAVERSE 2025: KHÁM PHÁ KHÔNG GIAN ĐA CHIỀU"
+                                    data-en="MEDIAVERSE 2025: Exploring Multi-dimensional Spaces">
+                                    MEDIAVERSE 2025: KHÁM PHÁ KHÔNG GIAN ĐA CHIỀU
                                 </a>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="ratio ratio-16x9">
-                                <img src="../image/lomar.jpg" class="d-block w-100 object-fit-cover" alt="Lomar">
+                                <img src="artech.jpeg" class="d-block w-100 object-fit-cover" alt="ArtTech">
                             </div>
                             <div class="carousel-caption">
-                                <a href="#" class="btn-news-link"
-                                data-vi="DỰ ÁN LOMAR 2026: MARKETING ĐỊA PHƯƠNG"
-                                data-en="LOMAR PROJECT 2026: Local Marketing">
-                                DỰ ÁN LOMAR 2026: MARKETING ĐỊA PHƯƠNG
+                                <a href="#" class="btn-news-link" data-vi="ARTTECH FUSION 2025: NGHỆ THUẬT & CÔNG NGHỆ"
+                                    data-en="ARTTECH FUSION 2025: Art & Technology">ARTTECH FUSION 2025: NGHỆ THUẬT &
+                                    CÔNG NGHỆ
                                 </a>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="ratio ratio-16x9">
-                                <img src="../image/chula.jpg" class="d-block w-100 object-fit-cover" alt="Workshop">
+                                <img src="lomar.jpg" class="d-block w-100 object-fit-cover" alt="Lomar">
                             </div>
                             <div class="carousel-caption">
-                                <a href="#" class="btn-news-link"
-                                data-vi="WORKSHOP: KẾT NỐI CÙNG CHUYÊN GIA QUỐC TẾ"
-                                data-en="WORKSHOP: Connecting with International Experts">
-                                WORKSHOP: KẾT NỐI CÙNG CHUYÊN GIA QUỐC TẾ
-                            </a>
+                                <a href="#" class="btn-news-link" data-vi="DỰ ÁN LOMAR 2026: MARKETING ĐỊA PHƯƠNG"
+                                    data-en="LOMAR PROJECT 2026: Local Marketing">
+                                    DỰ ÁN LOMAR 2026: MARKETING ĐỊA PHƯƠNG
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="ratio ratio-16x9">
+                                <img src="chula.jpg" class="d-block w-100 object-fit-cover" alt="Workshop">
+                            </div>
+                            <div class="carousel-caption">
+                                <a href="#" class="btn-news-link" data-vi="WORKSHOP: KẾT NỐI CÙNG CHUYÊN GIA QUỐC TẾ"
+                                    data-en="WORKSHOP: Connecting with International Experts">
+                                    WORKSHOP: KẾT NỐI CÙNG CHUYÊN GIA QUỐC TẾ
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel"
+                        data-bs-slide="prev">
                         <span class="carousel-control-prev-icon"></span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel"
+                        data-bs-slide="next">
                         <span class="carousel-control-next-icon"></span>
                     </button>
                 </div>
@@ -538,159 +721,142 @@ html {
         </section>
     </main>
     <footer class="footer-smd">
-    <div class="container">
-        <div class="footer-content-wrapper">
-            <div class="footer-col brand-info">
-                <h2 class="footer-tagline"
-                data-vi="BẮT ĐẦU TƯƠNG LAI"
-                data-en="START THE FUTURE">
-                BẮT ĐẦU TƯƠNG LAI
-               </h2>
-                <p class="footer-subtitle"
-                data-en="University of Economics Ho Chi Minh City - School of Media Design"
-                data-vi="Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông">
-                Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông
-            </p>
-                <div class="footer-logos">
-                    <img src="../image/smdwhite.png" alt="SMD Logo white">
-                    <img src="../image/uehwhite.png" alt="UEH Logo white">
+        <div class="container">
+            <div class="footer-content-wrapper">
+                <div class="footer-col brand-info">
+                    <h2 class="footer-tagline" data-vi="BẮT ĐẦU TƯƠNG LAI" data-en="START THE FUTURE">
+                        BẮT ĐẦU TƯƠNG LAI
+                    </h2>
+                    <p class="footer-subtitle"
+                        data-en="University of Economics Ho Chi Minh City - School of Media Design"
+                        data-vi="Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông">
+                        Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông
+                    </p>
+                    <div class="footer-logos">
+                        <img src="smdwhite.png" alt="SMD Logo white">
+                        <img src="uehwhite.png" alt="UEH Logo white">
+                    </div>
+                    <div class="contact-details">
+                        <p>279 Nguyễn Tri Phương, P. Diên Hồng, Q.10, TP.HCM</p>
+                        <p>ĐT: +84 283 8295 299 | Email: smd@ueh.edu.vn</p>
+                    </div>
                 </div>
-                <div class="contact-details">
-                    <p>279 Nguyễn Tri Phương, P. Diên Hồng, Q.10, TP.HCM</p>
-                    <p>ĐT: +84 283 8295 299 | Email: smd@ueh.edu.vn</p>
-                </div>
-            </div>
 
-            <div class="footer-col links-grid">
-                <div class="link-group">
-                    <h5>Useful Link</h5>
-                    <ul>
-                        <li><a href="#"
-                            data-en="UEH Admissions"
-                            data-vi="Tuyển sinh UEH">
-                            Tuyển sinh UEH
-                        </a></li>
-                        <li><a href="#">UEH Future</a></li>
-                        <li><a href="#"
-                            data-vi="Quy chế công khai"
-                            data-en="Public Regulations">
-                            Quy chế công khai
-                        </a></li>
-                        <li><a href="#">UEH Virtual Tour</a></li>
-                    </ul>
+                <div class="footer-col links-grid">
+                    <div class="link-group">
+                        <h5>Useful Link</h5>
+                        <ul>
+                            <li><a href="#" data-en="UEH Admissions" data-vi="Tuyển sinh UEH">
+                                    Tuyển sinh UEH
+                                </a></li>
+                            <li><a href="#">UEH Future</a></li>
+                            <li><a href="#" data-vi="Quy chế công khai" data-en="Public Regulations">
+                                    Quy chế công khai
+                                </a></li>
+                            <li><a href="#">UEH Virtual Tour</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group extra-links">
+                        <ul>
+                            <li><a href="#">UEH Global</a></li>
+                            <li><a href="#">UEH E-learning</a></li>
+                            <li><a href="#" data-en="Career Opportunities" data-vi="Cơ hội nghề nghiệp">
+                                    Cơ hội nghề nghiệp
+                                </a></li>
+                            <li><a href="#" data-en="Identity System" data-vi=" Hệ thống nhận diện">
+                                    Hệ thống nhận diện</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="link-group extra-links">
-                    <ul>
-                        <li><a href="#">UEH Global</a></li>
-                        <li><a href="#">UEH E-learning</a></li>
-                        <li><a href="#"
-                            data-en="Career Opportunities"
-                            data-vi="Cơ hội nghề nghiệp">
-                            Cơ hội nghề nghiệp
-                        </a></li>
-                        <li><a href="#"
-                            data-en="Identity System"
-                            data-vi=" Hệ thống nhận diện">
-                            Hệ thống nhận diện</a></li>
-                    </ul>
-                </div>
-            </div>
 
-            <div class="footer-col action-social">
-                <a href="#" class="btn-reg"
-                data-vi="ĐĂNG KÝ NGAY"
-                data-en="REGISTER NOW">
-                    ĐĂNG KÝ NGAY 
-                <i class="fas fa-graduation-cap"></i>
-                </a>
-                <div class="social-box">
-                    <p>Our social</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                <div class="footer-col action-social">
+                    <a href="#" class="btn-reg" data-vi="ĐĂNG KÝ NGAY" data-en="REGISTER NOW">
+                        ĐĂNG KÝ NGAY
+                    </a>
+                    <div class="social-box">
+                        <p>Our social</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="footer-bottom">
+                <p data-en="Copyright © 2022. University of Economics Ho Chi Minh City. Developed by SMD."
+                    data-vi="Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.">
+                    Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.
+                </p>
+            </div>
         </div>
-        
-        <div class="footer-bottom">
-            <p
-            data-en="Copyright © 2022. University of Economics Ho Chi Minh City. Developed by SMD."
-            data-vi="Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.">
-            Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.
-            </p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <button id="backToTop" title="Lên đầu trang">
-    <i class="fas fa-arrow-up"></i>
-</button>
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-// 1. Khởi tạo hiệu ứng cuộn (AOS)
-AOS.init({
-    duration: 800,
-    once: true
-});
-
-// 2. Xử lý nút Back to Top
-const backToTopBtn = document.getElementById("backToTop");
-window.onscroll = function() {
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        backToTopBtn.style.display = "block";
-    } else {
-        backToTopBtn.style.display = "none";
-    }
-};
-backToTopBtn.onclick = function() {
-    window.scrollTo({top: 0, behavior: 'smooth'});
-};
-
-// 3. LOGIC CHUYỂN NGÔN NGỮ (FIX Ở ĐÂY)
-const langSwitches = document.querySelectorAll('.lang-switch');
-
-langSwitches.forEach(btn => {
-    btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Đổi màu nút (VN/EN)
-        langSwitches.forEach(s => s.classList.remove('lang-active'));
-        this.classList.add('lang-active');
-        
-        const lang = this.innerText.trim().toLowerCase(); // 'vn' hoặc 'en'
-
-        // Tìm tất cả các thẻ có chứa data-vi hoặc data-en
-        const elements = document.querySelectorAll('[data-vi]');
-        
-        elements.forEach(el => {
-            // Lưu lại icon nếu có (để tránh bị mất icon sau khi đổi chữ)
-            const icon = el.querySelector('i');
-            const text = (lang === 'en') ? el.getAttribute('data-en') : el.getAttribute('data-vi');
-            
-            el.innerText = text;
-            if (icon) el.appendChild(icon); // Dán lại icon vào sau chữ
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
         });
-        
-        localStorage.setItem('preferredLang', lang);
-    });
-});
 
-// Tự động load ngôn ngữ đã chọn khi mở web
-document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('preferredLang');
-    if (savedLang) {
-        const targetBtn = Array.from(langSwitches).find(b => b.innerText.trim().toLowerCase() === savedLang);
-        if (targetBtn) targetBtn.click();
-    }
-});
-</script>
-    
-</script>
+        const backToTopBtn = document.getElementById("backToTop");
+        window.onscroll = function () {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+
+        const langSwitches = document.querySelectorAll('.lang-switch');
+
+        langSwitches.forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                langSwitches.forEach(s => s.classList.remove('lang-active'));
+                this.classList.add('lang-active');
+
+                const lang = this.innerText.trim().toLowerCase();
+
+
+                const elements = document.querySelectorAll('[data-vi]');
+
+                elements.forEach(el => {
+
+                    const icon = el.querySelector('i');
+                    const text = (lang === 'en') ? el.getAttribute('data-en') : el.getAttribute('data-vi');
+
+                    el.innerText = text;
+                    if (icon) el.appendChild(icon);
+                });
+
+                localStorage.setItem('preferredLang', lang);
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang) {
+                const targetBtn = Array.from(langSwitches).find(b => b.innerText.trim().toLowerCase() === savedLang);
+                if (targetBtn) targetBtn.click();
+            }
+        });
+    </script>
+
+    </script>
 </body>
+
 </html>
