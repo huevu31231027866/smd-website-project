@@ -1,108 +1,106 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UEH - Media</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UEH - Media</title>
 
-    <style>
-      :root {
-        --smd-purple: #8e44ad;
-        --text-dark: #212529;
-      }
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-      body {
-        font-family: "Montserrat", sans-serif;
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-        background-color: #fff;
-      }
+  <style>
+    :root {
+      --smd-purple: #8e44ad;
+      --text-dark: #212529;
+    }
 
-        /* --- Navbar & Tools --- */
-        .navbar {
-            min-height: 80px;
-            background: #ffffff;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-            z-index: 1000;
-}
-        .logo { height: 50px; }
-        .nav-link {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--text-dark) !important;
-            text-transform: uppercase;
-            padding: 0.5rem 10px !important;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .nav-link.active { color: var(--smd-purple) !important; }
+    body {
+      font-family: "Montserrat", sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background-color: #fff;
+    }
 
-        .nav-tools {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding-left: 15px;
-            border-left: 1px solid #eee;
-        }
-      .lang-switch { color: var(--text-dark); font-weight: 700; font-size: 13px; }
-      .lang-switch.lang-active { color: var(--smd-purple) !important; }
-      .search-box {
-        position: relative;
-        display: flex;
-        align-items: center;
-      }
-      /* Ô nhập liệu */
-/* Thẻ bao ngoài để định vị */
-.search-box {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
+    /* NAVBAR */
+    .navbar {
+      min-height: 80px;
+      background: #ffffff;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+    }
 
-/* Icon kính lúp - Đặt nằm ĐÈ lên trên input */
-.search-box i {
-    position: absolute;
-    left: 12px;           /* Cách mép trái ô input 12px */
-    top: 50%;
-    transform: translateY(-50%); /* Căn giữa theo chiều dọc */
-    color: #888;
-    font-size: 13px;
-    pointer-events: none; /* Để khi click vào icon vẫn ăn vào ô input */
-    z-index: 5;
-}
+    .logo {
+      height: 50px;
+    }
 
-/* Ô nhập liệu (Input) */
-.search-box input {
-    border: 1px solid #ddd !important;
-    border-radius: 20px !important;    /* Bo tròn hoàn toàn */
-    padding: 6px 15px 6px 35px !important; /* Padding-left là 35px để nhường chỗ cho icon */
-    font-size: 13px;
-    width: 150px;           /* Độ rộng mặc định */
-    height: 34px;
-    outline: none;
-    transition: all 0.3s ease;
-    background-color: #f9f9f9;
-}
+    .nav-link {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-dark) !important;
+      text-transform: uppercase;
+      padding: 0.5rem 10px !important;
 
-/* Hiệu ứng khi bấm vào ô tìm kiếm */
-.search-box input:focus {
-    width: 200px;           /* Dài ra một chút khi gõ */
-    background-color: #fff;
-    border-color: var(--smd-purple) !important;
-    box-shadow: 0 0 5px rgba(142, 68, 173, 0.2);
-}
-      /* --- PHẦN 2: HERO BANNER --- */
-      .hero-banner {
-       width: 100%;
-       overflow: hidden; 
-       position: relative;
-       aspect-ratio: 3.6 / 1;
+    }
+
+    .nav-link.active {
+      color: var(--smd-purple) !important;
+    }
+
+    .nav-tools {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding-left: 15px;
+      border-left: 1px solid #eee;
+    }
+
+    .lang-switch {
+      color: var(--text-dark);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .lang-switch.lang-active {
+      color: var(--smd-purple) !important;
+    }
+
+    .search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 5px 15px 5px 35px;
+      font-size: 13px;
+      width: 130px;
+      transition: width 0.3s;
+    }
+
+    .search-box input:focus {
+      width: 180px;
+      outline: none;
+      border-color: var(--smd-purple);
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 12px;
+      color: #888;
+      font-size: 14px;
+    }
+
+    /*HERO BANNER*/
+    .hero-banner {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 3.6 / 1;
 
       .hero-banner::after {
         content: "";
@@ -112,584 +110,702 @@
         width: 100%;
         height: 100%;
       }
-        
-        /* Chạy dải màu từ trái sang phải */
-        background: linear-gradient(
-          to right,
-          rgba(142, 68, 173, 0.7) 0%,    
-          rgba(142, 68, 173, 0.4) 30%,   
-          rgba(187, 123, 210, 0.15) 70%,    
-          rgba(142, 68, 173, 0.4) 75%,    
-          rgba(142, 68, 173, 0.7) 100% 
-        );
-        
-        z-index: 1;
-        pointer-events: none;
-      }
-      .hero-banner img {
-       width: 100%;
-       height: 100%;
-       object-fit: cover;
-       object-position: center calc(80% + 10px);
-       display: block;
-}
 
-      /* --- PHẦN 3: LƯỚI TIN TỨC (NEWS GRID) --- */
-      .news-grid { background-color: #f5f5f5; padding: 30px 0; }
-      .news-grid .row { --bs-gutter-x: 80px; --bs-gutter-y: 64px; }
-      
-      /* Card tin tức */
-      .news-card {
-        background: #fff;
-        border-radius: 20px;
-        overflow: hidden;
-        transition: 0.3s;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        border: 1px solid #eee;
-      }
-      .news-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      }
-      .news-img { width: 100%; height: 220px; object-fit: cover; }
-      .news-content { padding: 15px; }
-      .news-tag {
-        background: var(--smd-purple);
-        color: white;
-        font-size: 12px;
-        padding: 4px 10px;
-        border-radius: 20px;
-        display: inline-block;
-        margin-bottom: 10px;
-      }
-      .news-date { font-size: 12px; color: #888; float: right; }
-      .news-title { font-weight: 700; font-size: 15px; margin-bottom: 8px; }
-      .news-desc {
-        font-size: 13px;
-        color: #666;
-        line-height: 1.5;
-        text-align: justify;
-      }
+      /* Chạy dải màu từ trái sang phải */
+      background: linear-gradient(to right,
+        rgba(142, 68, 173, 0.7) 0%,
+        rgba(142, 68, 173, 0.4) 30%,
+        rgba(187, 123, 210, 0.15) 70%,
+        rgba(142, 68, 173, 0.4) 75%,
+        rgba(142, 68, 173, 0.7) 100%);
 
-      .filter-bar { 
-      display: flex; 
-      gap: 15px; 
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center calc(80% + 10px);
+      display: block;
+    }
+
+    /*NEWS GRID*/
+    .news-grid {
+      background-color: #f5f5f5;
+      padding: 30px 0;
+    }
+
+    .news-grid .row {
+      --bs-gutter-x: 80px;
+      --bs-gutter-y: 64px;
+    }
+
+    /* Card tin tức */
+    .news-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: 0.3s;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #eee;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .news-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .news-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .news-content {
+      padding: 15px;
+    }
+
+    .news-tag {
+      background: var(--smd-purple);
+      color: white;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .news-date {
+      font-size: 12px;
+      color: #888;
+      float: right;
+    }
+
+    .news-title {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .news-title:hover {
+      color: #f26f33;
+      cursor: pointer;
+    }
+
+    .news-desc {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.5;
+      text-align: justify;
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 15px;
       margin-bottom: 30px;
       flex-wrap: wrap;
-      }
-      .custom-select {
-        border: 1px solid var(--smd-purple);
-        border-radius: 10px;
-        padding: 0 40px 0 20px;
-        height: 42px;
-        font-size: 15px;
-        color: #333;
-        background-color: white;
-        outline: none;
-        min-width: 210px;
-        line-height: 42px;
-        appearance: none;
-        -webkit-appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: calc(100% - 10px) center;
-        background-size: 16px;
-         min-width: 210px
+    }
 
-      }
-      .filter-tag {
-        border: 1px solid var(--smd-purple);
-        color: var(--smd-purple);
-        padding: 0 20px;
-        height: 42px;
-        border-radius: 10px;
-        font-size: 15px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        background-color: #e8d8ea;
-        white-space: nowrap;
-      }
+    .custom-select {
+      border: 1px solid var(--smd-purple);
+      border-radius: 10px;
+      padding: 0 40px 0 20px;
+      height: 42px;
+      font-size: 15px;
+      color: #333;
+      background-color: white;
+      outline: none;
+      min-width: 210px;
+      line-height: 42px;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: calc(100% - 10px) center;
+      background-size: 16px;
+      min-width: 210px
+    }
 
-      /* Nút chuyển trang (Pagination) */
-      .news-grid .text-center.mt-4 {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 50px !important;
-      }
-      .news-grid .text-center.mt-4 .btn {
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        border: 1.5px solid var(--smd-purple) !important;
-        color: var(--smd-purple);
-        background-color: transparent;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-        transition: all 0.3s ease;
-      }
-      .news-grid .text-center.mt-4 .btn:hover {
-        background-color: var(--smd-purple);
-        color: white;
-        box-shadow: 0 4px 10px rgba(142, 68, 173, 0.3);
-      }
+    .filter-tag {
+      border: 1px solid var(--smd-purple);
+      color: var(--smd-purple);
+      padding: 0 20px;
+      height: 42px;
+      border-radius: 10px;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #e8d8ea;
+      white-space: nowrap;
+    }
 
-      /* --- PHẦN 4:FOOTER --- */
-      .footer-smd {
-        background-color: var(--smd-purple);
-        color: white;
-        padding: 25px 0 15px 0;
-        min-height: 200px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      .footer-content-wrapper {
-        display: grid;
-        grid-template-columns: 1.8fr 2fr 1.2fr;
-        gap: 20px;
-        align-items: start;
-      }
-      .footer-tagline { font-size: 1.5rem; font-weight: 800; margin: 0; line-height: 1.1; }
-      .footer-subtitle { font-size: 0.75rem; margin-bottom: 10px; }
-      .footer-logos { display: flex; gap: 12px; margin-bottom: 10px; }
-      .footer-logos img { height: 35px; width: auto; }
-      .contact-details { font-size: 12px; line-height: 1.4; }
-      .contact-details p { margin-bottom: 2px; }
-      
-      .link-group { padding-left: 50px; }
-      .link-group h5 { font-size: 0.9rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; }
-      .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
-      .link-group ul { list-style: none; padding: 0; margin: 0; }
-      .link-group ul li a { color: white; text-decoration: none; font-size: 12px; }
+    /* Nút chuyển trang (Pagination) */
+    .news-grid .text-center.mt-4 {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 50px !important;
+    }
 
-      .action-social { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
-      .btn-reg {
-        background: white;
-        color: var(--smd-purple) !important;
-        padding: 6px 15px;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 12px;
-        text-decoration: none;
-        white-space: nowrap;
-      }
-      .news-link {
-      display: block;
+    .news-grid .text-center.mt-4 .btn {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 1.5px solid var(--smd-purple) !important;
+      color: var(--smd-purple);
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: all 0.3s ease;
+    }
+
+    .news-grid .text-center.mt-4 .btn:hover {
+      background-color: var(--smd-purple);
+      color: white;
+      box-shadow: 0 4px 10px rgba(142, 68, 173, 0.3);
+    }
+
+    /* FOOTER */
+    .footer-smd {
+      background-color: var(--smd-purple);
+      color: white;
+      padding: 25px 0 15px 0;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .footer-content-wrapper {
+      display: grid;
+      grid-template-columns: 1.8fr 2fr 1.2fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+
+    .footer-tagline {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .footer-subtitle {
+      font-size: 0.75rem;
+
+      margin-bottom: 10px;
+    }
+
+    .footer-logos {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .footer-logos img {
+      height: 35px;
+      width: auto;
+    }
+
+    .contact-details {
+      font-size: 12px;
+
+      line-height: 1.4;
+    }
+
+    .contact-details p {
+      margin-bottom: 2px;
+    }
+
+
+    .link-group {
+      padding-left: 50px;
+    }
+
+    .link-group h5 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+    }
+
+    .link-group ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .link-group ul li {
+      margin-bottom: 5px;
+    }
+
+    .link-group ul li a {
+      color: white;
       text-decoration: none;
-     color: inherit;
+      font-size: 12px;
+
+    }
+
+
+    .action-social {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 15px;
+    }
+
+    .btn-reg {
+      background: white;
+      color: var(--smd-purple) !important;
+      padding: 6px 15px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 12px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .social-box p {
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+      font-size: 1.2rem;
+    }
+
+    .social-icons a {
+      color: white;
+    }
+
+    .footer-bottom {
+      margin-top: 5px;
+      padding-top: 5px;
+      font-size: 12px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 991px) {
+      .nav-tools {
+        border-left: none;
+        padding: 15px 0;
+        border-top: 1px solid #eee;
+        margin-top: 10px;
       }
-      .social-box p { font-size: 12px; margin-bottom: 5px; }
-      .social-icons { display: flex; gap: 12px; font-size: 1.2rem; }
-      .social-icons a { color: white; }
-      .footer-bottom { margin-top: 5px; padding-top: 5px; font-size: 12px; }
 
-      /* --- PHẦN 5: RESPONSIVE --- */
-      @media (max-width: 1400px) { .news-grid .container { max-width: 1320px; } }
-        @media (max-width: 991px) {
-            .nav-tools { border-left: none; padding: 15px 0; border-top: 1px solid #eee; margin-top: 10px; }
-            .footer-content-wrapper { grid-template-columns: 1fr; gap: 30px; }
-            .link-group { padding-left: 0; }
-            .action-social { align-items: flex-start; text-align: left; }
-        }
-      @media (max-width: 576px) {
-        .footer-content-wrapper { grid-template-columns: 1fr; text-align: center; }
-        .footer-logos, .social-icons { justify-content: center; }
-        .links-grid { display: none; }
-        .action-social { grid-column: span 1; }
+      .info-title {
+        font-size: 1.5rem;
       }
-      /* --- BACK TO TOP BUTTON --- */
-#backToTop {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 45px;
-    height: 45px;
-    background-color: var(--smd-purple);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none; /* Ẩn mặc định */
-    z-index: 1001;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
+    }
 
-#backToTop:hover {
-    transform: translateY(-5px);
-    background-color: #732d91;
-}
+    @media (max-width: 576px) {
+      .carousel-caption {
+        bottom: 10%;
+      }
 
-/* Thêm hiệu ứng mượt khi cuộn */
-html {
-    scroll-behavior: smooth;
-}
-@media (max-width: 768px) {
-  .custom-select,
-  .filter-tag {
-    width: 100%;
-    min-width: unset;
-  }
+      .btn-news-link {
+        padding: 5px 12px;
+        font-size: 11px;
+      }
+    }
 
-  .filter-tag {
-    justify-content: space-between;
-  }
-}
-    </style>
-  </head>
+    @media (max-width: 768px) {
+      .footer-content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        text-align: left;
+      }
+
+      .link-group,
+      .extra-links {
+        padding-left: 0;
+      }
+
+      .action-social {
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .footer-logos,
+      .social-icons {
+        justify-content: flex-start;
+      }
+
+      .footer-bottom {
+        text-align: left;
+        margin-top: 20px;
+      }
+    }
+
+    /*BACK TO TOP BUTTON  */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 45px;
+      height: 45px;
+      background-color: var(--smd-purple);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      z-index: 1001;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #backToTop:hover {
+      transform: translateY(-5px);
+      background-color: #732d91;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg sticky-top">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    <img class="logo" src="logosmd.png" alt="SMD Logo" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+  <header>
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img class="logo" src="logosmd.png" alt="SMD Logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-                <div class="collapse navbar-collapse" id="mainNav">
-                      <ul class="navbar-nav mx-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html" data-vi="Trang chủ" data-en="Home" >Trang chủ <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="gioithieu.html" data-vi="Giới thiệu" data-en="About">Giới thiệu <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" data-vi="Đào tạo" data-en="Education">Đào tạo <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#"data-vi="Nghiên cứu" data-en="Research">Nghiên cứu <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link active" href="media.html">Media <i class="fas fa-chevron-down"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Gallery <i class="fas fa-chevron-down"></i></a></li>
-                    </ul>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html" data-vi="Trang chủ" data-en="Home">Trang chủ <i
+                  class="fas fa-chevron-down"></i></a></li>
+            <li class="nav-item"><a class="nav-link" href="gioithieu.html" data-vi="Giới thiệu" data-en="About">Giới
+                thiệu <i class="fas fa-chevron-down"></i></a></li>
+            <li class="nav-item"><a class="nav-link" href="#" data-vi="Đào tạo" data-en="Education">Đào tạo <i
+                  class="fas fa-chevron-down"></i></a></li>
+            <li class="nav-item"><a class="nav-link" href="#" data-vi="Nghiên cứu" data-en="Research">Nghiên cứu <i
+                  class="fas fa-chevron-down"></i></a></li>
+            <li class="nav-item"><a class="nav-link active" href="media.html">Media <i
+                  class="fas fa-chevron-down"></i></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Gallery <i class="fas fa-chevron-down"></i></a></li>
+          </ul>
 
-                    <div class="nav-tools">
-                      <div class="search-box">
-                        <i class="fas fa-search"></i>
-                           <input type="text" 
-                            data-vi="Tìm kiếm..." 
-                            data-en="Search..." 
-                            placeholder="Tìm kiếm..." />
-                        </div>
-                      </div>
-                        <div class="lang-selector">
-                            <a href="#" class="lang-switch lang-active text-decoration-none">VN</a>
-                            <span class="mx-1 text-muted">|</span>
-                            <a href="#" class="lang-switch text-decoration-none">EN</a>
-                        </div>
-                    </div>
-                </div>
+          <div class="nav-tools">
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="Tìm kiếm..." />
             </div>
-        </nav>
-    </header>
-
-    <main>
-      <section class="hero-banner">
-        <img src="banner 3.jpg" alt="Banner" />
-      </section>
-
-      <section class="news-grid">
-        <div class="container">
-          
-          <div class="filter-bar">
-            <select class="custom-select">
-              <option
-              data-en="All News"
-              data-vi="Tất cả bài báo">
-              Tất cả bài báo</option>
-            </select>
-            <div class="filter-tag"
-            data-en="Category Name"
-            data-vi="Tên loại báo">
-              Tên loại báo <i class="fas fa-times"></i>
+            <div class="lang-selector">
+              <a href="#" class="lang-switch lang-active text-decoration-none">VN</a>
+              <span class="mx-1 text-muted">|</span>
+              <a href="#" class="lang-switch text-decoration-none">EN</a>
             </div>
           </div>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-          <div class="row">
-            <div class="col-lg-4 col-md-6">
-              <a href="single2.html" class="news-link">
+  <main>
+    <section class="hero-banner">
+      <img src="banner 3.jpg" alt="Banner" />
+    </section>
+
+    <section class="news-grid">
+      <div class="container">
+
+        <div class="filter-bar">
+          <select class="custom-select">
+            <option data-en="All News" data-vi="Tất cả bài báo">
+              Tất cả bài báo</option>
+          </select>
+          <div class="filter-tag" data-en="Category Name" data-vi="Tên loại báo">
+            Tên loại báo <i class="fas fa-times"></i>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <a href="single2.html" class="news-link">
               <div class="news-card">
                 <img src="1.jpg" class="news-img" />
                 <div class="news-content">
-                  <span class="news-tag"
-                  data-vi="Giải thưởng"
-                  data-en="Awards">
-                  Giải thưởng</span>
+                  <span class="news-tag" data-vi="Giải thưởng" data-en="Awards">
+                    Giải thưởng</span>
                   <span class="news-date">11/03/2026</span>
                   <div class="news-title"
-                  data-vi="Sinh viên Khoa Thiết kế Truyền thông – UEH vinh dự đạt Giải TVC Ấn tượng tại Green Marketing Challenge 2025"
-                  data-en="UEH - School of Media Design students honored with the Impressive TVC Award at Green Marketing Challenge 2025">
-                  Sinh viên Khoa Thiết kế Truyền thông – UEH vinh dự đạt Giải TVC Ấn tượng tại Green Marketing Challenge 2025</div>
+                    data-vi="Sinh viên Khoa Thiết kế Truyền thông – UEH vinh dự đạt Giải TVC Ấn tượng tại Green Marketing Challenge 2025"
+                    data-en="UEH - School of Media Design students honored with the Impressive TVC Award at Green Marketing Challenge 2025">
+                    Sinh viên Khoa Thiết kế Truyền thông – UEH vinh dự đạt Giải TVC Ấn tượng tại Green Marketing
+                    Challenge 2025</div>
                   <div class="news-desc"
-                  data-vi="Tiếp nối hành trình học tập quốc tế tại Với mục tiêu lan tỏa tinh thần sống xanh và thúc đẩy tư duy sáng tạo trong thế hệ trẻ"
-                  data-en="Continuing its international learning journey, and with the goal of spreading the spirit of green living and promoting creative thinking among young ..." >
-                  Với mục tiêu lan tỏa tinh thần sống xanh và thúc đẩy tư duy sáng tạo trong thế hệ trẻ, Green Marketing Challenge 2025 (GMC 2025) ...</div>
+                    data-vi="Tiếp nối hành trình học tập quốc tế tại Với mục tiêu lan tỏa tinh thần sống xanh và thúc đẩy tư duy sáng tạo trong thế hệ trẻ"
+                    data-en="Continuing its international learning journey, and with the goal of spreading the spirit of green living and promoting creative thinking among young ...">
+                    Với mục tiêu lan tỏa tinh thần sống xanh và thúc đẩy tư duy sáng tạo trong thế hệ trẻ, Green
+                    Marketing Challenge 2025 (GMC 2025) ...</div>
                 </div>
               </div>
             </a>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <a href="single1.html" class="news-link">
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <a href="single1.html" class="news-link">
               <div class="news-card">
                 <img src="2.jpg" class="news-img" />
                 <div class="news-content">
-                  <span class="news-tag"
-                  data-en="Student Projects"
-                  data-vi="Dự án sinh viên">
-                  Dự án sinh viên</span>
+                  <span class="news-tag" data-en="Student Projects" data-vi="Dự án sinh viên">
+                    Dự án sinh viên</span>
                   <span class="news-date">09/02/2026</span>
                   <div class="news-title"
-                  data-en="Design Futures 2025: UEH – SMD students shine at Tsinghua University with innovative AI projects for the community"
-                  data-vi="Design Futures 2025: Sinh viên UEH – SMD tỏa sáng tại Đại học Thanh Hoa với các dự án AI sáng tạo vì cộng đồng"
-                  >Design Futures 2025: Sinh viên UEH – SMD tỏa sáng tại Đại học Thanh Hoa với các dự án AI sáng tạo vì cộng đồng</div>
+                    data-en="Design Futures 2025: UEH – SMD students shine at Tsinghua University with innovative AI projects for the community"
+                    data-vi="Design Futures 2025: Sinh viên UEH – SMD tỏa sáng tại Đại học Thanh Hoa với các dự án AI sáng tạo vì cộng đồng">
+                    Design Futures 2025: Sinh viên UEH – SMD tỏa sáng tại Đại học Thanh Hoa với các dự án AI sáng tạo vì
+                    cộng đồng</div>
                   <div class="news-desc"
-                  data-vi="Chương trình hè quốc tế “Design Futures: Shared Vision” 2025 là nơi quy tụ các sinh viên tài năng đến từ 7 quốc gia ..."
-                  data-en="The International Summer Program Design Futures: Shared Vision 2025 is a gathering ..."
-                  >Chương trình hè quốc tế “Design Futures: Shared Vision” 2025 là nơi quy tụ các sinh viên tài năng đến từ 7 quốc gia ...</div>
+                    data-vi="Chương trình hè quốc tế “Design Futures: Shared Vision” 2025 là nơi quy tụ các sinh viên tài năng đến từ 7 quốc gia ..."
+                    data-en="The International Summer Program Design Futures: Shared Vision 2025 is a gathering ...">
+                    Chương trình hè quốc tế “Design Futures: Shared Vision” 2025 là nơi quy tụ các sinh viên tài năng
+                    đến từ 7 quốc gia ...</div>
                 </div>
               </div>
             </a>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="news-card">
-                <img src="3.jpeg" class="news-img" />
-                <div class="news-content">
-                  <span class="news-tag"
-                  data-vi="Sự kiện"
-                  data-en="Events">
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="news-card">
+              <img src="3.jpeg" class="news-img" />
+              <div class="news-content">
+                <span class="news-tag" data-vi="Sự kiện" data-en="Events">
                   Sự kiện</span>
-                  <span class="news-date">27/01/2026</span>
-                  <div class="news-title"
-                  data-vi="Arttech Fusion 2025 (ATF25): Đồng sáng tạo vì tương lai bền vững"
-                  data-en="Arttech Fusion 2025 (ATF25): Co-creation for a sustainable future"
-                  >Arttech Fusion 2025 (ATF25): Đồng sáng tạo vì tương lai bền vững</div>
-                  <div class="news-desc"
+                <span class="news-date">27/01/2026</span>
+                <div class="news-title" data-vi="Arttech Fusion 2025 (ATF25): Đồng sáng tạo vì tương lai bền vững"
+                  data-en="Arttech Fusion 2025 (ATF25): Co-creation for a sustainable future">Arttech Fusion 2025
+                  (ATF25): Đồng sáng tạo vì tương lai bền vững</div>
+                <div class="news-desc"
                   data-vi="Đại học Kinh tế TP. Hồ Chí Minh (UEH) đã tổ chức thành công chuỗi hoạt động quốc tế ArtTech Fusion 2025 (ATF25) với chủ đề “Co-creation for a Wondrous Future” ..."
-                  data-en="University of Economics Ho Chi Minh City (UEH) successfully organized a series of international activities..."
-                  >Đại học Kinh tế TP. Hồ Chí Minh (UEH) đã tổ chức thành công chuỗi hoạt động quốc tế ArtTech Fusion 2025 (ATF25) với chủ đề “Co-creation for a Wondrous Future” ...</div>
-                </div>
+                  data-en="University of Economics Ho Chi Minh City (UEH) successfully organized a series of international activities...">
+                  Đại học Kinh tế TP. Hồ Chí Minh (UEH) đã tổ chức thành công chuỗi hoạt động quốc tế ArtTech Fusion
+                  2025 (ATF25) với chủ đề “Co-creation for a Wondrous Future” ...</div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="news-card">
-                <img src="4.png" class="news-img" />
-                <div class="news-content">
-                  <span class="news-tag"
-                  data-vi="Sự kiện"
-                  data-en="Events">
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="news-card">
+              <img src="4.png" class="news-img" />
+              <div class="news-content">
+                <span class="news-tag" data-vi="Sự kiện" data-en="Events">
                   Sự kiện</span>
-                  <span class="news-date">25/01/2026</span>
-                  <div class="news-title"
-                  data-vi="HÀNH TRÌNH XÂY DỰNG NGHỆ THUẬT VÌ TƯƠNG LAI BỀN VỮNG"
-                  data-en="JOURNEY OF BUILDING ART FOR A SUSTAINABLE FUTURE"
-                  >HÀNH TRÌNH XÂY DỰNG NGHỆ THUẬT VÌ TƯƠNG LAI BỀN VỮNG</div>
-                  <div class="news-desc"
+                <span class="news-date">25/01/2026</span>
+                <div class="news-title" data-vi="HÀNH TRÌNH XÂY DỰNG NGHỆ THUẬT VÌ TƯƠNG LAI BỀN VỮNG"
+                  data-en="JOURNEY OF BUILDING ART FOR A SUSTAINABLE FUTURE">HÀNH TRÌNH XÂY DỰNG NGHỆ THUẬT VÌ TƯƠNG LAI
+                  BỀN VỮNG</div>
+                <div class="news-desc"
                   data-vi="Nằm trong hoạt động chia sẻ và lan tỏa kiến thức học thuật thuộc chuỗi sự kiện ArtTech Fusion của Đại học Kinh tế TP. Hồ Chí Minh (UEH) ..."
-                  data-en="Part of the academic knowledge-sharing and dissemination activities within the ArtTech Fusion event series by University of Economics Ho Chi Minh City (UEH) ..."
-                  >Nằm trong hoạt động chia sẻ và lan tỏa kiến thức học thuật thuộc chuỗi sự kiện ArtTech Fusion của Đại học Kinh tế TP. Hồ Chí Minh (UEH) ...</div>
-                </div>
+                  data-en="Part of the academic knowledge-sharing and dissemination activities within the ArtTech Fusion event series by University of Economics Ho Chi Minh City (UEH) ...">
+                  Nằm trong hoạt động chia sẻ và lan tỏa kiến thức học thuật thuộc chuỗi sự kiện ArtTech Fusion của Đại
+                  học Kinh tế TP. Hồ Chí Minh (UEH) ...</div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="news-card">
-                <img src="5.jpg" class="news-img" />
-                <div class="news-content">
-                  <span class="news-tag"
-                  data-vi="Giải thưởng"
-                  data-en="Awards">
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="news-card">
+              <img src="5.jpg" class="news-img" />
+              <div class="news-content">
+                <span class="news-tag" data-vi="Giải thưởng" data-en="Awards">
                   Giải thưởng</span>
-                  <span class="news-date">12/09/2025</span>
-                  <div class="news-title"
+                <span class="news-date">12/09/2025</span>
+                <div class="news-title"
                   data-vi="TỰ HÀO SMD – SINH VIÊN LỌT TOP THIẾT KẾ TOÀN CẦU TẠI CUỘC THI DO ĐẠI HỌC THANH HOA TỔ CHỨC"
                   data-en="PROUD OF SMD – STUDENTS RANKED IN GLOBAL DESIGN TOP AT COMPETITION ORGANIZED BY TSINGHUA UNIVERSITY">
                   TỰ HÀO SMD – SINH VIÊN LỌT TOP THIẾT KẾ TOÀN CẦU TẠI CUỘC THI DO ĐẠI HỌC THANH HOA TỔ CHỨC</div>
-                  <div class="news-desc"
+                <div class="news-desc"
                   data-vi="Hai đội sinh viên đến từ Khoa Thiết kế Truyền thông – Đại học Kinh tế TP. Hồ Chí Minh đã chính thức lọt Top 10 thế giới tại cuộc thi thiết kế “Design Futures: Shared Vision 2025” ..."
                   data-en="Two student teams from the School of Media Design (SMD) – UEH University officially reached the Global Top 10 in the “Design Futures: Shared Vision 2025” design competition ...">
-                  Hai đội sinh viên đến từ Khoa Thiết kế Truyền thông – Đại học Kinh tế TP. Hồ Chí Minh đã chính thức lọt Top 10 thế giới tại cuộc thi thiết kế “Design Futures: Shared Vision 2025” ...</div>
-                </div>
+                  Hai đội sinh viên đến từ Khoa Thiết kế Truyền thông – Đại học Kinh tế TP. Hồ Chí Minh đã chính thức
+                  lọt Top 10 thế giới tại cuộc thi thiết kế “Design Futures: Shared Vision 2025” ...</div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="news-card">
-                <img src="6.jpg" class="news-img" />
-                <div class="news-content">
-                  <span class="news-tag"
-                  data-en="Student Projects"
-                  data-vi="Dự án sinh viên"
-                  >Dự án sinh viên</span>
-                  <span class="news-date">07/08/2025</span>
-                  <div class="news-title"
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="news-card">
+              <img src="6.jpg" class="news-img" />
+              <div class="news-content">
+                <span class="news-tag" data-en="Student Projects" data-vi="Dự án sinh viên">Dự án sinh viên</span>
+                <span class="news-date">07/08/2025</span>
+                <div class="news-title"
                   data-vi="Từ giảng đường đến đời thực: khi văn hóa truyền thống gặp gỡ thế hệ Gen Z"
                   data-en="From Campus to Reality: When Traditional Culture Meets Gen Z">
                   Từ giảng đường đến đời thực: khi văn hóa truyền thống gặp gỡ thế hệ Gen Z</div>
-                  <div class="news-desc"
+                <div class="news-desc"
                   data-vi="Trong nhịp sống hiện đại, văn hóa truyền thống đang đối mặt với nhiều thách thức. Làm thế nào để những giá trị văn hóa ấy không bị mai một mà vẫn giữ được sức sống?..."
                   data-en="In modern life, traditional culture faces many challenges. How can those cultural values be preserved while maintaining their vitality?...">
-                  Trong nhịp sống hiện đại, văn hóa truyền thống đang đối mặt với nhiều thách thức. Làm thế nào để những giá trị văn hóa ấy không bị mai một mà vẫn giữ được sức sống?...</div>
-                </div>
+                  Trong nhịp sống hiện đại, văn hóa truyền thống đang đối mặt với nhiều thách thức. Làm thế nào để những
+                  giá trị văn hóa ấy không bị mai một mà vẫn giữ được sức sống?...</div>
               </div>
             </div>
           </div>
-
-          <div class="text-center mt-4">
-            <button class="btn"><i class="fas fa-chevron-left"></i></button>
-            <button class="btn"><i class="fas fa-chevron-right"></i></button>
-          </div>
         </div>
-      </section>
-    </main>
 
-    <footer class="footer-smd">
-      <div class="container">
-        <div class="footer-content-wrapper">
-          <div class="footer-col brand-info">
-            <h2 class="footer-tagline"
-            data-vi="BẮT ĐẦU TƯƠNG LAI"
-            data-en="START THE FUTURE">
-                BẮT ĐẦU TƯƠNG LAI</h2>
-            <p class="footer-subtitle"
-            data-en="University of Economics Ho Chi Minh City - School of Media Design"
+        <div class="text-center mt-4">
+          <button class="btn"><i class="fas fa-chevron-left"></i></button>
+          <button class="btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-smd">
+    <div class="container">
+      <div class="footer-content-wrapper">
+        <div class="footer-col brand-info">
+          <h2 class="footer-tagline" data-vi="BẮT ĐẦU TƯƠNG LAI" data-en="START THE FUTURE">
+            BẮT ĐẦU TƯƠNG LAI</h2>
+          <p class="footer-subtitle" data-en="University of Economics Ho Chi Minh City - School of Media Design"
             data-vi="Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông">
             Đại học Kinh tế TP.HCM - Khoa Thiết kế Truyền thông</p>
-            <div class="footer-logos">
-              <img src="smdwhite.png" alt="SMD Logo white" />
-              <img src="uehwhite.png" alt="UEH Logo white" />
-            </div>
-            <div class="contact-details">
-              <p>279 Nguyễn Tri Phương, P. Diên Hồng, Q.10, TP.HCM</p>
-              <p>ĐT: +84 283 8295 299 | Email: smd@ueh.edu.vn</p>
-            </div>
+          <div class="footer-logos">
+            <img src="smdwhite.png" alt="SMD Logo white" />
+            <img src="uehwhite.png" alt="UEH Logo white" />
           </div>
-
-          <div class="footer-col links-grid">
-            <div class="link-group">
-              <h5>Useful Link</h5>
-              <ul>
-                <li><a href="#"
-                  data-en="UEH Admissions"
-                  data-vi="Tuyển sinh UEH">
-                  Tuyển sinh UEH</a></li>
-                <li><a href="#">UEH Future</a></li>
-                <li><a href="#"
-                data-vi="Quy chế công khai"
-                data-en="Public Regulations">
-                Quy chế công khai</a></li>
-                <li><a href="#">UEH Virtual Tour</a></li>
-              </ul>
-            </div>
-            <div class="link-group extra-links">
-              <ul>
-                <li><a href="#">UEH Global</a></li>
-                <li><a href="#">UEH E-learning</a></li>
-                <li><a href="#"
-                data-en="Career Opportunities"
-                data-vi="Cơ hội nghề nghiệp">
-                Cơ hội nghề nghiệp</a></li>
-                <li><a href="#"
-               data-en="Identity System"
-               data-vi=" Hệ thống nhận diện">
-               Hthống nhận diện</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="footer-col action-social">
-            <a href="#" class="btn-reg"
-           data-vi="ĐĂNG KÝ NGAY"
-           data-en="REGISTER NOW"
-            > ĐĂNG KÝ NGAY <i class="fas fa-graduation-cap"></i> </a>
-            <div class="social-box">
-              <p>Our social</p>
-              <div class="social-icons">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-              </div>
-            </div>
+          <div class="contact-details">
+            <p>279 Nguyễn Tri Phương, P. Diên Hồng, Q.10, TP.HCM</p>
+            <p>ĐT: +84 283 8295 299 | Email: smd@ueh.edu.vn</p>
           </div>
         </div>
 
-        <div class="footer-bottom">
-          <p
-          data-en="Copyright © 2022. University of Economics Ho Chi Minh City. Developed by SMD."
-            data-vi="Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.""
+        <div class="footer-col links-grid">
+          <div class="link-group">
+            <h5>Useful Link</h5>
+            <ul>
+              <li><a href="#" data-en="UEH Admissions" data-vi="Tuyển sinh UEH">
+                  Tuyển sinh UEH</a></li>
+              <li><a href="#">UEH Future</a></li>
+              <li><a href="#" data-vi="Quy chế công khai" data-en="Public Regulations">
+                  Quy chế công khai</a></li>
+              <li><a href="#">UEH Virtual Tour</a></li>
+            </ul>
+          </div>
+          <div class="link-group extra-links">
+            <ul>
+              <li><a href="#">UEH Global</a></li>
+              <li><a href="#">UEH E-learning</a></li>
+              <li><a href="#" data-en="Career Opportunities" data-vi="Cơ hội nghề nghiệp">
+                  Cơ hội nghề nghiệp</a></li>
+              <li><a href="#" data-en="Identity System" data-vi=" Hệ thống nhận diện">
+                  Hthống nhận diện</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-col action-social">
+          <a href="#" class="btn-reg" data-vi="ĐĂNG KÝ NGAY" data-en="REGISTER NOW"> ĐĂNG KÝ NGAY</a>
+          <div class="social-box">
+            <p>Our social</p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p data-en="Copyright © 2022. University of Economics Ho Chi Minh City. Developed by SMD."
+          data-vi="Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.""
           >Bản quyền © 2022. Đại học Kinh tế Thành phố Hồ Chí Minh. Phát triển bởi SMD.</p>
         </div>
       </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-     <button id="backToTop" title="Lên đầu trang">
-    <i class="fas fa-arrow-up"></i>
-</button>
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+    </script>
+          <button id="backToTop" title="Lên đầu trang">
+            <i class="fas fa-arrow-up"></i>
+          </button>
 
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-// 1. Khởi tạo hiệu ứng cuộn (AOS)
-AOS.init({
-    duration: 800,
-    once: true
-});
-
-// 2. Xử lý nút Back to Top
-const backToTopBtn = document.getElementById("backToTop");
-window.onscroll = function() {
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        backToTopBtn.style.display = "block";
-    } else {
-        backToTopBtn.style.display = "none";
-    }
-};
-backToTopBtn.onclick = function() {
-    window.scrollTo({top: 0, behavior: 'smooth'});
-};
-
- const langSwitches = document.querySelectorAll('.lang-switch');
-
-langSwitches.forEach(btn => {
-    btn.addEventListener('click', function(e) {
-        e.preventDefault();
+          <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+          <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+          <script>
         
-        // 1. Đổi màu nút (VN/EN)
-        langSwitches.forEach(s => s.classList.remove('lang-active'));
-        this.classList.add('lang-active');
-        
-        const lang = this.innerText.trim().toLowerCase(); // 'vn' hoặc 'en'
-        const attr = (lang === 'en') ? 'data-en' : 'data-vi';
+            AOS.init({
+              duration: 800,
+              once: true
+            });
 
-        // 2. Tìm tất cả các thẻ có chứa thuộc tính chuyển ngữ tương ứng
-        const elements = document.querySelectorAll(`[data-vi], [data-en]`);
-        
-        elements.forEach(el => {
-            const translation = (lang === 'en') ? el.getAttribute('data-en') : el.getAttribute('data-vi');
             
-            if (translation) {
-                
-                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                    el.setAttribute('placeholder', translation);
-                } else {
-                    el.innerHTML = translation;
-                }
-            }
-        });
-    });
-});
+            const backToTopBtn = document.getElementById("backToTop");
+            window.onscroll = function () {
+              if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.style.display = "block";
+              } else {
+                backToTopBtn.style.display = "none";
+              }
+            };
+            backToTopBtn.onclick = function () {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
 
-// 3. Tự động load ngôn ngữ đã chọn khi mở web
-document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('preferredLang');
-    if (savedLang) {
-        const targetBtn = Array.from(langSwitches).find(b => b.innerText.trim().toLowerCase() === savedLang);
-        if (targetBtn) {
-            targetBtn.click();
-        }
-    }
-});
-   
-</script>
-  </body>
+           
+            const langSwitches = document.querySelectorAll('.lang-switch');
+
+            langSwitches.forEach(btn => {
+              btn.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                
+                langSwitches.forEach(s => s.classList.remove('lang-active'));
+                this.classList.add('lang-active');
+
+                const lang = this.innerText.trim().toLowerCase();
+
+               
+                const elements = document.querySelectorAll('[data-vi]');
+
+                elements.forEach(el => {
+               
+                  const icon = el.querySelector('i');
+                  const text = (lang === 'en') ? el.getAttribute('data-en') : el.getAttribute('data-vi');
+
+                  el.innerText = text;
+                  if (icon) el.appendChild(icon); // Dán lại icon vào sau chữ
+                });
+
+                localStorage.setItem('preferredLang', lang);
+              });
+            });
+
+            document.addEventListener('DOMContentLoaded', () => {
+              const savedLang = localStorage.getItem('preferredLang');
+              if (savedLang) {
+                const targetBtn = Array.from(langSwitches).find(b => b.innerText.trim().toLowerCase() === savedLang);
+                if (targetBtn) targetBtn.click();
+              }
+            });
+          </script>
+</body>
+
 </html>
